@@ -32,6 +32,15 @@ DEFAULT_PATHS = [
 STRINGS = "localization-string-tables-spanish(mexico)(es-mx)_assets_all.bundle"
 STRINGS_EN = "localization-string-tables-english(unitedstates)(en-us)_assets_all.bundle"
 SHARED = "localization-assets-shared_assets_all.bundle"
+LOCALES = "localization-locales_assets_all.bundle"
+ASSET_TABLES = "localization-asset-tables-spanish(mexico)(es-mx)_assets_all.bundle"
+DLL = "Assembly-CSharp.dll"
+
+# The game formats dates with the CultureInfo of the selected locale's code, so
+# a locale that still says es-MX shows Spanish weekday names ("jueves"). The
+# code is renamed to ru-RU everywhere it acts as an identifier. ru-RU and es-MX
+# are the same length, which keeps every offset-indexed structure valid.
+ES_CODE, RU_CODE = b"es-MX", b"ru-RU"
 
 
 # --------------------------------------------------------------- game layout
@@ -41,6 +50,13 @@ def find_game(explicit):
         if c and os.path.isdir(c):
             return c
     sys.exit("Game folder not found. Pass it with --game \"/path/to/Desktop Explorer\"")
+
+
+def find_managed(game):
+    for root, dirs, files in os.walk(game):
+        if os.path.basename(root) == "Managed" and DLL in files:
+            return root
+    sys.exit("Managed folder not found — is this really the game directory?")
 
 
 def find_aa(game):
@@ -258,6 +274,14 @@ def patch_strings(src, dst, payload, english):
         if not table and not en:
             continue
 
+        # the tables become the ru-RU locale's tables (see ES_CODE/RU_CODE note)
+        renamed = False
+        lid = d.get("m_LocaleId")
+        if isinstance(lid, dict) and lid.get("m_Code") == "es-MX":
+            lid["m_Code"] = "ru-RU"
+            d["m_Name"] = d["m_Name"].replace("es-MX", "ru-RU")
+            renamed = True
+
         rows = d["m_TableData"]
         template = copy.deepcopy(rows[0]) if rows else None
         seen, local = set(), 0
@@ -287,7 +311,7 @@ def patch_strings(src, dst, payload, english):
                 n["m_Id"], n["m_Localized"] = iid, text
                 rows.append(n)
                 added += 1
-        if local or rebased or added:
+        if local or rebased or added or renamed:
             new_objects[obj.path_id] = obj.save_typetree(d)
             changed += local
 
@@ -295,6 +319,49 @@ def patch_strings(src, dst, payload, english):
     sf = SerializedFile(b.node_bytes(0))
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
     return changed, rebased, added
+
+
+# ------------------------------------------------------------- locale codes
+def patch_locale_codes(src, dst):
+    """Rename es-MX -> ru-RU inside Locale/table objects of a bundle.
+
+    Same-length in-place byte patch, so no object relayout is needed. The
+    AssetBundle container object is skipped: its "Assets/..." paths must keep
+    matching the untouched catalog internal ids and on-disk file names.
+    """
+    b = Bundle(src)
+    node = bytearray(b.node_bytes(0))
+    sf = SerializedFile(bytes(node))
+    n = 0
+    for o in sf.objects:
+        start = sf.data_offset + o["byte_start"]
+        chunk = bytes(node[start:start + o["byte_size"]])
+        if ES_CODE not in chunk or b"Assets/" in chunk:
+            continue
+        n += chunk.count(ES_CODE)
+        node[start:start + o["byte_size"]] = chunk.replace(ES_CODE, RU_CODE)
+    rebuild_bundle(b, 0, bytes(node), dst)
+    return n
+
+
+def patch_dll(src, dst):
+    """Point the hardcoded language menu at the renamed ru-RU locale.
+
+    Both replacements are UTF-16 and byte-length-identical, so the #US heap
+    offsets in the assembly stay valid.
+    """
+    data = open(src, "rb").read()
+    n = 0
+    for old, new in (("es-MX", "ru-RU"), ("Español Latam", "Русский язык ")):
+        ob, nb = old.encode("utf-16-le"), new.encode("utf-16-le")
+        assert len(ob) == len(nb)
+        count = data.count(ob)
+        if count != 1:
+            sys.exit(f"expected exactly one {old!r} in {os.path.basename(src)}, found {count}")
+        data = data.replace(ob, nb)
+        n += count
+    open(dst, "wb").write(data)
+    return n
 
 
 # ----------------------------------------------------------------- catalog
@@ -319,8 +386,14 @@ def patch_catalog(src, dst):
         out += blob[i:i + 1]
         i += 1
     cat["m_ExtraDataString"] = base64.b64encode(bytes(out)).decode("ascii")
+    # re-key the es-MX addressables entries to ru-RU; keys are length-prefixed
+    # and offset-indexed, and the codes are the same length. m_InternalIds keep
+    # es-MX on purpose — they must match container paths inside the bundles.
+    kd = base64.b64decode(cat["m_KeyDataString"])
+    rekeyed = kd.count(ES_CODE)
+    cat["m_KeyDataString"] = base64.b64encode(kd.replace(ES_CODE, RU_CODE)).decode("ascii")
     json.dump(cat, open(dst, "w", encoding="utf-8"), separators=(",", ":"), ensure_ascii=False)
-    return n
+    return n, rekeyed
 
 
 # -------------------------------------------------------------------- main
@@ -336,19 +409,27 @@ def main():
     print(f"game:     {game}")
     print(f"platform: {os.path.basename(plat)}")
 
+    managed = find_managed(game)
+
     if args.restore:
         if not os.path.isdir(backup):
             sys.exit("No backup found — nothing to restore.")
         shutil.copy(os.path.join(backup, "catalog.json"), os.path.join(aa, "catalog.json"))
-        for f in (SHARED, STRINGS):
-            shutil.copy(os.path.join(backup, f), os.path.join(plat, f))
+        for f in (SHARED, STRINGS, LOCALES, ASSET_TABLES):
+            if os.path.exists(os.path.join(backup, f)):
+                shutil.copy(os.path.join(backup, f), os.path.join(plat, f))
+        if os.path.exists(os.path.join(backup, DLL)):
+            shutil.copy(os.path.join(backup, DLL), os.path.join(managed, DLL))
         print("restored to factory state.")
         return
 
     os.makedirs(backup, exist_ok=True)
     for path, name in ((os.path.join(aa, "catalog.json"), "catalog.json"),
                        (os.path.join(plat, SHARED), SHARED),
-                       (os.path.join(plat, STRINGS), STRINGS)):
+                       (os.path.join(plat, STRINGS), STRINGS),
+                       (os.path.join(plat, LOCALES), LOCALES),
+                       (os.path.join(plat, ASSET_TABLES), ASSET_TABLES),
+                       (os.path.join(managed, DLL), DLL)):
         if not os.path.exists(path):
             sys.exit(f"Missing game file: {path}")
         if not os.path.exists(os.path.join(backup, name)):
@@ -369,11 +450,21 @@ def main():
                                             os.path.join(plat, STRINGS), payload, english)
     print(f"  {changed} strings translated, {rebased} rebased to English, {added} entries added")
 
-    print("patching catalog...")
-    n = patch_catalog(os.path.join(backup, "catalog.json"), os.path.join(aa, "catalog.json"))
-    print(f"  {n} checksums cleared")
+    print("patching locale codes (es-MX -> ru-RU for Russian dates)...")
+    n = patch_locale_codes(os.path.join(backup, LOCALES), os.path.join(plat, LOCALES))
+    m = patch_locale_codes(os.path.join(backup, ASSET_TABLES), os.path.join(plat, ASSET_TABLES))
+    print(f"  {n} + {m} identifiers renamed")
 
-    print("\nDone. In game: Options -> Language -> Español")
+    print("patching language menu (Assembly-CSharp.dll)...")
+    n = patch_dll(os.path.join(backup, DLL), os.path.join(managed, DLL))
+    print(f"  {n} strings replaced")
+
+    print("patching catalog...")
+    n, rekeyed = patch_catalog(os.path.join(backup, "catalog.json"), os.path.join(aa, "catalog.json"))
+    print(f"  {n} checksums cleared, {rekeyed} keys renamed to ru-RU")
+
+    print("\nDone. In game: Options -> Language -> Русский язык")
+    print("(the language resets to English once — the saved es-MX choice no longer exists)")
     print("Undo with: python3 patch.py --restore")
 
 

@@ -188,7 +188,7 @@ OS_misc_contents,,77882855525441549,Второе устройство:
 OS_misc_contents,,77882855525441550,RD52323
 OS_misc_contents,,77882855525441551,Инициализация экрана входа . . . . . . . . . /
 OS_misc_contents,,77882855525441552,"Это тестовая сборка игры, предоставленная только для тестирования и сбора отзывов. Всё содержимое, включая (но не ограничиваясь) визуальные эффекты, звук, игровые механики, элементы интерфейса и повествовательные элементы, находится в разработке и может измениться. Итоговое качество, производительность и функциональность в финальном релизе могут значительно отличаться."
-OS_misc_contents,,77882855525441554,Навигация
+OS_misc_contents,,77882855525441554,Листать
 OS_misc_contents,,77882855525441555,Интерфейсный мистический квест
 OS_misc_contents,,77882855525441556,Начать игру
 OS_misc_contents,,77882855525441557,Настройки
@@ -205,7 +205,7 @@ OS_misc_contents,,77882855525441567,- Меню настроек NEXT OS -
 OS_misc_contents,,77882855525441568,Назад
 OS_misc_contents,,77882855525441569,Применить
 OS_misc_contents,,77882855525441570,Настроить
-OS_misc_contents,,77882855525441571,Навигация
+OS_misc_contents,,77882855525441571,Листать
 OS_misc_contents,,77882855525441572,Разрешение
 OS_misc_contents,,77882855525441573,Полный экран
 OS_misc_contents,,77882855525441574,Режим CRT
@@ -328,7 +328,7 @@ OS_misc_contents,OS_ContextMenu_Properties,83814936189329413,Свойства
 OS_misc_contents,OS_ContextMenu_Rename,83814936189329409,Переименовать
 OS_misc_contents,OS_ContextMenu_Restore,83814936189329412,Восстановить
 OS_misc_contents,OS_ContextMenu_RestoreOriginal,96424206609145856,Восстановить файл в исходном состоянии
-OS_misc_contents,OS_Core_Apply,75355315447521288,Применить
+OS_misc_contents,OS_Core_Apply,75355315447521288,Задать
 OS_misc_contents,OS_Core_Back,75355315443326989,Назад
 OS_misc_contents,OS_Core_Cancel,75355315443326983,Отмена
 OS_misc_contents,OS_Core_Copy,75355315447521283,Копировать
@@ -364,7 +364,7 @@ OS_misc_contents,OS_Cronolog_Halibut,89094151524573184,Дневник Halibut
 OS_misc_contents,OS_Cronolog_Import_Entries,75355315447521300,Импорт записей
 OS_misc_contents,OS_Cronolog_Max,89094151524573186,Дневник Max
 OS_misc_contents,OS_Cronolog_MissingEntry,89094151524573189,Нет записи
-OS_misc_contents,OS_Cronolog_New_Entry,75355315447521298,Новая запись + 
+OS_misc_contents,OS_Cronolog_New_Entry,75355315447521298,Создать + 
 OS_misc_contents,OS_Cronolog_Sort_Newest_To_Oldest,75355315447521302,Сначала новые
 OS_misc_contents,OS_Cronolog_Sort_Oldest_To_Newest,75355315447521301,Сначала старые
 OS_misc_contents,OS_Cronolog_Sort_Unlocked_Newest_To_Oldest,100705494887292928,"По дате разблокировки, от новых к старым"
@@ -468,7 +468,7 @@ OS_misc_contents,OS_TitleScreen_DemoVersion,78037984601956378,- Демоверс
 OS_misc_contents,OS_TitleScreen_Discord,78037984601956374,Наш Discord
 OS_misc_contents,OS_TitleScreen_Enter,78037984601956377,Выбрать
 OS_misc_contents,OS_TitleScreen_Exit,78037984601956375,Выход
-OS_misc_contents,OS_TitleScreen_Navigate,78037984601956370,Навигация
+OS_misc_contents,OS_TitleScreen_Navigate,78037984601956370,Листать
 OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimer,118477502832173057,Выбранный язык <color=#F9A31B>НЕЛЬЗЯ</color> будет изменить позже в игре. Всё в порядке?
 OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimerTitle,118477502832173056,УВЕДОМЛЕНИЕ О ЯЗЫКЕ
 OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimer_Option1,118477502832173058,"ДА, НАЧАТЬ ИГРУ"
@@ -480,7 +480,7 @@ OS_misc_contents,OS_TitleScreen_Options_Chromatic,78037984601956391,-Хрома�
 OS_misc_contents,OS_TitleScreen_Options_Footer_Label_1,78037984601956384,Назад
 OS_misc_contents,OS_TitleScreen_Options_Footer_Label_2,78037984601956385,Применить
 OS_misc_contents,OS_TitleScreen_Options_Footer_Label_3,78037984601956386,Настроить
-OS_misc_contents,OS_TitleScreen_Options_Footer_Label_4,78037984601956387,Навигация
+OS_misc_contents,OS_TitleScreen_Options_Footer_Label_4,78037984601956387,Листать
 OS_misc_contents,OS_TitleScreen_Options_Fullscreen,78037984601956389,Полный экран
 OS_misc_contents,OS_TitleScreen_Options_Resolution,78037984601956388,Разрешение
 OS_misc_contents,OS_TitleScreen_Options_Scanline,78037984601956392,-Интенсивность развёртки
