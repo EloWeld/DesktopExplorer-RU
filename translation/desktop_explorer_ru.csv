@@ -299,6 +299,12 @@ OS_misc_contents,DEInstaller_Marketing_Demo_1,17418858888421376,Установк
 OS_misc_contents,DEInstaller_Marketing_Demo_2,17418858901004288,Демо уже доступно!
 OS_misc_contents,DEInstaller_Max_4,117877846599262208,Картирование коридоров...
 OS_misc_contents,DEInstaller_Max_6,117877846599262209,Раскладка улик...
+OS_misc_contents,HAL_PuzzleT2_Password2,104120708584431618,шестьдесят-семь
+OS_misc_contents,HAL_PuzzleT2_Password3,104120708584431619,шестьдесятсемь
+OS_misc_contents,HAL_PuzzleT2_Password4,104120708584431620,шестьдесят семь
+OS_misc_contents,HAL_PuzzleT2_Password5,104120708588625920,шесть-семь
+OS_misc_contents,HAL_PuzzleT2_Password6,104120708588625921,шестьсемь
+OS_misc_contents,HAL_PuzzleT2_Password7,104120708588625922,шесть семь
 OS_misc_contents,Halibut_A2_CorrectPhrase,106992481529225217,МЫ НЕПОЛНЫ БЕЗ ТЕБЯ
 OS_misc_contents,MAZE_PointerText_AfterGlitch,95281148689637379,"<shake a=0.02 f=0.5>Чтобы разорвать этот круг, нужно много боли и смелости.</shake>"
 OS_misc_contents,MAZE_PointerText_FirstLaps,95281148689637376,"Иногда кажется, что жизнь <shake a=0.02 f=0.5>идёт по кругу.</shake>"
@@ -520,7 +526,58 @@ OS_misc_contents,ScreenSaver_Stardust,75355315447521388,Stardust
 OS_misc_contents,ScreenSaver_Text,75355315447521385,Text
 OS_misc_contents,ScreenSaver_TextBounce,75355315447521387,TextBounce
 OS_misc_contents,ScreenSaver_TextRain,75355315447521390,TextRain
-OS_misc_contents,SecurityAnswers_P9Hanoi_4,515453739023,"[""mybrother"", ""my brother"", ""my_brother"", ""my-brother"", ""bigbrother"", ""big brother"", ""big_brother"", ""big-brother"", ""brother"", ""walleye"", ""walter"", ""waltersounder"", ""walter_sounder"", ""walter-sounder"", ""walter sounder"", ""брат"", ""мой брат"", ""мойбрат"", ""мой_брат"", ""старший брат"", ""старшийбрат"", ""судак"", ""уолтер"", ""уолтер саундер"", ""уолтерсаундер"", ""уолтер_саундер""]"
+OS_misc_contents,SecurityAnswers_P9Hanoi_4,515453739023,"[""mybrother"", ""my brother"", ""my_brother"", ""my-brother"", ""bigbrother"", ""big brother"", ""big_brother"", ""big-brother"", ""brother"", ""walleye"", ""walter"", ""waltersounder"", ""walter_sounder"", ""walter-sounder"", ""walter sounder"", ""брат"", ""мой брат"", ""мойбрат"", ""мой_брат"", ""старший брат"", ""старшийбрат"", ""судак"", ""уолтер"", ""уолтер саундер"", ""уолтерсаундер"", ""уолтер_саундер"", ""уолтер уотерс"", ""уолтеруотерс"", ""уолтер_уотерс"", ""уолтер-уотерс""]"
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement1,112087300668645376,отец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement10,112087300677033992,мой_папа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement11,112092461004742656,отец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement12,112092461008936960,папа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement13,112092461008936961,батя
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement14,112092461008936962,мой отец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement15,112092461008936963,мой папа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement2,112087300677033984,мойотец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement3,112087300677033985,мой-отец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement4,112087300677033986,мой отец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement5,112087300677033987,мой_отец
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement6,112087300677033988,папа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement7,112087300677033989,мойпапа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement8,112087300677033990,мой-папа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Achievement9,112087300677033991,мой папа
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q1A1,515453739029,крокодил
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q1A2,515453739030,аллигатор
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q1A3,89094151520378880,крокодил
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q1A4,89094151520378881,кайман
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q1A5,110563005521977344,крокодил
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q1A6,110563005559726080,аллигатор
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q2A2,515453739032,четырнадцать
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q2A3,110563005559726081,четырнадцать
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A1,515453739033,огонь
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A10,110563005559726082,пламя
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A11,110563005559726083,в огне
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A12,110563005559726084,сгорел
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A2,515453739034,пламя
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A3,515453739035,горение
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A4,515453739036,пожар
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A5,87353089898569728,в огне
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A6,87353089906958336,сгорел
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A7,89094151520378882,огонь
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A8,89094151520378883,пожар
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q3A9,89094151520378884,горение
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A1,515453739037,мойбрат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A16,110563005559726085,мойбрат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A17,110563005559726086,мой брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A18,110563005559726087,мой_брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A19,110563005559726088,мой-брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A2,515453739038,мой брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A20,110563005559726089,старшийбрат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A21,110563005559726090,старший-брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A22,110563005559726091,старший_брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A3,515453739039,мой_брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A4,515453739040,мой-брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A5,515453739041,старшийбрат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A6,515453739042,старший брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A7,515453739043,старший-брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A8,515453739044,старший_брат
+OS_misc_contents,SecurityAnswers_P9Hanoi_Q4A9,515453739045,брат
 OS_misc_contents,SecurityQuestion_P9Hanoi_1,515453739019,Секретный вопрос: какое животное купается в слезах горя?
 OS_misc_contents,SecurityQuestion_P9Hanoi_2,515453739020,Секретный вопрос: сколько глаз наблюдают блаженство принятия?
 OS_misc_contents,SecurityQuestion_P9Hanoi_3,515453739021,Секретный вопрос: как проявился гнев вокруг человека в лодке?
@@ -579,6 +636,7 @@ OS_misc_contents,ms_retry,95281148689637383,ЗАНОВО
 OS_misc_contents,psod_IKnowWhatYouAre,114484791741505536,ЯЗНАЮКТОТЫЯЗНАЮЧТОТЫДЕЛАЕШЬ
 OS_misc_contents,psod_safeMode,118563284523671552,"Нажмите <color=#F9A31B>ЛЮБУЮ КЛАВИШУ</color>, чтобы загрузиться в БЕЗОПАСНОМ РЕЖИМЕ"
 OS_misc_contents,pwd_admin_shame,27685599644213248,TAROCCHI
+OS_misc_contents,tutorial_pwd,107577245705428992,пароль123
 Software,,119254485522440193,ColorLens
 Software,,35538628481376256,!@#$%^&*()<>??ñń
 Software,,35584565102764032,!@#$%^&*()<>??ñń
@@ -2870,6 +2928,18 @@ nextrooms_dialogues,PhotoBooth_InitialDialogue,71975652763361280,"Странно
 nextrooms_dialogues,PhotoBooth_LightsOff,71976719404228608,"Оно не работает. Оно подключено к розетке, но питания нет."
 nextrooms_dialogues,PhotoBooth_Operate_Option,110308848164659246,Ответить на вопросы
 nextrooms_dialogues,PhotoBooth_PuzzleCompleted,72016740119207936,Фотобудка. Больше здесь ничего интересного.
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_2,72016740123402241,зомби
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_2_Alt_1,187435712980705280,нежить
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_2_Alt_2,187435712989093888,заражённый
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_2_Alt_3,187435712989093889,zombie
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_2_Alt_4,187435712989093890,живой мертвец
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_2_Alt_5,187435712989093891,мертвец
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_3,72016740123402242,красный
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_3_Alt_1,192411675195858944,красная
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_4_Alt_4,191832918139592704,ананасовое лето
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_4_Alt_5,191832918139592705,ананасовоелето
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_4_Alt_6,191832918139592706,ананасовое-лето
+nextrooms_dialogues,PhotoBooth_Quiz_Answer_4_Alt_7,191832918139592707,ананасовое_лето
 nextrooms_dialogues,PhotoBooth_Quiz_Question_1,98497550267441152,"Элитный киноквиз, вопрос 1"
 nextrooms_dialogues,PhotoBooth_Quiz_Question_2,98497550284218368,"Элитный киноквиз, вопрос 2"
 nextrooms_dialogues,PhotoBooth_Quiz_Question_3,98497550284218369,"Элитный киноквиз, вопрос 3"
@@ -4242,7 +4312,7 @@ stp_contents,HAL_R2About_corpse,658638888976,"Как только ты прик�
 Ты подозреваешь, что в этом безжизненном теле можно найти что-то ещё.
 
 <color=#0000FF><?-- Их рука украшена жутким <u>изображением</u> и <u>запиской</u> --></color>"
-stp_contents,HAL_R2About_pillagedTomb_CorrectPhrase,104111633712799745,"""<color=#9800a8><phrase>WE ARE INCOMPLETE WITHOUT YOU</phrase></color>""
+stp_contents,HAL_R2About_pillagedTomb_CorrectPhrase,104111633712799745,"""<color=#9800a8><phrase>МЫ НЕПОЛНЫ БЕЗ ТЕБЯ</phrase></color>""
 
 Закрытый саркофаг на мгновение яростно содрогается, отвечая на твой зов. Словно начиная пробуждаться, его правый глаз загорается.
 
