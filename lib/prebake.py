@@ -63,10 +63,9 @@ def _cell_for(contours):
             if x != int(x) or y != int(y):  # transformed composite points
                 return 5
             m = math.gcd(math.gcd(m, abs(int(x))), abs(int(y)))
-    for cell in (CELL, 20, 10):
-        if m and m % cell == 0:
-            return cell
-    return 5
+    # the grid is whatever unit the outline actually sits on: 40/80 for the
+    # Windows family (1000 upm), 128 for FSEX302 (2048 upm)
+    return min(m, 256) if m >= 10 else 5
 
 
 def _mask(contours, x0, y0, x1, y1, cell):

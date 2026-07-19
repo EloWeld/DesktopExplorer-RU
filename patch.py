@@ -186,15 +186,25 @@ def patch_shared(src, dst, bake_chars):
 
     # 3. pre-bake the translation's characters so TMP never renders SDFs at
     #    runtime — that main-thread work is the freeze on opening documents.
-    #    The shipped atlases have no room for ~70 more glyphs, so both are
-    #    repacked wholesale at a smaller sampling size; the textures keep
-    #    their original 1024x1024 dimensions.
-    for name, weight in (("Windows Regular SDF", "Windows Regular"),
-                         ("Windows Bold SDF", "Windows Bold")):
+    #    The shipped atlases have no room for ~70 more glyphs, so each asset
+    #    is repacked wholesale at a smaller sampling size; the textures keep
+    #    their original 1024x1024 dimensions. Skipped: Monoline (round-dot
+    #    curves this rasteriser can't honour — it falls back to Regular) and
+    #    bpdots (its typeface has no Cyrillic at all).
+    font_by_pid = {o.path_id: n for n, (o, _) in fonts.items()}
+    for name in ("Windows Regular SDF", "Windows Regular SDF_GLITCH",
+                 "Windows Bold SDF", "Windows Bold Glitch VFX",
+                 "Windows Bold SDF_Colorlens", "Windows Bold SDF_Tower",
+                 "FSEX302 SDF"):
         obj, d = assets[name]
+        src = font_by_pid[d["m_SourceFontFile"]["m_PathID"]]
+        data = ttf.get(src)
+        if data is None:
+            raw = fonts[src][1]["m_FontData"]
+            data = bytes(raw) if isinstance(raw, (bytes, bytearray)) else bytes(bytearray(raw))
         print(f"  {name}:")
         repack(d, texture_dict(d["m_AtlasTextures"][0]["m_PathID"]),
-               ttf[weight], bake_chars, point_size=72)
+               data, bake_chars, point_size=72)
 
     new_objects = {}
     for name in dirty:
