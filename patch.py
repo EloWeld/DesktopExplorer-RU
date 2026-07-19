@@ -11,7 +11,7 @@ modified, and written back. Originals are backed up first.
 
 Requires: UnityPy, fontTools, lz4   (pip install -r requirements.txt)
 """
-import argparse, copy, json, os, shutil, sys
+import argparse, copy, json, os, shutil, struct, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "lib"))
@@ -34,6 +34,7 @@ STRINGS_EN = "localization-string-tables-english(unitedstates)(en-us)_assets_all
 SHARED = "localization-assets-shared_assets_all.bundle"
 LOCALES = "localization-locales_assets_all.bundle"
 ASSET_TABLES = "localization-asset-tables-spanish(mexico)(es-mx)_assets_all.bundle"
+ASSET_TABLES_EN = "localization-asset-tables-english(unitedstates)(en-us)_assets_all.bundle"
 DLL = "Assembly-CSharp.dll"
 
 # The game formats dates with the CultureInfo of the selected locale's code, so
@@ -344,6 +345,128 @@ def patch_locale_codes(src, dst):
     return n
 
 
+def _table_parts(obj):
+    """Split a localized-table object into (name, head, entries, tail).
+
+    entries are (id, value, raw_metadata) triples; head covers everything up to
+    and including the entry count, so rebuilding is head + entries + tail.
+    """
+    def rstr(p):
+        n = struct.unpack_from("<I", obj, p)[0]
+        e = p + 4 + n
+        return obj[p + 4:e].decode("utf-8"), (e + 3) & ~3
+
+    p = 28                                      # two PPtrs + m_Enabled
+    name, p = rstr(p)
+    _code, p = rstr(p)
+    p += 12                                     # m_SharedData PPtr
+    mcount = struct.unpack_from("<I", obj, p)[0]
+    p += 4 + mcount * 8
+    cnt = struct.unpack_from("<I", obj, p)[0]
+    head = obj[:p + 4]
+    p += 4
+    entries = []
+    for _ in range(cnt):
+        sid = struct.unpack_from("<q", obj, p)[0]
+        val, q = rstr(p + 8)
+        emc = struct.unpack_from("<I", obj, q)[0]
+        entries.append((sid, val, obj[q:q + 4 + emc * 8]))
+        p = q + 4 + emc * 8
+    return name, head, entries, obj[p:]
+
+
+def _build_table(head, entries, tail):
+    out = bytearray(head)
+    for sid, val, meta in entries:
+        out += struct.pack("<q", sid)
+        vb = val.encode("utf-8")
+        out += struct.pack("<I", len(vb)) + vb
+        out += b"\0" * (-len(out) % 4)
+        out += meta
+    out += tail
+    return bytes(out)
+
+
+def patch_asset_tables(src, english, dst):
+    """Rebuild the localized asset tables for the ru-RU locale.
+
+    ImageFiles entries are re-pointed at the English textures — the Spanish
+    ones have Spanish text baked into the pixels and there is no Russian art.
+    FontAssets entries are kept: they carry the fonts the Cyrillic glyphs are
+    baked into. Table ids are renamed to ru-RU like everywhere else.
+    """
+    ben = Bundle(english)
+    sfe = SerializedFile(ben.node_bytes(0))
+    en_images = {}
+    for o in sfe.objects:
+        chunk = sfe.raw[sfe.data_offset + o["byte_start"]:
+                        sfe.data_offset + o["byte_start"] + o["byte_size"]]
+        if b"Assets/" in chunk:
+            continue
+        try:
+            name, _, entries, _ = _table_parts(chunk)
+        except (struct.error, UnicodeDecodeError, IndexError):
+            continue
+        if name.startswith("ImageFiles"):
+            en_images = {sid: val for sid, val, _ in entries}
+    if not en_images:
+        sys.exit("English ImageFiles table not found — game files changed?")
+
+    b = Bundle(src)
+    sf = SerializedFile(b.node_bytes(0))
+    new_objects, renamed, swapped = {}, 0, 0
+    for o in sf.objects:
+        chunk = sf.raw[sf.data_offset + o["byte_start"]:
+                       sf.data_offset + o["byte_start"] + o["byte_size"]]
+        if ES_CODE not in chunk or b"Assets/" in chunk:
+            continue
+        name, head, entries, tail = _table_parts(chunk)
+        head = head.replace(ES_CODE, RU_CODE)
+        renamed += 1
+        if name.startswith("ImageFiles"):
+            fixed = []
+            for sid, val, meta in entries:
+                tgt = en_images.get(sid, val)
+                if tgt != val:
+                    swapped += 1
+                fixed.append((sid, tgt, meta))
+            entries = fixed
+        new_objects[o["path_id"]] = _build_table(head, entries, tail)
+    rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
+    return renamed, swapped
+
+
+def fix_saved_language(to_code):
+    """Rewrite the saved language choice in the game's own settings file.
+
+    The game boots with SetLanguageFromLocaleCode(saved code) and crashes with
+    an unhandled IndexOutOfRange (black screen) when the saved code is missing
+    from its hardcoded list, so the stored value must follow the rename in both
+    directions: es-MX -> ru-RU on patch, back again on --restore.
+    """
+    home = os.path.expanduser("~")
+    roots = [
+        os.path.join(home, "Library/Application Support/Recurring Dream/DesktopExplorer"),
+        os.path.join(home, "AppData/LocalLow/Recurring Dream/DesktopExplorer"),
+        os.path.join(home, ".config/unity3d/Recurring Dream/DesktopExplorer"),
+    ]
+    from_code = b"es-MX" if to_code == b"ru-RU" else b"ru-RU"
+    n = 0
+    for root in roots:
+        if not os.path.isdir(root):
+            continue
+        for r, _dirs, files in os.walk(root):
+            for f in files:
+                if f != "generalSettings.json":
+                    continue
+                p = os.path.join(r, f)
+                raw = open(p, "rb").read()
+                if from_code in raw:
+                    open(p, "wb").write(raw.replace(from_code, to_code))
+                    n += 1
+    return n
+
+
 def patch_dll(src, dst):
     """Point the hardcoded language menu at the renamed ru-RU locale.
 
@@ -420,6 +543,9 @@ def main():
                 shutil.copy(os.path.join(backup, f), os.path.join(plat, f))
         if os.path.exists(os.path.join(backup, DLL)):
             shutil.copy(os.path.join(backup, DLL), os.path.join(managed, DLL))
+        n = fix_saved_language(ES_CODE)
+        if n:
+            print(f"saved language reverted to es-MX in {n} settings file(s)")
         print("restored to factory state.")
         return
 
@@ -452,8 +578,13 @@ def main():
 
     print("patching locale codes (es-MX -> ru-RU for Russian dates)...")
     n = patch_locale_codes(os.path.join(backup, LOCALES), os.path.join(plat, LOCALES))
-    m = patch_locale_codes(os.path.join(backup, ASSET_TABLES), os.path.join(plat, ASSET_TABLES))
-    print(f"  {n} + {m} identifiers renamed")
+    print(f"  {n} identifiers renamed")
+
+    print("patching asset tables (Spanish images -> English)...")
+    renamed, swapped = patch_asset_tables(os.path.join(backup, ASSET_TABLES),
+                                          os.path.join(plat, ASSET_TABLES_EN),  # read in place
+                                          os.path.join(plat, ASSET_TABLES))
+    print(f"  {renamed} tables renamed, {swapped} images re-pointed at English art")
 
     print("patching language menu (Assembly-CSharp.dll)...")
     n = patch_dll(os.path.join(backup, DLL), os.path.join(managed, DLL))
@@ -463,8 +594,12 @@ def main():
     n, rekeyed = patch_catalog(os.path.join(backup, "catalog.json"), os.path.join(aa, "catalog.json"))
     print(f"  {n} checksums cleared, {rekeyed} keys renamed to ru-RU")
 
-    print("\nDone. In game: Options -> Language -> Русский язык")
-    print("(the language resets to English once — the saved es-MX choice no longer exists)")
+    n = fix_saved_language(RU_CODE)
+    if n:
+        print(f"saved language switched to ru-RU in {n} settings file(s)")
+        print("\nDone. The game will start in Russian.")
+    else:
+        print("\nDone. In game: Options -> Language -> Русский язык")
     print("Undo with: python3 patch.py --restore")
 
 

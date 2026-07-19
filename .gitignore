@@ -7,3 +7,4 @@ venv/
 *.bundle
 *.log
 _ru_backup_original/
+art/reference/*
