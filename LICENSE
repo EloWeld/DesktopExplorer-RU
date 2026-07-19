@@ -24,13 +24,17 @@ SOFTWARE.
 
 NOTE ON SCOPE / ПРИМЕЧАНИЕ О ГРАНИЦАХ ЛИЦЕНЗИИ
 
-This license covers the patcher source code and the pixel glyph definitions
-only. The translated text (data/payload.json, translation/*.csv) is a
-derivative work of the script of Desktop Explorer and is published as an
+This license covers the patcher source code only. The Cyrillic glyph shapes
+in lib/glyphs.py derive from the Ark Pixel typeface (c) TakWolf
+(https://github.com/TakWolf/ark-pixel-font) and remain under the SIL Open
+Font License 1.1. The translated text (data/payload.json, translation/*.csv)
+is a derivative work of the script of Desktop Explorer and is published as an
 unofficial fan translation. All rights to the original writing belong to the
 game's authors, who may request its removal at any time.
 
-Лицензия распространяется только на исходный код патчера и описания глифов.
-Переведённый текст — производная работа от сценария игры Desktop Explorer,
-публикуется как любительский перевод. Права на исходный текст принадлежат
-авторам игры, которые вправе потребовать его удаления.
+Лицензия распространяется только на исходный код патчера. Формы кириллических
+глифов в lib/glyphs.py происходят из шрифта Ark Pixel (c) TakWolf
+(https://github.com/TakWolf/ark-pixel-font) и остаются под лицензией
+SIL Open Font License 1.1. Переведённый текст — производная работа от сценария
+игры Desktop Explorer, публикуется как любительский перевод. Права на исходный
+текст принадлежат авторам игры, которые вправе потребовать его удаления.

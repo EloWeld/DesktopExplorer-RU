@@ -30,6 +30,7 @@ DEFAULT_PATHS = [
 ]
 
 STRINGS = "localization-string-tables-spanish(mexico)(es-mx)_assets_all.bundle"
+STRINGS_EN = "localization-string-tables-english(unitedstates)(en-us)_assets_all.bundle"
 SHARED = "localization-assets-shared_assets_all.bundle"
 
 
@@ -107,53 +108,144 @@ def patch_ttf(data, bold):
     return buf.getvalue()
 
 
-def patch_shared(src, dst):
+def patch_shared(src, dst, bake_chars):
+    from prebake import repack
     env = UnityPy.load(src)
-    new_objects, pathids = {}, {}
-    for obj in env.objects:
-        if obj.type.name == "Font":
-            pathids[obj.read_typetree()["m_Name"]] = obj.path_id
+    b = Bundle(src)
+    # the streamed-texture payload lives in the bundle's .resS node
+    resS = b""
+    for i, (_, _, _, name) in enumerate(b.nodes):
+        if name.endswith(".resS"):
+            resS = b.node_bytes(i)
+
+    fonts, assets, textures = {}, {}, {}   # name/pid -> (obj, typetree dict)
     for obj in env.objects:
         if obj.type.name == "Font":
             d = obj.read_typetree()
-            name = d.get("m_Name")
-            if name in ("Windows Regular", "Windows Bold"):
-                raw = d["m_FontData"]
-                raw = bytes(raw) if not isinstance(raw, (bytes, bytearray)) else raw
-                out = patch_ttf(raw, bold=(name == "Windows Bold"))
-                d["m_FontData"] = list(out)
-                new_objects[obj.path_id] = obj.save_typetree(d)
+            fonts[d.get("m_Name")] = (obj, d)
+        elif obj.type.name == "Texture2D":
+            textures[obj.path_id] = (obj, None)  # read lazily, they are big
         elif obj.type.name == "MonoBehaviour":
             try:
                 d = obj.read_typetree()
             except Exception:
                 continue
-            if d.get("m_Name") == "Windows Regular SDF" and "m_CharacterTable" in d:
-                if d.get("m_AtlasPopulationMode") == 0:
-                    d["m_AtlasPopulationMode"] = 1
-                    d["m_SourceFontFile"] = {"m_FileID": 0, "m_PathID": pathids["Windows Regular"]}
-                    d["m_IsMultiAtlasTexturesEnabled"] = True
-                    new_objects[obj.path_id] = obj.save_typetree(d)
-    b = Bundle(src)
+            if "m_CharacterTable" in d and "m_AtlasPopulationMode" in d:
+                assets[d.get("m_Name")] = (obj, d)
+
+    dirty = set()
+
+    # 1. TTFs gain the Cyrillic glyphs
+    ttf = {}
+    for name in ("Windows Regular", "Windows Bold"):
+        obj, d = fonts[name]
+        raw = d["m_FontData"]
+        raw = bytes(raw) if not isinstance(raw, (bytes, bytearray)) else raw
+        ttf[name] = patch_ttf(raw, bold=(name == "Windows Bold"))
+        d["m_FontData"] = list(ttf[name])
+        dirty.add(name)
+
+    def texture_dict(pid):
+        obj, d = textures[pid]
+        if d is None:
+            d = obj.read_typetree()
+            sd = d.get("m_StreamData") or {}
+            if sd.get("size"):
+                # non-readable textures stream their pixels from .resS and
+                # keep no CPU copy; writing glyphs there crashes the player,
+                # so pull the pixels inline before making anything readable
+                d["image data"] = bytes(resS[sd["offset"]:sd["offset"] + sd["size"]])
+                d["m_StreamData"] = {"offset": 0, "size": 0, "path": ""}
+            textures[pid] = (obj, d)
+        return d
+
+    # 2. every font asset goes dynamic multi-atlas with a readable atlas
+    for name, (obj, d) in assets.items():
+        if d.get("m_AtlasPopulationMode") == 0:
+            # only "Windows Regular SDF" ships static
+            d["m_AtlasPopulationMode"] = 1
+            d["m_SourceFontFile"] = {"m_FileID": 0,
+                                     "m_PathID": fonts["Windows Regular"][0].path_id}
+        if not d.get("m_IsMultiAtlasTexturesEnabled"):
+            # baked atlases are near full; without this, adding a glyph to a
+            # full atlas silently fails and the character shows as □
+            d["m_IsMultiAtlasTexturesEnabled"] = 1
+        if name == "Windows Monoline SDF":
+            # the Monoline typeface itself is left without Cyrillic (used in
+            # a handful of places) — fall back to Regular so text stays legible
+            fb = d.setdefault("m_FallbackFontAssetTable", [])
+            reg = assets["Windows Regular SDF"][0].path_id
+            if all(f.get("m_PathID") != reg for f in fb):
+                fb.append({"m_FileID": 0, "m_PathID": reg})
+        for a in d.get("m_AtlasTextures") or []:
+            if a.get("m_PathID"):
+                td = texture_dict(a["m_PathID"])
+                if not td.get("m_IsReadable"):
+                    td["m_IsReadable"] = 1
+        dirty.add(name)
+
+    # 3. pre-bake the translation's characters so TMP never renders SDFs at
+    #    runtime — that main-thread work is the freeze on opening documents.
+    #    The shipped atlases have no room for ~70 more glyphs, so both are
+    #    repacked wholesale at a smaller sampling size; the textures keep
+    #    their original 1024x1024 dimensions.
+    for name, weight in (("Windows Regular SDF", "Windows Regular"),
+                         ("Windows Bold SDF", "Windows Bold")):
+        obj, d = assets[name]
+        print(f"  {name}:")
+        repack(d, texture_dict(d["m_AtlasTextures"][0]["m_PathID"]),
+               ttf[weight], bake_chars, point_size=72)
+
+    new_objects = {}
+    for name in dirty:
+        obj, d = (fonts | assets)[name]
+        new_objects[obj.path_id] = obj.save_typetree(d)
+    for pid, (obj, d) in textures.items():
+        if d is not None:
+            new_objects[pid] = obj.save_typetree(d)
+
     sf = SerializedFile(b.node_bytes(0))
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
     return len(new_objects)
 
 
 # ----------------------------------------------------------------- strings
-def patch_strings(src, dst, payload):
-    """payload: {table name: {id: text}} — already includes the strings that are
-    deliberately kept English, so one lookup covers both cases."""
-    env = UnityPy.load(src)
-    new_objects, changed, added = {}, 0, 0
+def load_tables(path):
+    """{table name: {int id: text}} from a string-tables bundle."""
+    env = UnityPy.load(path)
+    out = {}
     for obj in env.objects:
         if obj.type.name != "MonoBehaviour":
             continue
         d = obj.read_typetree()
         if "m_TableData" not in d or not d.get("m_Name"):
             continue
-        table = payload.get(d["m_Name"].rsplit("_", 1)[0])
-        if not table:
+        out[d["m_Name"].rsplit("_", 1)[0]] = {
+            e["m_Id"]: e["m_Localized"] for e in d["m_TableData"]}
+    return out
+
+
+def patch_strings(src, dst, payload, english):
+    """Rebuild the es-MX tables as English base + Russian overlay.
+
+    payload:  {table name: {id: text}} — the Russian translation.
+    english:  {table name: {int id: text}} — the player's own en-US tables.
+    Everything not translated (file names, passwords, terminal commands) must
+    read exactly as in English, or the puzzles stop matching player input —
+    leaving the original Spanish text there would break them the same way.
+    """
+    env = UnityPy.load(src)
+    new_objects, changed, rebased, added = {}, 0, 0, 0
+    for obj in env.objects:
+        if obj.type.name != "MonoBehaviour":
+            continue
+        d = obj.read_typetree()
+        if "m_TableData" not in d or not d.get("m_Name"):
+            continue
+        name = d["m_Name"].rsplit("_", 1)[0]
+        table = payload.get(name, {})
+        en = english.get(name, {})
+        if not table and not en:
             continue
 
         rows = d["m_TableData"]
@@ -162,24 +254,37 @@ def patch_strings(src, dst, payload):
         for e in rows:
             seen.add(e["m_Id"])
             new = table.get(str(e["m_Id"]))
+            if new is None:
+                new = en.get(e["m_Id"])  # untranslated -> English, never Spanish
+                if new is not None and new != e.get("m_Localized"):
+                    rebased += 1
+            elif new != e.get("m_Localized"):
+                local += 1
             if new is not None and new != e.get("m_Localized"):
                 e["m_Localized"] = new
-                local += 1
-        # the Spanish table lacks some entries the English one has; add them
+        # entries the Spanish table lacks: first the translated ones...
         for sid, text in table.items():
             if int(sid) not in seen and template is not None:
                 n = copy.deepcopy(template)
                 n["m_Id"], n["m_Localized"] = int(sid), text
                 rows.append(n)
+                seen.add(int(sid))
                 added += 1
-        if local or added:
+        # ...then everything else the English table has
+        for iid, text in en.items():
+            if iid not in seen and template is not None:
+                n = copy.deepcopy(template)
+                n["m_Id"], n["m_Localized"] = iid, text
+                rows.append(n)
+                added += 1
+        if local or rebased or added:
             new_objects[obj.path_id] = obj.save_typetree(d)
             changed += local
 
     b = Bundle(src)
     sf = SerializedFile(b.node_bytes(0))
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
-    return changed, added
+    return changed, rebased, added
 
 
 # ----------------------------------------------------------------- catalog
@@ -241,15 +346,18 @@ def main():
     print(f"backup:   {backup}")
 
     payload = json.load(open(os.path.join(HERE, "data/payload.json"), encoding="utf-8"))
+    bake_chars = {ch for table in payload.values() for s in table.values()
+                  for ch in s if ord(ch) >= 32}
 
     print("patching fonts...")
-    n = patch_shared(os.path.join(backup, SHARED), os.path.join(plat, SHARED))
+    n = patch_shared(os.path.join(backup, SHARED), os.path.join(plat, SHARED), bake_chars)
     print(f"  {n} objects rewritten")
 
     print("patching strings...")
-    changed, added = patch_strings(os.path.join(backup, STRINGS), os.path.join(plat, STRINGS),
-                                   payload)
-    print(f"  {changed} strings translated, {added} entries added")
+    english = load_tables(os.path.join(plat, STRINGS_EN))  # never modified, read in place
+    changed, rebased, added = patch_strings(os.path.join(backup, STRINGS),
+                                            os.path.join(plat, STRINGS), payload, english)
+    print(f"  {changed} strings translated, {rebased} rebased to English, {added} entries added")
 
     print("patching catalog...")
     n = patch_catalog(os.path.join(backup, "catalog.json"), os.path.join(aa, "catalog.json"))
