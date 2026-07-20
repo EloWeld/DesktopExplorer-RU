@@ -1449,7 +1449,7 @@ Websurfer_contents,Fridge_Footer_Link_Contact,41737622467371100,Контакты
 Websurfer_contents,Fridge_Footer_Link_Help,41737622467371099,Помощь
 Websurfer_contents,Fridge_Footer_Link_Home,41737622467371096,Главная
 Websurfer_contents,Fridge_Footer_Link_New,41737622467371098,Топ новинки
-Websurfer_contents,Fridge_MaxPost_Comment1_Description,41737622467371112,"ого, я слежу за тобой уже давно и должна сказать, ты уже настолько хороша для своего возраста. моё личное вдохновение — мексиканская художница фрида кало... я правда уважаю сильных, творческих женщин, и ты похожа на одну из них. давай дружить! ;)"
+Websurfer_contents,Fridge_MaxPost_Comment1_Description,41737622467371112,"ого, я слежу за тобой уже давно и должен сказать, ты уже настолько хороша для своего возраста. моё личное вдохновение — мексиканская художница фрида кало... я правда уважаю сильных, творческих женщин, и ты похожа на одну из них. давай дружить! ;)"
 Websurfer_contents,Fridge_MaxPost_Comment1_Title,41737622467371111,Femur (02:10 06/08)
 Websurfer_contents,Fridge_MaxPost_Content,41737622467371105,"каждая из этих работ — это этап создания одной картины. я назвал их в честь любимых художников. забавно, что <b>их инициалы складываются в то, что я чувствую</b>, когда рисую!"
 Websurfer_contents,Fridge_MaxPost_Title,41737622467371104,Прогресс работы — M4x1mus (23:14 06/07)
@@ -1524,7 +1524,7 @@ Websurfer_contents,GameB_TopRow_Console,41737622471565328,Консоли
 Websurfer_contents,GameB_TopRow_LogIn,41737622471565332,Войти
 Websurfer_contents,GameB_TopRow_More,41737622471565331,и другое...
 Websurfer_contents,GameB_TopRow_Portable,41737622471565330,Портативные
-Websurfer_contents,GameB_TopRow_SignUp,41737622471565333,Регистрация
+Websurfer_contents,GameB_TopRow_SignUp,41737622471565333,Зарегаться
 Websurfer_contents,GameB_Wormhole_BackLink,41737622471565363,< Назад к гайдам Hazel82
 Websurfer_contents,GameB_Wormhole_Content1,41737622471565361,"я только что посмотрел трейлер Wormhole 2, и у меня есть теории насчёт новой системы очков!
 в начале трейлера мы видим кучу фиолетовых врагов. если приглядеться, количество очков за их уничтожение <b>зависит от числа углов</b> в форме корабля!"
@@ -1748,11 +1748,11 @@ Websurfer_contents,QC_Max_DivisionDirection5,41737622484148237,5. TERRACE BLVD �
 Websurfer_contents,QC_Max_DivisionDirection6,41737622484148238,КОНЕЦ у моста DIVISION TERRACE
 Websurfer_contents,QC_Max_DivisionETA,41737622484148235,1 час 22 минуты
 Websurfer_contents,QC_Max_DivisionEnd,41737622484148233,Мост Division Terrace
-Websurfer_contents,QC_TopSection_BackDirections,41737622475759689,Назад к маршруту
+Websurfer_contents,QC_TopSection_BackDirections,41737622475759689,Назад
 Websurfer_contents,QC_TopSection_DistanceLabel,41737622475759692,Расстояние:
 Websurfer_contents,QC_TopSection_ETALabel,41737622475759693,Прибытие:
 Websurfer_contents,QC_TopSection_EndLabel,41737622475759691,Конец:
-Websurfer_contents,QC_TopSection_SendPrinter,41737622475759688,Отправить на печать
+Websurfer_contents,QC_TopSection_SendPrinter,41737622475759688,В печать
 Websurfer_contents,QC_TopSection_StartLabel,41737622475759690,Начало:
 Websurfer_contents,STP_Awards_Label_2,28315835784224776,Знак одобрения Websurfer
 Websurfer_contents,STP_Awards_Label_4,28315835788419073,Dw33bnation — топ-10 в инновациях 
@@ -1891,7 +1891,7 @@ chronolog_contents,GUPPY_3_ANS,489230950421,"это, должно быть, бы
 
 его мысли обо мне, о нашей семье и о людях, о которых я даже не знаю.. кажется, все они крутятся вокруг чувства вины.<page>единственное, в чём я могу быть уверена — <b>макс</b> пропала. <b>лейла</b> и <b>хэл</b> искали её, и этот компьютер должен был помочь её найти. 
 
-повлиял ли стресс от <b>Desktop Explorer</b> на дядину деменцию? отнял ли он его у меня?<page>тут есть профиль пользователя макс, но, похоже, дядя хэл так и не разблокировал его. <b>мне нужно получить к нему доступ.</b> это макс создала desktop explorer? она его скачала? связано ли это с её исчезновением?
+повлиял ли стресс от <b>Desktop Explorer</b> на деменцию дяди? отнял ли он его у меня?<page>тут есть профиль пользователя макс, но, похоже, дядя хэл так и не разблокировал его. <b>мне нужно получить к нему доступ.</b> это макс создала desktop explorer? она его скачала? связано ли это с её исчезновением?
 
 что бы ни было правдой, теперь я знаю, как действовать дальше."
 chronolog_contents,GUPPY_3_WRITEBTN_1,489230950422,... что делать дальше
@@ -2885,7 +2885,7 @@ nextrooms_dialogues,MovieQuestion4,54340587556429824,Вопрос 4
 nextrooms_dialogues,MovieStand_InitialDialogue,78562129987231744,Это картонная фигура известного кинорежиссёра.
 nextrooms_dialogues,MovieStand_LightsOff,85478653507395584,Это картонная фигура с информацией. Прочитать текст не получается.
 nextrooms_dialogues,NextRoomsNotice,77166261086183426,"15 сентября 2003 — NextRooms теперь отключена навсегда.
-Войди, чтобы загрузить прежние данные в офлайн-режиме и заново пережить разговоры с друзьями с помощью функции «Повтор чатов». От лица команды разработчиков — спасибо, что был нашим соседом."
+Войди, чтобы загрузить прежние данные в офлайн-режиме и заново пережить разговоры с друзьями с помощью функции «Повтор чатов». Спасибо, что был нашим соседом."
 nextrooms_dialogues,NextRoomsUI_ChatLogs,189982485683101697,Чат-логи
 nextrooms_dialogues,NextRoomsUI_Escape,189979108391772160,Esc
 nextrooms_dialogues,NextRoomsUI_Floors,189982485683101699,Этажи
@@ -2896,7 +2896,7 @@ nextrooms_dialogues,NextRoomsUI_NewsLetter,189968616415813632,Рассылка
 nextrooms_dialogues,NextRoomsUI_Password,77175662064951297,Пароль
 nextrooms_dialogues,NextRoomsUI_PressToInteractDown,189978639774769152,"<sprite name=""nextrooms_interact_down""> — действие"
 nextrooms_dialogues,NextRoomsUI_PressToInteractUp,189978639774769153,"<sprite name=""nextrooms_interact_up""> — действие"
-nextrooms_dialogues,NextRoomsUI_Register,189969419444674561,Регистрация
+nextrooms_dialogues,NextRoomsUI_Register,189969419444674561,Зарегаться
 nextrooms_dialogues,NextRoomsUI_Roomies,189982485683101696,Соседи
 nextrooms_dialogues,NextRoomsUI_Username,77175662064951296,Логин
 nextrooms_dialogues,NextRoomsUI_Version,189967099357028352,Версия 1.2.6
@@ -3086,7 +3086,7 @@ nextrooms_dialogues,ZoltarSign_Pickup_Option,110308848160464899,(Заменит�
 nextrooms_dialogues,ZoltarSign_WithoutTicket,85599472438992897,Автомат для гадания. Больше здесь ничего интересного.
 nextrooms_dialogues,nextrooms_ui_chat,176729481643286529,Чат отключён в офлайн-режиме
 nextrooms_dialogues,nextrooms_ui_interact,176729481639092224,Нажми {0} для действия
-nextrooms_dialogues,nextrooms_ui_manual,176729481643286530,"<u>Прочти руководство, чтобы узнать больше</u>"
+nextrooms_dialogues,nextrooms_ui_manual,176729481643286530,"<u>Руководство, чтобы узнать больше</u>"
 nextrooms_dialogues,nextrooms_ui_people_indicator,176729481643286528,Люди: {0}/10
 npg_contents,,22583975884087296," ты откроешь папки, защищённые паролем, чтобы продвинуться дальше."
 npg_contents,,22583975884087297, они будут 
@@ -4476,7 +4476,7 @@ stp_contents,MAX_P0Prologue_desperate_steps,3245203736485888,"<wave a=0.5 f=0.5>
 
 Окружённый(ая) заброшенными зданиями, ты можешь пойти куда угодно. Когда жизнь захлёстывает тебя возможностями, лучше всего
 
-<redden>З А М Р И.</redden>
+<redden>З А М Е Р Е Т Ь.</redden>
 
 <color=#0000FF><?-- Такому хорошему совету стоит последовать <b>буквально</b> --></color>
 <color=#0000FF><?-- <b>ЗАМРИ</b> --></color>
