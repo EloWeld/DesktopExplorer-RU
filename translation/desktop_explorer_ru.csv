@@ -2116,7 +2116,7 @@ chronolog_contents,MAX_2,50003568080445443,"ДОРОГОЙ ДНЕВНИК !! Я 
 ПАРОЛЬ: <b>sweaters123</b>
 
 я хотела записать это в блокнот, но мама в последнее время роется в моих вещах :/ ничего святого !!<page>короче, всё, что я делаю, всё равно на nextrooms, так что удачи с этим, МАМ !"
-chronolog_contents,MAX_3,50003568084639744,"сегодня папа обозвал меня «Лавлейс» перед всей школой. я и так уже местная чудачка .. 
+chronolog_contents,MAX_3,50003568084639744,"сегодня папа обозвал меня «Кокеткой» перед всей школой. я и так уже местная чудачка .. 
 
 зачем ему делать всё ещё хуже? как же я ненавижу это дурацкое прозвище. а мама не забирала меня уже.. ВЕЧНОСТЬ!<page>мало того что в прошлом месяце на день рождения мне подарили «КЛЮЧ ШИФРОВАНИЯ», что бы это вообще ни значило ???
 
@@ -2307,7 +2307,7 @@ full_screen_sequences,DEConfront_Header_NextRooms,30097100178972672,<color=#EED6
 full_screen_sequences,DEConfront_Header_Tower,30881326922981376,<color=#5ce65c>T></color>
 full_screen_sequences,MAX_sqn_entry1,30438731994357760,алло?? это майор макс
 full_screen_sequences,MAX_sqn_entry2,30438731994357761,ДОРОГОЙ ДНЕВНИК !! Я ОБОЖАЮ ЭТО
-full_screen_sequences,MAX_sqn_entry3,30438731994357762,папа назвал меня lovelace при
+full_screen_sequences,MAX_sqn_entry3,30438731994357762,папа назвал меня кокеткой при
 full_screen_sequences,MAX_sqn_entry4,30438731994357763,"прошло два месяца с тех пор, как мама"
 imgviewer-subtitle-contents,,21071468325494784,Равновесие освобождает меня из пасти { Ammit }
 imgviewer-subtitle-contents,,22406002912518144,Равновесие освобождает меня из пасти { Ammit }
@@ -2630,21 +2630,21 @@ nextrooms_dialogues,ConversationB_K4M4R3N4_0,113036599996964919,"<color=#B9BFFB>
 nextrooms_dialogues,ConversationB_K4M4R3N4_1,113036599996964920,<color=#ED636A>K4M4R3N4:</color> эээ ты о чём??
 nextrooms_dialogues,ConversationB_K4M4R3N4_2,113036599996964921,"<color=#B9BFFB>THE_MAX:</color> хз, кажется, они реально меня зацепили.. типа вся эта ситуация с семьёй"
 nextrooms_dialogues,ConversationB_K4M4R3N4_3,113036599996964922,"<color=#B9BFFB>THE_MAX:</color> у меня в последнее время куча проблем с папой, такое чувство, что он вообще не понимает, чего я хочу от своей же жизни, понимаешь?"
-nextrooms_dialogues,ConversationB_K4M4R3N4_4,113036599996964923,"<color=#ED636A>K4M4R3N4:</color> ээ…….. чувак, не хочу быть той самой, но ты реально портишь всё настроение ЛОЛ"
-nextrooms_dialogues,ConversationB_K4M4R3N4_5,113036599996964924,"<color=#B9BFFB>THE_MAX:</color> ОЙ ДА точно ЛМАО !! не не я поняла я просто хотела показаться глубокой, ну знаешь ХАХА типа грустное кино-арт и всё такое"
+nextrooms_dialogues,ConversationB_K4M4R3N4_4,113036599996964923,"<color=#ED636A>K4M4R3N4:</color> ээ…….. слушай, не хочу быть той самой, но ты реально зануда ЛОЛ"
+nextrooms_dialogues,ConversationB_K4M4R3N4_5,113036599996964924,"<color=#B9BFFB>THE_MAX:</color> ОЙ ДА точно ЛМАО !! не не, я поняла, просто хотела показаться глубокой, ну знаешь ХАХА типа грустное кино-арт и всё такое"
 nextrooms_dialogues,ConversationB_K4M4R3N4_6,113036599996964925,<color=#B9BFFB>THE_MAX:</color> у тебя есть ещё какие-нибудь рекомендации??
 nextrooms_dialogues,ConversationB_K4M4R3N4_7,113036599996964926,<color=#B9BFFB>THE_MAX:</color> или когда время найдёшь! ЛОЛ я всё равно всегда онлайн ЛМАО
 nextrooms_dialogues,ConversationB_femur_0,113036599996964879,"<color=#ED636A>femur:</color> привет максин, просто узнать как дела… сегодня у тебя же должен был быть **тот самый разговор** с батей, да?"
 nextrooms_dialogues,ConversationB_femur_1,113036599996964880,"<color=#B9BFFB>THE_MAX:</color> да… это было хреново, джо"
 nextrooms_dialogues,ConversationB_femur_10,113036599996964889,"<color=#ED636A>femur:</color> не понимаю почему это так плохо, максин, у тебя было бы намного больше времени на своё искусство"
-nextrooms_dialogues,ConversationB_femur_10.5,191832918135398400,"<color=#ED636A>femur:</color> я могла бы найти подработку, чтобы помочь тебе с поступлением в АСИК"
+nextrooms_dialogues,ConversationB_femur_10.5,191832918135398400,"<color=#ED636A>femur:</color> я бы мог найти подработку, чтобы помочь тебе с поступлением в АСИК"
 nextrooms_dialogues,ConversationB_femur_11,113036599996964890,"<color=#B9BFFB>THE_MAX:</color> джо пожалуйста не дави на эту тему, немного странно что ты предлагаешь всё это, а мы ведь познакомились только онлайн"
 nextrooms_dialogues,ConversationB_femur_12,113036599996964891,"<color=#ED636A>femur:</color> окей окей максин прости, но предложение в силе в любом случае, ладно? больше не буду об этом упоминать"
 nextrooms_dialogues,ConversationB_femur_13,113036599996964892,<color=#B9BFFB>THE_MAX:</color> спасибо
 nextrooms_dialogues,ConversationB_femur_2,113036599996964881,<color=#ED636A>femur:</color> что случилось? :( 
 nextrooms_dialogues,ConversationB_femur_3,113036599996964882,"<color=#B9BFFB>THE_MAX:</color> как бы я ни подходила к этой теме, папа всегда сводит разговор к тому что я «трачу свой потенциал впустую» и что его дочь ни за что не опозорит его вот так"
 nextrooms_dialogues,ConversationB_femur_4,113036599996964883,<color=#ED636A>femur:</color> это слишком уж жёстко максин :( а что вообще на это говорит твоя мама? 
-nextrooms_dialogues,ConversationB_femur_5,113036599996964884,"<color=#B9BFFB>THE_MAX:</color> чувак, её в последнее время почти никогда нет дома.. она постоянно тусит с одним очень милым парнем, но не знаю, что-то тут нечисто, ну ты понял? ХАХАХА нечисто в смысле рыба (он рыбак)"
+nextrooms_dialogues,ConversationB_femur_5,113036599996964884,"<color=#B9BFFB>THE_MAX:</color> чувак, её в последнее время почти никогда нет дома.. она постоянно тусит с одним очень милым парнем, но не знаю, но что-то тут мутное, понимаешь? ХАХАХА мутное (он рыбак, вечно в мутной воде)"
 nextrooms_dialogues,ConversationB_femur_6,113036599996964885,<color=#ED636A>femur:</color> ЛОЛ но… думаешь твоя мама собирается уйти от отца?
 nextrooms_dialogues,ConversationB_femur_7,113036599996964886,"<color=#B9BFFB>THE_MAX:</color> не знаю джо, но в последнее время вообще всё ТАК странно.. папа постоянно на меня пялится когда я сижу за компом, он часами не выходит из своей мастерской и я не знаю… мне просто очень одиноко большую часть времени."
 nextrooms_dialogues,ConversationB_femur_8,113036599996964887,"<color=#ED636A>femur:</color> знаешь максин… всё это исчезло бы, если бы ты купила тот билет… ;)"
@@ -2663,8 +2663,8 @@ nextrooms_dialogues,ConversationC_CJ_7,113036599996964963,<color=#ED636A>CJ:</co
 nextrooms_dialogues,ConversationC_CJ_8,113036599996964964,"<color=#B9BFFB>THE_MAX:</color> звучит очень грустно, сиджей, а почему тогда ты думаешь, что они жили счастливо?"
 nextrooms_dialogues,ConversationC_CJ_9,113036599996964965,<color=#ED636A>CJ:</color> У МЕНЯ ДОМА ЕСТЬ МАМОНТ ЕГО ЗОВУТ МИСТЕР ШЕРСТЯНОЙ ОН ОЧЕНЬ СЧАСТЛИВЫЙ!
 nextrooms_dialogues,ConversationC_Hazel_0,113036599992770585,<color=#ED636A>Hazel:</color> хэйоо как оно макс?
-nextrooms_dialogues,ConversationC_Hazel_1,113036599992770586,"<color=#B9BFFB>THE_MAX:</color> привет чувак, эээ если честно не очень.. а у тебя?"
-nextrooms_dialogues,ConversationC_Hazel_10,113036599992770595,"<color=#B9BFFB>THE_MAX:</color> ЧУВАК я только что сказала тебе что всё в порядке, хватит давить на эту тему."
+nextrooms_dialogues,ConversationC_Hazel_1,113036599992770586,"<color=#B9BFFB>THE_MAX:</color> привет-привет, эээ если честно не очень.. а у тебя?"
+nextrooms_dialogues,ConversationC_Hazel_10,113036599992770595,"<color=#B9BFFB>THE_MAX:</color> ГОСПОДИ, я только что сказала тебе что всё в порядке, хватит давить на эту тему."
 nextrooms_dialogues,ConversationC_Hazel_11,113036599992770596,"<color=#ED636A>Hazel:</color> нетнет, само собой! прости, не хотела давить. просто хочу помочь тебе и сказать что я всегда рядом, вот и всё!!"
 nextrooms_dialogues,ConversationC_Hazel_12,113036599992770597,"<color=#ED636A>Hazel:</color> кстати, у тебя есть планы на следующую неделю? скоро весенние каникулы!"
 nextrooms_dialogues,ConversationC_Hazel_2,113036599992770587,"<color=#ED636A>Hazel:</color> почему, что случилось?:( тебе что-то нужно? я могу чем-то помочь?"
@@ -2674,7 +2674,7 @@ nextrooms_dialogues,ConversationC_Hazel_4,113036599992770589,"<color=#ED636A>Haz
 nextrooms_dialogues,ConversationC_Hazel_5,113036599992770590,"<color=#B9BFFB>THE_MAX:</color> чувак всё нормально, я в порядке"
 nextrooms_dialogues,ConversationC_Hazel_6,113036599992770591,"<color=#ED636A>Hazel:</color> окей окей не парься :D .. короче! хотела сказать, что я начала постить на gamebagels! подумала тебе понравится, раз ты иногда спрашиваешь у меня советы по играм"
 nextrooms_dialogues,ConversationC_Hazel_7,113036599992770592,<color=#B9BFFB>THE_MAX:</color> о круто!
-nextrooms_dialogues,ConversationC_Hazel_8,113036599992770593,"<color=#B9BFFB>THE_MAX:</color> круто чувак, гляну"
+nextrooms_dialogues,ConversationC_Hazel_8,113036599992770593,"<color=#B9BFFB>THE_MAX:</color> круто, обязательно гляну"
 nextrooms_dialogues,ConversationC_Hazel_9,113036599992770594,"<color=#ED636A>Hazel:</color> и знаешь макс, если дело в твоей семье или в чём угодно ещё, пожалуйста дай мне знать :') ты же знаешь, я всегда буду рядом для тебя"
 nextrooms_dialogues,ConversationC_femur_0,113036599996964893,<color=#B9BFFB>THE_MAX:</color> джо ты тут? я сейчас реально паникую пожалуйста ответь
 nextrooms_dialogues,ConversationC_femur_1,113036599996964894,<color=#ED636A>femur:</color> я тут максин что случилось???
@@ -3924,7 +3924,7 @@ pizarro_dialogue_contents,MAX_TalkToMe_UnderConstruction,93106007402602499,"Зн
 pizarro_dialogue_contents,MAX_TalkToMe_VHSStore,93106007402602496,"Фильмы в Video Store выглядели довольно круто, не находишь? Я слышал о них много хорошего!"
 pizarro_dialogue_contents,Max_AfterArtShop_Reminder,96055009186144256,"Не знаешь ли ты место, где твои новые цвета из Sketchy могли бы быть оооочень полезны?"
 pizarro_dialogue_contents,Max_AfterMaze_Reminder,96055009186144258,"Отлично! Теперь ты снова сможешь войти в NextRooms — ну знаешь, со своими учётными данными. Как только окажешься там, тебя ждёт ещё больше головоломок!"
-pizarro_dialogue_contents,Max_AfterPhotoLab_Reminder,96055009186144257,"Похоже, ты нашёл(нашла) все моментальные фото! Стоит вернуться в свою комнату, чтобы их рассмотреть."
+pizarro_dialogue_contents,Max_AfterPhotoLab_Reminder,96055009186144257,"Похоже, ты нашёл все моментальные фото! Стоит вернуться в свою комнату, чтобы их рассмотреть."
 pizarro_dialogue_contents,Max_Arcade_CopperBoxReaction,98876838418309120,100 билетов!? Вот это эксклюзив! Ты тут застрянешь на часы!
 pizarro_dialogue_contents,Max_Arcade_SoldOutReaction,98876838422503424,"Погоди-ка... ты купил(а) вообще всё? Впечатляет! Прирождённый(ая) комплитист, да?"
 pizarro_dialogue_contents,Max_BrokenCircuitsA_Solve,89085743668912167,"Ой! Кажется, в атриуме торгового центра что-то изменилось!"
@@ -3950,7 +3950,7 @@ pizarro_dialogue_contents,Max_ExhaustedTips_2,89085743668912186,"Больше н
 pizarro_dialogue_contents,Max_ExhaustedTips_3,89085743668912187,"Внимание! Системных подсказок больше нет <b>на данный момент</b>. Если попросишь ещё одну, я повторю уже известные подсказки. Вот незадача!"
 pizarro_dialogue_contents,Max_FemurRoom_MusicPlay,89085743668912183,"Ох, эта музыка довольно резкая! Может, это на любителя?"
 pizarro_dialogue_contents,Max_GameBagels_Finish,93108387754008576,"Ого, милый сайт! Надеюсь, там есть подсказки для многих головоломок!!"
-pizarro_dialogue_contents,Max_GameBagels_Start,93106007398408193,"Отличная работа с фотографиями, которые ты уже нашёл(нашла)! На некоторых из них, похоже, что-то написано, странно..."
+pizarro_dialogue_contents,Max_GameBagels_Start,93106007398408193,"Отличная работа с фотографиями, которые ты уже нашёл! На некоторых из них, похоже, что-то написано, странно..."
 pizarro_dialogue_contents,Max_MagicStore_OpeningCardWithNoRabbit,116516629032984576,"Ой, какая милая рубашка карты! Обожаю кроликов. Кажется, я видел рисунок одного в атриуме торгового центра! Стоит проверить."
 pizarro_dialogue_contents,Max_MaxRoom_MusicPlay,89085743668912182,"Эм... эта музыка какая-то странная. Уверен, что-то не так."
 pizarro_dialogue_contents,Max_MissingPolaroidsFirstFloor_Reminder,113239780781711360,"Погоди... Кажется, на этом этаже больше нет фотографий, которые можно найти. Предлагаю вернуться на первый этаж и закончить начатое!"
@@ -4002,7 +4002,7 @@ pizarro_dialogue_contents,SAFE_HAL_duringFolder3,89085743668912253,"Тебе н�
 pizarro_dialogue_contents,SAFE_HAL_duringFolder4,89085743668912254,"Я помог каждому из них побороть свою натуру. Твоя натура — лезть в то, что тебе неподвластно. Ты всё только испортишь."
 pizarro_dialogue_contents,SAFE_HAL_end,89085743668912255,Тебе нужно наУЧИТЬСЯ ОТПУСКАТЬ.ТЫНЕ МОЖЕШЬ ДЕРЖАТЬВСЁ ПОДКОНТРОЛЕМ
 pizarro_dialogue_contents,SAFE_MAX_duringFolder1,89085743668912246,ПрИвет! Guppy! Снова здравствуй! Это безопасный режим компьютера! NextOS запускает его при возникновении критической ошибки.
-pizarro_dialogue_contents,SAFE_MAX_duringFolder2,89085743668912247,"Вижу, ты нашёл(нашла) файлы компилятора Desktop Explorer! С этим не стоит играться. Ты только что удалил(а) модуль Эммета Саундера!"
+pizarro_dialogue_contents,SAFE_MAX_duringFolder2,89085743668912247,"Вижу, ты нашёл файлы компилятора Desktop Explorer! С этим не стоит играться. Ты только что удалил(а) модуль Эммета Саундера!"
 pizarro_dialogue_contents,SAFE_MAX_duringFolder3,89085743668912248,"Благодаря тебе больше никто и никогда не увидит его последние слова! Хотя, знаешь, ничего ценного не потеряно."
 pizarro_dialogue_contents,SAFE_MAX_duringFolder4,89085743668912249,"Как насчёт того, чтобы вернуться в твой профиль? Я могу восстановить любой файл, который ты ищешь."
 pizarro_dialogue_contents,SAFE_MAX_end,89085743668912250,если ты удаляешь модУЛЬ ПОЛЬЗОВАТЕЛЯ ТЫУДАЛЯЕШЬ ЧАСТЬ DESKTOP EPXLRE
