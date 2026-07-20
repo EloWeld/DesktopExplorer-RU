@@ -2676,11 +2676,11 @@ nextrooms_dialogues,ConversationC_Hazel_6,113036599992770591,"<color=#ED636A>Haz
 nextrooms_dialogues,ConversationC_Hazel_7,113036599992770592,<color=#B9BFFB>THE_MAX:</color> о круто!
 nextrooms_dialogues,ConversationC_Hazel_8,113036599992770593,"<color=#B9BFFB>THE_MAX:</color> круто, обязательно гляну"
 nextrooms_dialogues,ConversationC_Hazel_9,113036599992770594,"<color=#ED636A>Hazel:</color> и знаешь макс, если дело в твоей семье или в чём угодно ещё, пожалуйста дай мне знать :') ты же знаешь, я всегда буду рядом для тебя"
-nextrooms_dialogues,ConversationC_femur_0,113036599996964893,<color=#B9BFFB>THE_MAX:</color> джо ты тут? я сейчас реально паникую пожалуйста ответь
+nextrooms_dialogues,ConversationC_femur_0,113036599996964893,<color=#B9BFFB>THE_MAX:</color> джо ты тут? у меня щас реально паника, пожалуйста ответь
 nextrooms_dialogues,ConversationC_femur_1,113036599996964894,<color=#ED636A>femur:</color> я тут максин что случилось???
 nextrooms_dialogues,ConversationC_femur_10,113036599996964903,<color=#B9BFFB>THE_MAX:</color> чё ты вообще несёшь
 nextrooms_dialogues,ConversationC_femur_11,113036599996964904,"<color=#ED636A>femur:</color> наверное, дело в твоём возрасте или типа того, но эта вечная игра в жертву реально утомляет, когда-нибудь ты поймёшь, но это реально по-детски"
-nextrooms_dialogues,ConversationC_femur_12,113036599996964905,"<color=#B9BFFB>THE_MAX:</color> ПО-ДЕТСКИ? чувак, именно ты называешь меня по-детски?"
+nextrooms_dialogues,ConversationC_femur_12,113036599996964905,"<color=#B9BFFB>THE_MAX:</color> ПО-ДЕТСКИ? чувак, именно ТЫ мне это говоришь?"
 nextrooms_dialogues,ConversationC_femur_13,113036599996964906,"<color=#ED636A>femur:</color> может, ты уже просто заткнёшься. пора тебе услышать то, что ты не хочешь слышать — типа того, что твои рисунки вообще-то так себе, а я просто была ооочень доброй с тобой, чтобы ты не ненавидела себя ещё больше"
 nextrooms_dialogues,ConversationC_femur_14,113036599996964907,<color=#B9BFFB>THE_MAX:</color> да пошла ты 
 nextrooms_dialogues,ConversationC_femur_15,113036599996964908,"<color=#ED636A>femur:</color> ага, тебе бы этого хотелось, да? это ничего не изменит, продолжай и дальше затыкать уши, уверена, всё само наладится"
@@ -3661,7 +3661,7 @@ npg_contents,MAX_PhotoLab_npg_witness2,111048450919882752,"Свидетель 2 
 * Подозреваемый в <color=#008600><b>зелёном галстуке</b></color> поскользнулся на лежавшем на полу <b>парике</b> и упал."
 npg_contents,MAX_PhotoLab_npg_witness3,111048450919882753,"Свидетель 3 — 
 
-* Жертва обливалась кровью повсюду, она даже <b>попала на лицо</b> подозреваемого в <color=#0000FF><b>синем галстуке.</b></color>
+* Жертва истекала кровью повсюду, кровь даже <b>попала на лицо</b> подозреваемого в <color=#0000FF><b>синем галстуке.</b></color>
 
 * Я заметил, что подозреваемый в <color=#4B0082><b>фиолетовой рубашке</b></color> кричал подозреваемому в <color=#008600><b>зелёной рубашке</b></color>, чтобы тот держался подальше от убийцы!
 
