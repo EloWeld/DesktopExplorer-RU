@@ -17,6 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "lib"))
 
 import UnityPy
+from PIL import Image
 from unityfs import Bundle, SerializedFile
 from writer import rebuild_serialized, rebuild_bundle
 from glyphs import G
@@ -35,6 +36,10 @@ SHARED = "localization-assets-shared_assets_all.bundle"
 LOCALES = "localization-locales_assets_all.bundle"
 ASSET_TABLES = "localization-asset-tables-spanish(mexico)(es-mx)_assets_all.bundle"
 ASSET_TABLES_EN = "localization-asset-tables-english(unitedstates)(en-us)_assets_all.bundle"
+# the artwork bundle carries a content hash in its file name, so it is matched
+# by prefix; the localized tables point at the textures inside it
+IMAGES_EN = "localization-assets-english(unitedstates)(en-us)_assets_all"
+ART = "art/reference/ru"
 DLL = "Assembly-CSharp.dll"
 
 # The game formats dates with the CultureInfo of the selected locale's code, so
@@ -67,6 +72,14 @@ def find_aa(game):
             if plat:
                 return root, os.path.join(root, plat[0])
     sys.exit("Addressables folder not found — is this really the game directory?")
+
+
+def find_images(plat):
+    """File name of the English artwork bundle (it carries a content hash)."""
+    for f in sorted(os.listdir(plat)):
+        if f.startswith(IMAGES_EN) and f.endswith(".bundle"):
+            return f
+    sys.exit("English image bundle not found — is this really the game directory?")
 
 
 # ------------------------------------------------------------------- fonts
@@ -234,6 +247,66 @@ def patch_shared(src, dst, bake_chars):
     sf = SerializedFile(b.node_bytes(0))
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
     return len(new_objects)
+
+
+# ------------------------------------------------------------------ images
+def encode_texture(img, fmt, width, height, mips):
+    """Compress a PIL image into a texture's own format and full mip chain.
+
+    Same format, same dimensions and same number of mip levels means the encoded
+    payload is exactly as long as the one it replaces, which is what lets the
+    pixels be written straight into the bundle's .resS node.
+    """
+    from UnityPy.export.Texture2DConverter import image_to_texture2d
+    if img.size != (width, height):
+        img = img.resize((width, height), Image.LANCZOS)
+    out = b""
+    for lvl in range(max(1, mips)):
+        w, h = max(1, width >> lvl), max(1, height >> lvl)
+        out += image_to_texture2d(img if lvl == 0 else img.resize((w, h), Image.LANCZOS), fmt)[0]
+    return out
+
+
+def patch_images(src, dst, art_dir):
+    """Bake the translated artwork over the English textures.
+
+    The localized asset tables already point every image at the English asset,
+    so replacing the pixels in that bundle is enough — no table, catalog or
+    object layout changes. Textures with no Russian counterpart stay English.
+    """
+    art = {os.path.splitext(f)[0]: os.path.join(art_dir, f)
+           for f in os.listdir(art_dir) if f.lower().endswith(".png")}
+    b = Bundle(src)
+    res_i = next((i for i, n in enumerate(b.nodes) if n[3].endswith(".resS")), None)
+    if res_i is None:
+        sys.exit("no .resS node in the image bundle — game files changed?")
+    resS = bytearray(b.node_bytes(res_i))
+
+    env = UnityPy.load(src)
+    done, skipped = [], []
+    for obj in env.objects:
+        if obj.type.name != "Texture2D":
+            continue
+        d = obj.read_typetree()
+        name = d.get("m_Name")
+        png = art.get(name)
+        if not png:
+            continue
+        sd = d.get("m_StreamData") or {}
+        if not sd.get("size"):
+            skipped.append((name, "texture is not streamed"))
+            continue
+        data = encode_texture(Image.open(png), d["m_TextureFormat"],
+                              d["m_Width"], d["m_Height"], d.get("m_MipCount", 1))
+        if len(data) != sd["size"]:
+            skipped.append((name, f"encoded {len(data)} B, slot is {sd['size']} B"))
+            continue
+        resS[sd["offset"]:sd["offset"] + sd["size"]] = data
+        done.append(name)
+
+    unused = sorted(set(art) - set(done) - {n for n, _ in skipped})
+    rebuild_bundle(b, res_i, bytes(resS), dst)
+    return done, skipped, unused
 
 
 # ----------------------------------------------------------------- strings
@@ -528,6 +601,7 @@ def main():
 
     game = find_game(args.game)
     aa, plat = find_aa(game)
+    images = find_images(plat)
     backup = os.path.join(game, "_ru_backup_original")
     print(f"game:     {game}")
     print(f"platform: {os.path.basename(plat)}")
@@ -538,7 +612,7 @@ def main():
         if not os.path.isdir(backup):
             sys.exit("No backup found — nothing to restore.")
         shutil.copy(os.path.join(backup, "catalog.json"), os.path.join(aa, "catalog.json"))
-        for f in (SHARED, STRINGS, LOCALES, ASSET_TABLES):
+        for f in (SHARED, STRINGS, LOCALES, ASSET_TABLES, images):
             if os.path.exists(os.path.join(backup, f)):
                 shutil.copy(os.path.join(backup, f), os.path.join(plat, f))
         if os.path.exists(os.path.join(backup, DLL)):
@@ -555,6 +629,7 @@ def main():
                        (os.path.join(plat, STRINGS), STRINGS),
                        (os.path.join(plat, LOCALES), LOCALES),
                        (os.path.join(plat, ASSET_TABLES), ASSET_TABLES),
+                       (os.path.join(plat, images), images),
                        (os.path.join(managed, DLL), DLL)):
         if not os.path.exists(path):
             sys.exit(f"Missing game file: {path}")
@@ -585,6 +660,19 @@ def main():
                                           os.path.join(plat, ASSET_TABLES_EN),  # read in place
                                           os.path.join(plat, ASSET_TABLES))
     print(f"  {renamed} tables renamed, {swapped} images re-pointed at English art")
+
+    art_dir = os.path.join(HERE, ART)
+    if os.path.isdir(art_dir):
+        print("patching images (English art -> Russian art)...")
+        done, skipped, unused = patch_images(os.path.join(backup, images),
+                                             os.path.join(plat, images), art_dir)
+        print(f"  {len(done)} textures replaced")
+        for name, why in skipped:
+            print(f"  skipped {name}: {why}")
+        for name in unused:
+            print(f"  no such texture in the game: {name}")
+    else:
+        print(f"no {ART} folder — images left in English")
 
     print("patching language menu (Assembly-CSharp.dll)...")
     n = patch_dll(os.path.join(backup, DLL), os.path.join(managed, DLL))

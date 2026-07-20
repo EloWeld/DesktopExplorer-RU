@@ -264,7 +264,7 @@ OS_misc_contents,BootUp_Sqnc_Label_8,78037984601956360,ZW100-33
 OS_misc_contents,BootUp_Sqnc_Label_9,78037984601956361,Дополнительный контроллер:
 OS_misc_contents,BootUp_Sqnc_Login_Screen,85897608868913152,Экран входа
 OS_misc_contents,BootUp_Sqnc_Safe_Mode,85897608877301760,БЕЗОПАСНЫЙ РЕЖИМ
-OS_misc_contents,Chrono_WriteEntry,2154513468219392,Написать запись
+OS_misc_contents,Chrono_WriteEntry,2154513468219392,Написать
 OS_misc_contents,Chronolog_About_Text,5761032113872899,«Не дай своим воспоминаниям пройти мимо... Занеси их в Chronolog и сохрани навсегда!»
 OS_misc_contents,ColorlensInstaller_Hal_1,515453739013,Установка Colorlens
 OS_misc_contents,ColorlensInstaller_Hal_2,515453739014,Поиск цветовых индексов...
@@ -344,7 +344,7 @@ OS_misc_contents,OS_Core_File,75355315443326977,Файл
 OS_misc_contents,OS_Core_Format,75355315447521280,Формат
 OS_misc_contents,OS_Core_Forward,75355315443326990,Вперёд
 OS_misc_contents,OS_Core_Go,75355315443326988,Идти
-OS_misc_contents,OS_Core_Help,75355315443326979,Справка
+OS_misc_contents,OS_Core_Help,75355315443326979,Помощь
 OS_misc_contents,OS_Core_New,75355315443326992,Создать
 OS_misc_contents,OS_Core_Ok,75355315447521289,OK
 OS_misc_contents,OS_Core_Open,75355315443326993,Открыть
@@ -1481,7 +1481,7 @@ Websurfer_contents,Fridge_SideMagnets_Nickname,41737622467371078,Никнейм:
 Websurfer_contents,Fridge_SideMagnets_NoAccount,41737622467371080,Нет аккаунта?
 Websurfer_contents,Fridge_SideMagnets_Password,41737622467371079,Пароль:
 Websurfer_contents,Fridge_SideMagnets_Title,41737622467371077,Магниты
-Websurfer_contents,Fridge_SidePartners_CMAA,41737622467371091,CMAA
+Websurfer_contents,Fridge_SidePartners_CMAA,41737622467371091,АСИК
 Websurfer_contents,Fridge_SidePartners_EHD,41737622467371090,FrogEmp Records
 Websurfer_contents,Fridge_SidePartners_More,41737622467371095,ещё...
 Websurfer_contents,Fridge_SidePartners_Somni,41737622467371092,Somni animation
@@ -1714,7 +1714,7 @@ Websurfer_contents,QC_Hal_CmaaDirection12,41737622479953957,12. Повернит
 Websurfer_contents,QC_Hal_CmaaDirection13,41737622479953958,13. BELIZE AVE переходит в YELLOW BLVD.
 Websurfer_contents,QC_Hal_CmaaDirection14,41737622479953959,14. Поверните налево на CMAA CAMPUS AVE.
 Websurfer_contents,QC_Hal_CmaaDirection15,41737622479953960,15. CMAA CAMPUS AVE. переходит в CMAA CIRCUIT ST.
-Websurfer_contents,QC_Hal_CmaaDirection16,41737622484148224,4-я остановка и КОНЕЦ у «CMAA»
+Websurfer_contents,QC_Hal_CmaaDirection16,41737622484148224,4-я остановка и КОНЕЦ у «АСИК»
 Websurfer_contents,QC_Hal_CmaaDirection2,41737622479953947,2. Поверните направо на TIDAL ST.
 Websurfer_contents,QC_Hal_CmaaDirection3,41737622479953948,3. Выезжайте на I-52E
 Websurfer_contents,QC_Hal_CmaaDirection4,41737622479953949,4. Съезжайте на выезде 17 в сторону LANCER ST
@@ -1725,7 +1725,7 @@ Websurfer_contents,QC_Hal_CmaaDirection8,41737622479953953,8. Съезжайте
 Websurfer_contents,QC_Hal_CmaaDirection9,41737622479953954,9. 2-Я ОСТАНОВКА на BROKER ST 4242
 Websurfer_contents,QC_Hal_CmaaDistance,41737622479953944,90.55 мили
 Websurfer_contents,QC_Hal_CmaaETA,41737622479953945,1 час 48 минут
-Websurfer_contents,QC_Hal_CmaaEnd,41737622479953943,Сохранённый адрес «CMAA»
+Websurfer_contents,QC_Hal_CmaaEnd,41737622479953943,Сохранённый адрес «АСИК»
 Websurfer_contents,QC_Hal_LeilaDirection1,41737622479953934,1. Начните движение на север по LAKE ST в сторону FISH ST.
 Websurfer_contents,QC_Hal_LeilaDirection2,41737622479953935,2. Поверните направо на ELM ST.
 Websurfer_contents,QC_Hal_LeilaDirection3,41737622479953936,"3. Слегка поверните налево, чтобы остаться на ELM ST."
@@ -2017,7 +2017,7 @@ chronolog_contents,HAL_10,489230950400,"Для самой смышлёной д�
 — Твой дядя."
 chronolog_contents,HAL_2,489230950408,"Я в полном смятении. Мне так её не хватает, но, кажется, в итоге она просто хотела остаться одна. Глядя на всю картину целиком, я невольно предполагаю худшее.
 
-Нужно цепляться за ту надежду, что ещё теплится у её мамы. Моя единственная зацепка сейчас очень шаткая, но это всё, что я смог придумать.<page><b>Макс</b> вечно без умолку говорила про CMAA... может, она исполняет мечту учиться искусству или хотя бы проходит там какой-нибудь курс? 
+Нужно цепляться за ту надежду, что ещё теплится у её мамы. Моя единственная зацепка сейчас очень шаткая, но это всё, что я смог придумать.<page><b>Макс</b> вечно без умолку говорила про АСИК... может, она исполняет мечту учиться искусству или хотя бы проходит там какой-нибудь курс? 
 
 Если она подавала портфолио или заявку, мы могли бы отследить её активность с помощью частного детектива...?<page>По крайней мере, можно порасспрашивать вокруг! <cglow><u><link=""cmaa"">cmaa.com/mainpage</link></u></cglow>
 
@@ -2584,7 +2584,7 @@ nextrooms_dialogues,ConversationA_K4M4R3N4_7,113036599996964917,"<color=#B9BFFB>
 nextrooms_dialogues,ConversationA_K4M4R3N4_8,113036599996964918,"<color=#B9BFFB>THE_MAX:</color> спасибо чувак, я всегда рада поговорить о фильмах побольше!"
 nextrooms_dialogues,ConversationA_femur_0,113036599996964864,<color=#ED636A>femur:</color> привет m4x1mus! спасибо что добавила меня в nextrooms
 nextrooms_dialogues,ConversationA_femur_1,113036599996964865,"<color=#B9BFFB>THE_MAX:</color> хахаха привееет ну я же не просто так попросила твой код, да?"
-nextrooms_dialogues,ConversationA_femur_10,113036599996964874,"<color=#ED636A>femur:</color> это правда милое имя! что ж, максин, твоё искусство точно не «обычное»! cmaa же в штате Вашингтон, да?"
+nextrooms_dialogues,ConversationA_femur_10,113036599996964874,"<color=#ED636A>femur:</color> это правда милое имя! что ж, максин, твоё искусство точно не «обычное»! АСИК же в штате Вашингтон, да?"
 nextrooms_dialogues,ConversationA_femur_10.5,189247455918809088,<color=#ED636A>femur:</color> ты будешь жить рядом или у тебя будет весь этот опыт колледжа 'далеко от дома'?
 nextrooms_dialogues,ConversationA_femur_11,113036599996964875,"<color=#B9BFFB>THE_MAX:</color> воу не так быстро, дружок! я не рассказываю незнакомцам в интернете где живу муахахаха я даже имени твоего не знаю!"
 nextrooms_dialogues,ConversationA_femur_12,113036599996964876,"<color=#ED636A>femur:</color> хахахаха можешь звать меня джо, в отличие от тебя я вроде как вполне обычный, ору"
@@ -2595,7 +2595,7 @@ nextrooms_dialogues,ConversationA_femur_3,113036599996964867,<color=#B9BFFB>THE_
 nextrooms_dialogues,ConversationA_femur_4,113036599996964868,<color=#ED636A>femur:</color> да ладно! ты уже рисуешь как профи
 nextrooms_dialogues,ConversationA_femur_5,113036599996964869,"<color=#B9BFFB>THE_MAX:</color> нееет ты слишком добр ЛОЛ мне ещё далеко до этого .. уверена в колледже я встречу вундеркиндов, которые меня УНИЧТОЖАТ, если не подтянусь"
 nextrooms_dialogues,ConversationA_femur_6,113036599996964870,<color=#ED636A>femur:</color> в какой колледж ты собираешься поступать?
-nextrooms_dialogues,ConversationA_femur_7,113036599996964871,<color=#B9BFFB>THE_MAX:</color> в CMAA конечно !! они не берут кого попало
+nextrooms_dialogues,ConversationA_femur_7,113036599996964871,<color=#B9BFFB>THE_MAX:</color> в АСИК конечно !! они не берут кого попало
 nextrooms_dialogues,ConversationA_femur_8,113036599996964872,"<color=#ED636A>femur:</color> ну я уверен они поймут что m4x1mus далеко не «кто попало»! (и не «Джо», я думаю, ору) ;) "
 nextrooms_dialogues,ConversationA_femur_9,113036599996964873,"<color=#B9BFFB>THE_MAX:</color> хахахаха точно не Джо, можешь звать меня максин если хочешь! как-то странно когда тебя называют THE_MAX или M4x1mus как именем, ору"
 nextrooms_dialogues,ConversationB_CJ_0,113036599996964943,<color=#ED636A>CJ:</color> ПРИВЕТ!!!!
@@ -2637,7 +2637,7 @@ nextrooms_dialogues,ConversationB_K4M4R3N4_7,113036599996964926,<color=#B9BFFB>T
 nextrooms_dialogues,ConversationB_femur_0,113036599996964879,"<color=#ED636A>femur:</color> привет максин, просто узнать как дела… сегодня у тебя же должен был быть **тот самый разговор** с батей, да?"
 nextrooms_dialogues,ConversationB_femur_1,113036599996964880,"<color=#B9BFFB>THE_MAX:</color> да… это было хреново, джо"
 nextrooms_dialogues,ConversationB_femur_10,113036599996964889,"<color=#ED636A>femur:</color> не понимаю почему это так плохо, максин, у тебя было бы намного больше времени на своё искусство"
-nextrooms_dialogues,ConversationB_femur_10.5,191832918135398400,"<color=#ED636A>femur:</color> я могла бы найти подработку, чтобы помочь тебе с поступлением в cmaa"
+nextrooms_dialogues,ConversationB_femur_10.5,191832918135398400,"<color=#ED636A>femur:</color> я могла бы найти подработку, чтобы помочь тебе с поступлением в АСИК"
 nextrooms_dialogues,ConversationB_femur_11,113036599996964890,"<color=#B9BFFB>THE_MAX:</color> джо пожалуйста не дави на эту тему, немного странно что ты предлагаешь всё это, а мы ведь познакомились только онлайн"
 nextrooms_dialogues,ConversationB_femur_12,113036599996964891,"<color=#ED636A>femur:</color> окей окей максин прости, но предложение в силе в любом случае, ладно? больше не буду об этом упоминать"
 nextrooms_dialogues,ConversationB_femur_13,113036599996964892,<color=#B9BFFB>THE_MAX:</color> спасибо
@@ -2871,7 +2871,7 @@ nextrooms_dialogues,Mirror_InteractingDialogue,166063597086040065,"<imp>Твой
 nextrooms_dialogues,MontsInitialDialogue1,51485653215469568,"<color=#B9BFFB>K4M4R3N4:</color> я собиралась показать тебе самый крутой фильм на свете... но пришлось вернуть его в видеопрокат T-T
  <color=#B9BFFB>K4M4R3N4:</color> поможешь мне вернуть его?"
 nextrooms_dialogues,MontsInitialDialogue2,54607605362843648,Dialogo2
-nextrooms_dialogues,MovieName_Closet,100455706484793359,Сон в гуаши
+nextrooms_dialogues,MovieName_Closet,100455706484793359,Мечтай в гуаши
 nextrooms_dialogues,MovieName_Rod,100455706484793358,Снасти
 nextrooms_dialogues,MovieName_Slasher,100455706484793357,Слэшер-Фест
 nextrooms_dialogues,MovieName_Unmarked1,110308848164659247,Порванная кассета
@@ -3885,7 +3885,7 @@ pizarro_dialogue_contents,HAL_Tip_Puzzle9_2,80917554548170754,А ты знал? 
 pizarro_dialogue_contents,HAL_Tip_PuzzleA1,89085743668912155,"Следить за местом на компьютере важно. Ты всегда можешь уменьшить размер файлов, сжав их!"
 pizarro_dialogue_contents,HAL_Tip_PuzzleA2,89085743668912156,"Не нравится, как рассказана история? Отредактируй и сохрани файл storyteller+ под свои нужды!"
 pizarro_dialogue_contents,HAL_Tip_PuzzleR1,89085743668912159,"Файлы в проводнике можно сортировать разными способами: по имени, по дате... попробуй каждый!"
-pizarro_dialogue_contents,HAL_Tip_PuzzleR2,89085743668912160,Хочешь узнать больше о программе? Вкладка Справка > О программе содержит всю нужную информацию!
+pizarro_dialogue_contents,HAL_Tip_PuzzleR2,89085743668912160,Хочешь узнать больше о программе? Вкладка Помощь > О программе содержит всю нужную информацию!
 pizarro_dialogue_contents,HAL_Tip_PuzzleT1_Step1,93106007390019584,"А ты знал? ColorLens бывает трёх разных цветов! Очень удобно, чтобы яснее видеть цветные детали."
 pizarro_dialogue_contents,HAL_Tip_PuzzleT1_Step2,93106007398408192,"Нет, у тебя не двоится в глазах... Один и тот же файл изображения можно открыть несколько раз!"
 pizarro_dialogue_contents,HAL_Tip_PuzzleT2,89085743668912158,"Тебе не нужно доставать калькулятор из ящика — он есть прямо здесь, в NextSum!"
