@@ -48,6 +48,16 @@ DLL = "Assembly-CSharp.dll"
 # are the same length, which keeps every offset-indexed structure valid.
 ES_CODE, RU_CODE = b"es-MX", b"ru-RU"
 
+# The terminal renders with bpdots.squares-bold SDF, whose typeface has no
+# Cyrillic at all; those characters spill into TMP's global LiberationSans
+# fallback — wrong (non-pixel) look, and its small dynamic atlas silently
+# overflows, so late-arriving letters show as □. The Chinese locales solve
+# this by localizing the console slot of the FontAssets table to their own
+# pixel font; the Russian locale does the same with FSEX302, which is pixel,
+# ships full Cyrillic and is pre-baked by this patcher anyway.
+BPDOTS_GUID = "6fa24e3296f79437590fcbc512e87b4b"   # bpdots.squares-bold SDF
+FSEX_GUID = "57886462b9e08456f9b6f3b12bf04d27"     # FSEX302 SDF
+
 
 # --------------------------------------------------------------- game layout
 def find_game(explicit):
@@ -465,8 +475,9 @@ def patch_asset_tables(src, english, dst):
 
     ImageFiles entries are re-pointed at the English textures — the Spanish
     ones have Spanish text baked into the pixels and there is no Russian art.
-    FontAssets entries are kept: they carry the fonts the Cyrillic glyphs are
-    baked into. Table ids are renamed to ru-RU like everywhere else.
+    FontAssets entries are kept (they carry the fonts the Cyrillic glyphs are
+    baked into) except the console slot, which moves from bpdots to FSEX302
+    (see BPDOTS_GUID). Table ids are renamed to ru-RU like everywhere else.
     """
     ben = Bundle(english)
     sfe = SerializedFile(ben.node_bytes(0))
@@ -487,7 +498,7 @@ def patch_asset_tables(src, english, dst):
 
     b = Bundle(src)
     sf = SerializedFile(b.node_bytes(0))
-    new_objects, renamed, swapped = {}, 0, 0
+    new_objects, renamed, swapped, refonted = {}, 0, 0, 0
     for o in sf.objects:
         chunk = sf.raw[sf.data_offset + o["byte_start"]:
                        sf.data_offset + o["byte_start"] + o["byte_size"]]
@@ -504,9 +515,17 @@ def patch_asset_tables(src, english, dst):
                     swapped += 1
                 fixed.append((sid, tgt, meta))
             entries = fixed
+        elif name.startswith("FontAssets"):
+            fixed = []
+            for sid, val, meta in entries:
+                if val == BPDOTS_GUID:
+                    val = FSEX_GUID
+                    refonted += 1
+                fixed.append((sid, val, meta))
+            entries = fixed
         new_objects[o["path_id"]] = _build_table(head, entries, tail)
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
-    return renamed, swapped
+    return renamed, swapped, refonted
 
 
 def fix_saved_language(to_code):
@@ -655,11 +674,12 @@ def main():
     n = patch_locale_codes(os.path.join(backup, LOCALES), os.path.join(plat, LOCALES))
     print(f"  {n} identifiers renamed")
 
-    print("patching asset tables (Spanish images -> English)...")
-    renamed, swapped = patch_asset_tables(os.path.join(backup, ASSET_TABLES),
-                                          os.path.join(plat, ASSET_TABLES_EN),  # read in place
-                                          os.path.join(plat, ASSET_TABLES))
-    print(f"  {renamed} tables renamed, {swapped} images re-pointed at English art")
+    print("patching asset tables (Spanish images -> English, console font -> FSEX302)...")
+    renamed, swapped, refonted = patch_asset_tables(os.path.join(backup, ASSET_TABLES),
+                                                    os.path.join(plat, ASSET_TABLES_EN),  # read in place
+                                                    os.path.join(plat, ASSET_TABLES))
+    print(f"  {renamed} tables renamed, {swapped} images re-pointed at English art, "
+          f"{refonted} console font slot(s) -> FSEX302")
 
     art_dir = os.path.join(HERE, ART)
     if os.path.isdir(art_dir):
