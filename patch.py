@@ -42,6 +42,13 @@ IMAGES_EN = "localization-assets-english(unitedstates)(en-us)_assets_all"
 ART = "art/reference/ru"
 DLL = "Assembly-CSharp.dll"
 
+# translated strings live in data/payload.json; PAYLOAD_EXTRA holds the ones
+# still awaiting a translation (value = the English original), kept apart so a
+# hand-edit shows up as a readable diff instead of drowning in the big payload.
+# It is merged on top of the main payload and may be absent entirely.
+PAYLOAD = "data/payload.json"
+PAYLOAD_EXTRA = "data/payload_additional.json"
+
 # The game formats dates with the CultureInfo of the selected locale's code, so
 # a locale that still says es-MX shows Spanish weekday names ("jueves"). The
 # code is renamed to ru-RU everywhere it acts as an identifier. ru-RU and es-MX
@@ -611,6 +618,31 @@ def patch_catalog(src, dst):
     return n, rekeyed
 
 
+# ----------------------------------------------------------------- payload
+def load_payload():
+    """Main payload merged with the not-yet-translated extras.
+
+    Both files map table name -> {string id: text}. Extras win on a collision:
+    a string that was moved into payload.json but left behind here would
+    otherwise silently revert to English.
+    """
+    payload = json.load(open(os.path.join(HERE, PAYLOAD), encoding="utf-8"))
+    base = sum(len(t) for t in payload.values())
+    extra_path = os.path.join(HERE, PAYLOAD_EXTRA)
+    if not os.path.exists(extra_path):
+        return payload, base, 0, []
+    extra = json.load(open(extra_path, encoding="utf-8"))
+    added, clashes = 0, []
+    for table, rows in extra.items():
+        target = payload.setdefault(table, {})
+        for sid, text in rows.items():
+            if sid in target:
+                clashes.append(f"{table}/{sid}")
+            target[sid] = text
+            added += 1
+    return payload, base, added, clashes
+
+
 # -------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -656,7 +688,12 @@ def main():
             shutil.copy(path, os.path.join(backup, name))
     print(f"backup:   {backup}")
 
-    payload = json.load(open(os.path.join(HERE, "data/payload.json"), encoding="utf-8"))
+    payload, base, extra, clashes = load_payload()
+    print(f"payload:  {base} translated" +
+          (f" + {extra} awaiting translation ({os.path.basename(PAYLOAD_EXTRA)})"
+           if extra else ""))
+    for c in clashes:
+        print(f"  warning: {c} is in both payload files — the extra one wins")
     bake_chars = {ch for table in payload.values() for s in table.values()
                   for ch in s if ord(ch) >= 32}
 

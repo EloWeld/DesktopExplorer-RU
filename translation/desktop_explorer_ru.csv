@@ -1096,7 +1096,7 @@ TerminalTowerInteractables,CMD_TowerF1_Banner_LastChoiceCorrect,1726421831295877
 TerminalTowerInteractables,CMD_TowerF1_Banner_LastChoiceWrong,172642183129587717,<param>BANNER</param> реагирует на ваше внимание. На этот раз все три перестают светиться
 TerminalTowerInteractables,CMD_TowerF1_Banner_RepeatChoice,172642183129587716,<param>BANNER</param> уже отреагировала на ваше внимание
 TerminalTowerInteractables,CMD_TowerF1_Feel_Corpse,140736565817106442,"Вы чувствуете неодобрительный взгляд, когда задумываетесь о том, чтобы потрогать (<cmd>FEEL</cmd>) <param>CORPSE</param>"
-TerminalTowerInteractables,CMD_TowerF1_Feel_Floor,13904394319863808,<param>FLOOR</param> очень холодный на ощупь. Однако вы <cmd>FEEL</cmd>уете источник тепла возле <param>WALL</param>
+TerminalTowerInteractables,CMD_TowerF1_Feel_Floor,13904394319863808,<param>FLOOR</param> очень холодный на ощупь. Однако вы чувствуете(<cmd>FEEL</cmd>) источник тепла возле <param>WALL</param>
 TerminalTowerInteractables,CMD_TowerF1_Feel_Portrait,13908096824942592,"Проведя пальцами по холсту, вы различаете старое лицо только по фактуре масляной краски"
 TerminalTowerInteractables,CMD_TowerF1_Feel_RightLever,172612004005011464,"Ага, это точно <param>LEVER</param>"
 TerminalTowerInteractables,CMD_TowerF1_Feel_Torch,13907282505015296,Ай! Жжётся! Вы с ума сошли?
@@ -1120,7 +1120,7 @@ TerminalTowerInteractables,CMD_TowerF1_Look_Torch_PuzzleBeat,172612004005011463,
 TerminalTowerInteractables,CMD_TowerF1_Look_Wall_PuzzleBeat,172612004005011460,Стены вокруг комнаты ничем не примечательны... если не считать огромного висящего <param>PORTRAIT</param>
 TerminalTowerInteractables,CMD_TowerF1_Use_Banner,142936538205904896,<param>BANNER</param> реагирует на ваше внимание. Она светится от вашего желания применить <cmd>USE</cmd>
 TerminalTowerInteractables,CMD_TowerF1_Use_Book,50863267840,Смысл <param>BOOK</param> неразгадан. Лучше всего запомнить её содержание
-TerminalTowerInteractables,CMD_TowerF1_Use_Corpse,140736565817106441,"Загадка, какое знание можно получить, применив <cmd>USE</cmd> к <param>CORPSE</param>"
+TerminalTowerInteractables,CMD_TowerF1_Use_Corpse,140736565817106441,"Остаётся только гадать, какие знания можно получить, применив <cmd>USE</cmd> к <param>CORPSE</param>"
 TerminalTowerInteractables,CMD_TowerF1_Use_Floor,172612004005011459,Команду <cmd>USE</cmd> не к чему применить на <param>FLOOR</param>
 TerminalTowerInteractables,CMD_TowerF1_Use_Gate,1793785323520,Сейчас нет способа открыть <param>GATE</param>
 TerminalTowerInteractables,CMD_TowerF1_Use_Gate_PostF7,177299174900883456,Больше никогда не будет способа снова открыть эти <param>GATE</param>
@@ -1358,9 +1358,9 @@ Websurfer_contents,Chain_MAX_InBoxSubject3,40893049910321166,Новый прое
 Websurfer_contents,Chain_MAX_InBoxSubject6,40893049910321169,Забыли пароль? — запрос на сброс
 Websurfer_contents,Chain_MAX_InBoxSubject7,40893049910321170,Приём заявок на GLDNPALOOZA '96 закрыт
 Websurfer_contents,Chain_MAX_InBoxTitle,40893049906126851,Входящие Максин Саундер
-Websurfer_contents,Chain_MessageHyperlink_1,38850690825576462,< Ответить
-Websurfer_contents,Chain_MessageHyperlink_2,38850690825576463,<< Ответить всем
-Websurfer_contents,Chain_MessageHyperlink_3,38850690825576464,> Переслать
+Websurfer_contents,Chain_MessageHyperlink_1,38850690825576462,<Ответить
+Websurfer_contents,Chain_MessageHyperlink_2,38850690825576463,<<Ответить всем
+Websurfer_contents,Chain_MessageHyperlink_3,38850690825576464,>Переслать
 Websurfer_contents,Chain_SentLabel,38850690825576461,Отправлено:
 Websurfer_contents,Chain_SubjectLabel,38850690825576458,Тема:
 Websurfer_contents,Chain_SubjectTitle,38850690825576457,Тема
@@ -1375,7 +1375,7 @@ Websurfer_contents,DN_QNR_Answer1FooterLeft,41737622475759677,-1 голос
 Websurfer_contents,DN_QNR_Answer1FooterRight,41737622475759678,"ответил(а) 25 апреля 1997, MMTT"
 Websurfer_contents,DN_QNR_Answer2Content,41737622475759679,"к счастью, получить IP-адреса через клиент NextRooms невозможно. чтобы получить эти данные, пришлось бы взломать серверную инфраструктуру NextRooms!"
 Websurfer_contents,DN_QNR_Answer2FooterLeft,41737622475759680,4 голоса
-Websurfer_contents,DN_QNR_Answer2FooterRight,41737622475759681,"ответил(а) 27 февраля 1997, Гарри Зелик"
+Websurfer_contents,DN_QNR_Answer2FooterRight,41737622475759681,"ответил(а) 27 фев 1997, Гарри Зелик"
 Websurfer_contents,DN_QNR_AnswerTitle,41737622475759675,2 ответа
 Websurfer_contents,DN_YA_ButtonRow_Badges,41737622475759649,Награды
 Websurfer_contents,DN_YA_ButtonRow_Questions,41737622475759645,Вопросы
@@ -1386,7 +1386,7 @@ Websurfer_contents,DN_YA_ButtonRow_YourAnswers,41737622475759646,Ваши отв
 Websurfer_contents,DN_YA_Footer,41737622475759673,©1997 dw33bnation - Manol Fox Corp. Все права защищены.
 Websurfer_contents,DN_YA_Question1_Content,41737622475759653,"интересно, есть ли способ узнать IP-адрес или примерное местоположение по аккаунту NextRooms. это может быть угрозой безопасности, вот и любопытно."
 Websurfer_contents,DN_YA_Question1_FooterLeft,41737622475759654,1 голос 2 ответа
-Websurfer_contents,DN_YA_Question1_FooterRight,41737622475759655,"спросил(а) 27 февраля 1997, xX_bonecrusher_Xx"
+Websurfer_contents,DN_YA_Question1_FooterRight,41737622475759655,"спросил(а) 27 фев 1997, xX_bonecrusher_Xx"
 Websurfer_contents,DN_YA_Question1_Title,41737622475759652,как узнать местоположение по аккаунту NextRooms?
 Websurfer_contents,DN_YA_Question2_Content,41737622475759657,"я остановил процесс форматирования диска, и теперь Chronolog пуст. на рабочем столе записи ещё видны, но они повреждены. есть ли способ их восстановить?"
 Websurfer_contents,DN_YA_Question2_FooterLeft,41737622475759658,12 голосов 1 ответ
@@ -1779,7 +1779,7 @@ chronolog_contents,ADMIN_1,78247135655485443,"Нижеследующий тек�
 
 На момент написания Лейла трижды за одну неделю выражала беспокойство по поводу моего режима сна.<page>Ранее не наблюдалось никаких признаков неврологических нарушений — ни до ухода из Spiralsoft, ни при рождении Максин, ни в браке. 
 
-Нужно показаться специалисту, и чем раньше, тем лучше. Упоминания {<cglow>ЗОЛОТОЕСЕЧЕНИЕ</cglow>} во сне ставят под угрозу деликатную информацию.<page>Работа над проектом постоянно срывается из-за семейных вмешательств. Максин ведёт себя всё враждебнее по отношению к Лейле. 
+Нужно показаться специалисту, и чем раньше, тем лучше. Упоминания {<cglow>GOLDENRATIO</cglow>} во сне ставят под угрозу деликатную информацию.<page>Работа над проектом постоянно срывается из-за семейных вмешательств. Максин ведёт себя всё враждебнее по отношению к Лейле. 
 
 Эмоциональное состояние Максин требует непрерывного объяснения и внимания. Это <b>оптимальные условия</b> для Desktop Explorer."
 chronolog_contents,ADMIN_2,78247135655485444,"Максин не появлялась дома уже двое суток. Связался со школьной администрацией, местной полицией и соседскими родителями. 
@@ -1789,7 +1789,7 @@ chronolog_contents,ADMIN_2,78247135655485444,"Максин не появляла
 При попытке прочитать записи хронолога на компьютере Максин возникают сбои. Видимо, дело в исключении в системе слежения DAEMON программы Desktop Explorer.<page>По крайней мере, важные файлы вроде полученного ею <cglow>КЛЮЧА ШИФРОВАНИЯ</cglow> всё ещё целы. Со временем ей нужно будет его освоить.
 
 Нужно закачать в Desktop Explorer больше данных, чтобы сформировать играбельный сценарий на компьютере с правами администратора.<page>Лейла не должна увидеть компьютер Максин. Его содержимое может лишь укрепить её домыслы."
-chronolog_contents,ADMIN_3,78247135655485445,"Установщик Desktop Explorer сформировался спустя двое суток. Навигация по сценарию оказалась радикально иной по сравнению с версией Максин Desktop Explorer. 
+chronolog_contents,ADMIN_3,78247135655485445,"Установщик Desktop Explorer сгенерировался спустя двое суток. Навигация по сценарию оказалась радикально иной по сравнению с версией Максин Desktop Explorer. 
 
 Выбор башни в качестве образа стал неожиданностью, но вполне уместной.<page>В ближайшее время разберу, насколько выбор башенного сценария Desktop Explorer опирался на личные данные, а не на собственную документацию программы (манифест психоэволюции).
 
@@ -1808,7 +1808,7 @@ chronolog_contents,ADMIN_34,78247135655485446,"Вершина башни нак�
 
 Разве Максин была не готова к этому? Должен ли я был вмешаться? 
 
-К какой части сознания Максин подключился Desktop Explorer?"
+В какую часть мозга Максин проник Desktop Explorer?"
 chronolog_contents,ADMIN_35,78247135655485447,"Во всём виноват я. Забавно, что это осознание пришло не через дело всей моей жизни, а из последнего разговора с Лейлой. Всё, что мне нужно было услышать, — это её голос.
 
 «Лучше бы на твоём месте была ты».<page>Я действительно верю, что о собственной душе мы знаем далеко не всё. Мои поиски, отравленные собственным эго, сломили дух нашей дочери. 
@@ -1951,7 +1951,7 @@ chronolog_contents,GUPPY_6_WRITEBTN_1,78247135655485453,…докопаться 
 chronolog_contents,GUPPY_7,78247135655485454,я не понимаю.
 chronolog_contents,GUPPY_7_ANS,78247135655485455,"я не понимаю.
 
-эммет действительно забрал компьютер у своей дочери. даже после её исчезновения он не отнёсся к этому серьёзно? явно что-то произошло, ведь в каждой странице его профиля — только стыд и чувство вины.<page>хотя desktop explorer — творение эммета, писарро явно над ним издевается из-за случившегося. 
+эммет действительно забрал компьютер у своей дочери. даже после её исчезновения он не отнёсся к этому серьёзно? явно что-то произошло, ведь в каждой странице его профиля — только стыд и чувство вины.<page>хотя desktop explorer — творение эммета, pizarro явно над ним издевается из-за случившегося. 
 
 наверное, так и было задумано. если я пройду достаточно его головоломок, в итоге пойму, что довело его до срыва. если честно, эммет меня не особо волнует.<page>его программа стала причиной того, что деменция моего дяди усугубилась, дочь эммета пропала, да и сам он, по сути, рухнул. это уже слишком. что-то подсказывает мне, что худшее ещё впереди."
 chronolog_contents,GUPPY_7_WRITEBTN_1,78247135655485456,…худшее ещё впереди.
@@ -2118,7 +2118,7 @@ chronolog_contents,MAX_2,50003568080445443,"ДОРОГОЙ ДНЕВНИК !! Я 
 я хотела записать это в блокнот, но мама в последнее время роется в моих вещах :/ ничего святого !!<page>короче, всё, что я делаю, всё равно на nextrooms, так что удачи с этим, МАМ !"
 chronolog_contents,MAX_3,50003568084639744,"сегодня папа обозвал меня «Кокеткой» перед всей школой. я и так уже местная чудачка .. 
 
-зачем ему делать всё ещё хуже? как же я ненавижу это дурацкое прозвище. а мама не забирала меня уже.. ВЕЧНОСТЬ!<page>мало того что в прошлом месяце на день рождения мне подарили «КЛЮЧ ШИФРОВАНИЯ», что бы это вообще ни значило ???
+зачем ему делать всё ещё хуже? как же я ненавижу это дурацкое прозвище. а мама не забирала меня уже.. ВЕЧНОСТЬ!<page>мало того что в прошлом месяце на день рождения мне подарили «<cglow>КЛЮЧ ШИФРОВАНИЯ</cglow>», что бы это вообще ни значило ???
 
 слава богу за интернет, потому что школа просто.. хз, отстой. кажется, мне всё ещё нужно найти своих людей ?? хотя пару соседок по комнате я уже завела..<page>гарри даже научил меня классной игре-головоломке! папа говорит, это называется нонограмма ?? никогда не думала, что смогу сблизиться с ним хоть на чём-то весёлом лол ..
 
@@ -3697,7 +3697,7 @@ pizarro_dialogue_contents,ADM_Tip_General_3,89085743668912228,"В Башне к�
 pizarro_dialogue_contents,ADM_Tip_TowerTop,89085743668912235,"Desktop Explorer сделает всё возможное, чтобы помочь текущему пользователю."
 pizarro_dialogue_contents,ADM_TowerIntro_Gatekeep,83800130841468928,"Desktop Explorer требует дальнейшего взаимодействия с Chronolog, чтобы продолжить. Тебе стоит это знать."
 pizarro_dialogue_contents,ADM_TowerTop_Start,89085743668912224,"Ты наконец добрался(лась) до самого верха. Не так уж плохо, да?"
-pizarro_dialogue_contents,Admin_Cutscene_Intro1,87701460408590336,"Приветствую. Спасибо, что установил(а) Desktop Explorer."
+pizarro_dialogue_contents,Admin_Cutscene_Intro1,87701460408590336,"Приветствую. Спасибо, что установил Desktop Explorer."
 pizarro_dialogue_contents,Admin_Cutscene_Intro10,87701460408590345,Твои намерения...
 pizarro_dialogue_contents,Admin_Cutscene_Intro11,87701460408590346,...и твои действия.
 pizarro_dialogue_contents,Admin_Cutscene_Intro12,87701460408590347,"Взаимодействуй с окружением через любой из этих двух способов, чтобы дойти до конца Desktop Explorer."
@@ -3706,7 +3706,7 @@ pizarro_dialogue_contents,Admin_Cutscene_Intro14,87701460408590349,Что кас
 pizarro_dialogue_contents,Admin_Cutscene_Intro15,87701460408590350,Пришло время увидеть плоды своего труда.
 pizarro_dialogue_contents,Admin_Cutscene_Intro2,87701460408590337,Приятно снова тебя видеть. Нет нужды что-либо повторять.
 pizarro_dialogue_contents,Admin_Cutscene_Intro3,87701460408590338,"Судя по данным твоего компьютера, терминал — самая используемая тобой программа. Неудивительно."
-pizarro_dialogue_contents,Admin_Cutscene_Intro4,87701460408590339,"Запусти shell-скрипт Desktop Explorer, когда будешь готов(а)."
+pizarro_dialogue_contents,Admin_Cutscene_Intro4,87701460408590339,"Запусти shell-скрипт Desktop Explorer, когда будешь готов."
 pizarro_dialogue_contents,Admin_Cutscene_Intro5,87701460408590340,Пришло время увидеть плоды своего труда.
 pizarro_dialogue_contents,Admin_Cutscene_Intro6,87701460408590341,"Судя по данным твоего компьютера, терминал — твоя основная используемая программа. Неудивительно."
 pizarro_dialogue_contents,Admin_Cutscene_Intro7,87701460408590342,"Desktop Explorer, как ты и задумал(а), — головоломка, созданная под твои личные потребности и опыт"
@@ -3889,7 +3889,7 @@ pizarro_dialogue_contents,HAL_Tip_PuzzleR2,89085743668912160,Хочешь узн
 pizarro_dialogue_contents,HAL_Tip_PuzzleT1_Step1,93106007390019584,"А ты знал? ColorLens бывает трёх разных цветов! Очень удобно, чтобы яснее видеть цветные детали."
 pizarro_dialogue_contents,HAL_Tip_PuzzleT1_Step2,93106007398408192,"Нет, у тебя не двоится в глазах... Один и тот же файл изображения можно открыть несколько раз!"
 pizarro_dialogue_contents,HAL_Tip_PuzzleT2,89085743668912158,"Тебе не нужно доставать калькулятор из ящика — он есть прямо здесь, в NextSum!"
-pizarro_dialogue_contents,Halibut_Cutscene_Intro1,30419310978523137,"Привет! Спасибо, что установил(а) Desktop Explorer!"
+pizarro_dialogue_contents,Halibut_Cutscene_Intro1,30419310978523137,"Привет! Спасибо, что установил Desktop Explorer!"
 pizarro_dialogue_contents,Halibut_Cutscene_Intro10,30419310978523146,Твоя цель — найти <b>{password}</b> и разблокировать папку со следующей головоломкой!
 pizarro_dialogue_contents,Halibut_Cutscene_Intro11,30419310978523147,Но так легко будет не всегда.
 pizarro_dialogue_contents,Halibut_Cutscene_Intro12,30419310982717440,И ещё: подменю — твои друзья!
@@ -3928,7 +3928,7 @@ pizarro_dialogue_contents,Max_AfterPhotoLab_Reminder,96055009186144257,"Похо
 pizarro_dialogue_contents,Max_Arcade_CopperBoxReaction,98876838418309120,100 билетов!? Вот это эксклюзив! Ты тут застрянешь на часы!
 pizarro_dialogue_contents,Max_Arcade_SoldOutReaction,98876838422503424,"Погоди-ка... ты купил(а) вообще всё? Впечатляет! Прирождённый(ая) комплитист, да?"
 pizarro_dialogue_contents,Max_BrokenCircuitsA_Solve,89085743668912167,"Ой! Кажется, в атриуме торгового центра что-то изменилось!"
-pizarro_dialogue_contents,Max_Cutscene_Intro1,30567602286747660,"Привет, и спасибо, что установил(а) Desktop Explorer!"
+pizarro_dialogue_contents,Max_Cutscene_Intro1,30567602286747660,"Привет, и спасибо, что установил Desktop Explorer!"
 pizarro_dialogue_contents,Max_Cutscene_Intro10,30567602286747669,"И увидеть, что твои друзья на самом деле дум-<?resumeCutscene> "
 pizarro_dialogue_contents,Max_Cutscene_Intro10.2,105904007225008128, НЕ УДАЁТСЯ УСТАНОВИТЬ ПОДКЛЮЧЕНИЕ К ИНТЕРНЕТУ
 pizarro_dialogue_contents,Max_Cutscene_Intro11,30567602286747670,У меня небольшие проблемы с настройкой следующих головоломок. О нет!
@@ -4021,7 +4021,7 @@ stp_contents,,33331024246071299,"Путник добрался до первог
 stp_contents,,33331024246071300,"Ого, здесь есть сфера"
 stp_contents,ADM_BlindImage,55069807853166595,"Путника встречает картина, занимающая всю заднюю стену комнаты. 
 
-Путник не может писать в своих заметках, <swing a=0.5>так как не может отвести взгляд от обрамлённого <redden>PORTRAIT</redden>.</swing> У путника возникает желание закрыть взгляд <glow><u><link=""img:towerF1_portrait/shieldingHand.img"">своей рукой</link></u></glow>."
+Путник не может писать в своих заметках, <swing a=0.5>так как не может отвести взгляд от обрамлённого <redden>ПОРТРЕТА</redden>.</swing> У путника возникает желание закрыть взгляд <glow><u><link=""img:towerF1_portrait/shieldingHand.img"">своей рукой</link></u></glow>."
 stp_contents,ADM_CrystalClearFog,55069807853166594,"Путник стоит перед столом, в центре которого находится шар.
 
 По комнате пульсирует энергия. Путник записывает в заметках:
@@ -4469,7 +4469,7 @@ stp_contents,HAL_endgame_duaj,658634694672,Тебе не следует <shake a
 stp_contents,HAL_endgame_sefer,658634694673,"<wave a=0.5 f=0.5>Ты уверен, что вообще должен быть здесь?</wave>"
 stp_contents,HAL_introCutscene_countlessRegrets,658634694675,"<notype>Как бы крепко ты ни закрывал глаза, эти образы не</notype> покидают твой разум..."
 stp_contents,HAL_introCutscene_intriguingStory,658634694674,<notype>Когда-то давно отважный исследователь вошёл в мир</notype> <wave a=0.2>компьютеров и головоломок</wave>...
-stp_contents,JanitorCloset_CrimeScene,27676523875000320,"Каждый инстинкт заставляет тебя бежать, когда <shake a=0.3>безжизненное тело падает на пол перед тобой.</shake> Оно было здесь всегда? Бегство даётся тебе естественно. Ты готов(а) сорваться с места. Но впервые в жизни ты останавливаешься и задумываешься, от чего именно ты бежишь.
+stp_contents,JanitorCloset_CrimeScene,27676523875000320,"Каждый инстинкт заставляет тебя бежать, когда <shake a=0.3>безжизненное тело падает на пол перед тобой.</shake> Оно было здесь всегда? Бегство даётся тебе естественно. Ты готов сорваться с места. Но впервые в жизни ты останавливаешься и задумываешься, от чего именно ты бежишь.
 
 Кто эти жертвы? Как ты оказался(ась) <shake a=0.3>посреди такого количества страданий?</shake> Если ты ничего не сделаешь, <shake a=0.3>когда это вообще прекратится?</shake> Если ты сбежишь в неведении, <shake a=0.3>когда ты перестанешь так поступать?</shake> Когда ты наконец предпримешь <redden>действие</redden>?"
 stp_contents,MAX_P0Prologue_desperate_steps,3245203736485888,"<wave a=0.5 f=0.5>Ты всегда чувствовал(а), будто бежишь от чего-то.</wave> Ты никогда не знал(а), что это и почему оно преследует тебя. Ты оглядываешься, и кажется, что рядом нет никого, кто мог бы помочь.
