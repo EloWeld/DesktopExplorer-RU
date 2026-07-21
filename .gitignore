@@ -11,3 +11,6 @@ art/reference/en/*
 art/reference/es/*
 art/reference/sandbox/*
 translation/desktop_explorer_en_ru.csv
+build/build/
+dist/
+.pytest_cache/

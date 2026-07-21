@@ -25,22 +25,33 @@ not translated shows its original **English** text, so every puzzle stays solvab
 
 ### Install
 
-Python 3.9+ required.
+**macOS — one command.** No Python, no dependencies, nothing left behind:
 
 ```bash
-pip install -r requirements.txt
-python3 patch.py
+curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.sh | bash
 ```
 
-The game is found automatically in the default Steam location. Otherwise:
+It downloads the wizard from the latest release, verifies its checksum, runs it
+and deletes it afterwards. The wizard finds the game itself — including Steam
+libraries on other drives — shows what it is about to do and asks before
+touching anything.
 
-```bash
-python3 patch.py --game "/path/to/Desktop Explorer"
-```
+**Prefer clicking?** Download `DesktopExplorerRU.dmg` from
+[Releases](https://github.com/EloWeld/DesktopExplorer-RU-MacOS/releases/latest),
+open it, then **right-click** `Русификатор.command` → **Open** → **Open**.
+Right-click is not optional: the app is not signed with a paid Apple
+certificate, and a plain double-click is refused by Gatekeeper. The `curl`
+route above avoids that entirely.
 
-Then launch the game and pick **Options → Language → Español**.
+Then launch the game — it starts in Russian. If it does not, pick
+**Options → Language → Русский язык**.
+
+Windows and Linux: run from source for now (see *From source* below); a
+Windows build is planned.
 
 ### Uninstall
+
+Run the wizard again and choose **«Удалить русификатор»**, or from source:
 
 ```bash
 python3 patch.py --restore
@@ -49,13 +60,28 @@ python3 patch.py --restore
 Originals are backed up to `_ru_backup_original` next to the game. Steam's
 *Verify integrity of game files* restores them too.
 
+### From source
+
+Python 3.9+ required.
+
+```bash
+pip install -r requirements.txt
+python3 deru.py                  # the wizard
+python3 patch.py                 # plain command line, no prompts
+python3 patch.py --game "/path/to/Desktop Explorer"
+python3 patch.py --status        # is it installed?
+python3 patch.py --restore       # undo everything
+```
+
 ### Read this before installing
 
 - **Russian replaces Spanish.** There is no fifth language slot; adding one would require
   rebuilding the game. Spanish becomes Russian.
-- **Game updates wipe the patch.** Re-run the patcher after every Steam update.
-- **macOS tested.** The patcher detects the platform folder itself and should run on
-  Windows and Linux, but it has not been tested there.
+- **Game updates wipe the patch.** Re-run the patcher after every Steam update — the
+  wizard notices and says so on its first screen.
+- **macOS tested.** Released builds are macOS-only (Apple Silicon and Intel). The code
+  detects the platform folder itself and should run on Windows and Linux from source,
+  but it has not been tested there.
 - **Asset integrity checks are disabled.** Addressables verifies bundle checksums and
   refuses to load modified files, so the patcher zeroes them in the catalog.
 
@@ -85,13 +111,21 @@ The patcher redraws it.
 
 ### How it works
 
-- `patch.py` — the patcher: fonts, TMP atlases, strings, catalog. String tables are
+- `deru.py` — the wizard: menu, warnings, progress, plain-language errors. Ships as
+  the released binary.
+- `patch.py` — the same work without prompts, for scripts and for developers.
+- `install.sh` — the one-command installer: picks the build for your CPU, checks the
+  release checksum, runs the wizard, removes it.
+- `lib/patcher.py` — the patcher: fonts, TMP atlases, strings, catalog. String tables are
   rebuilt as English base + Russian overlay, and the TextMesh Pro atlases are switched
   to readable dynamic multi-atlas mode so new glyphs can be added at runtime.
 - `lib/prebake.py` — renders every character the translation uses straight into the
   SDF atlases at patch time. Without this, TMP rasterises each new glyph on the main
   thread the first time it appears — a multi-second freeze on opening any document
   full of fresh Cyrillic.
+- `lib/steam.py` — locating the game: default paths plus the library folders Steam
+  records in `libraryfolders.vdf`, so an install on a second drive is found too.
+- `lib/state.py` — installed, not installed, or wiped by a game update.
 - `lib/unityfs.py` — UnityFS bundle reader.
 - `lib/writer.py` — byte-faithful bundle writer. Rebuilding an untouched bundle
   reproduces the original file byte for byte.
@@ -135,22 +169,33 @@ by TakWolf, used under the SIL Open Font License 1.1.
 
 ### Установка
 
-Нужен Python 3.9 или новее.
+**macOS — одна команда.** Ни Python, ни зависимостей, ни следов в системе:
 
 ```bash
-pip install -r requirements.txt
-python3 patch.py
+curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.sh | bash
 ```
 
-Игра ищется автоматически в стандартной папке Steam. Если она в другом месте:
+Скопируйте её в Терминал и нажмите Enter. Команда скачает мастер установки из
+последнего релиза, проверит контрольную сумму, запустит — и удалит за собой.
+Мастер сам найдёт игру (в том числе в библиотеке Steam на другом диске),
+покажет, что собирается сделать, и спросит подтверждение.
 
-```bash
-python3 patch.py --game "/путь/к/Desktop Explorer"
-```
+**Не любите терминал?** Скачайте `DesktopExplorerRU.dmg` из
+[релизов](https://github.com/EloWeld/DesktopExplorer-RU-MacOS/releases/latest),
+откройте образ и нажмите на `Русификатор.command` **правой** кнопкой →
+**Открыть** → **Открыть**. Именно правой: приложение не подписано платным
+сертификатом Apple, и от обычного двойного щелчка macOS откажется. Команда выше
+эту возню обходит.
 
-Затем запустите игру и выберите **Options → Language → Español**.
+Дальше просто запустите игру — она стартует на русском. Если нет, выберите
+**Options → Language → Русский язык**.
+
+Windows и Linux: пока только запуском из исходников (см. ниже); сборка под
+Windows в планах.
 
 ### Удаление
+
+Запустите мастер ещё раз и выберите **«Удалить русификатор»**. Из исходников:
 
 ```bash
 python3 patch.py --restore
@@ -159,14 +204,28 @@ python3 patch.py --restore
 Оригиналы сохраняются в папку `_ru_backup_original` рядом с игрой. Их же вернёт
 «Проверить целостность файлов» в Steam.
 
+### Из исходников
+
+Нужен Python 3.9 или новее.
+
+```bash
+pip install -r requirements.txt
+python3 deru.py                  # мастер
+python3 patch.py                 # то же самое без вопросов
+python3 patch.py --game "/путь/к/Desktop Explorer"
+python3 patch.py --status        # установлен ли перевод
+python3 patch.py --restore       # откатить
+```
+
 ### Прочитайте до установки
 
 - **Русский занимает место испанского.** Пятый языковой слот добавить нельзя без
   пересборки игры, поэтому испанский заменяется русским.
 - **Обновление игры затирает перевод.** После каждого обновления в Steam патч надо
-  накатывать заново.
-- **Проверено на macOS.** Патчер сам определяет папку платформы и, скорее всего,
-  запустится на Windows и Linux, но там это не испытывалось.
+  накатывать заново — мастер это замечает и пишет прямо на первом экране.
+- **Проверено на macOS.** Готовые сборки только для macOS (Apple Silicon и Intel).
+  Код сам определяет папку платформы и, скорее всего, запустится из исходников на
+  Windows и Linux, но там это не испытывалось.
 - **Проверка целостности файлов отключается.** Addressables сверяет контрольные суммы
   бандлов и отказывается грузить изменённые, поэтому патчер обнуляет их в каталоге.
 
@@ -197,7 +256,12 @@ python3 patch.py --restore
 
 ### Как устроено
 
-- `patch.py` — сам патчер: шрифты, атласы TMP, строки, каталог. Таблицы строк
+- `deru.py` — мастер: меню, предупреждения, прогресс, понятные ошибки. Именно он
+  собирается в готовое приложение.
+- `patch.py` — то же самое без вопросов, для скриптов и разработчиков.
+- `install.sh` — установка одной командой: выбирает сборку под процессор, сверяет
+  контрольную сумму релиза, запускает мастер и удаляет его за собой.
+- `lib/patcher.py` — сам патчер: шрифты, атласы TMP, строки, каталог. Таблицы строк
   пересобираются как английская база + русский оверлей, а атласы TextMesh Pro
   переводятся в читаемый динамический multi-atlas режим, чтобы новые глифы
   дорисовывались на лету.
@@ -205,6 +269,9 @@ python3 patch.py --restore
   которые встречаются в переводе. Без этого TMP растеризует каждый новый глиф в
   главном потоке при первом показе — отсюда многосекундный фриз при открытии
   документа, полного свежей кириллицы.
+- `lib/steam.py` — поиск игры: стандартные пути плюс библиотеки, которые Steam
+  перечисляет в `libraryfolders.vdf`, — так находится установка на втором диске.
+- `lib/state.py` — установлен перевод, не установлен или слетел после обновления игры.
 - `lib/unityfs.py` — разборщик бандлов UnityFS.
 - `lib/writer.py` — байт-точный сборщик. Пересборка нетронутого бандла даёт файл,
   совпадающий с оригиналом до байта.

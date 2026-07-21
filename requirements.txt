@@ -1,3 +1,5 @@
 UnityPy>=1.20
 fonttools>=4.50
 lz4>=4.3
+Pillow>=10.0
+rich>=13.7

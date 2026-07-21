@@ -1,0 +1,90 @@
+name: release
+
+# Сборка релиза по тегу вида v1.0.0. Два раннера — две архитектуры: колёса
+# Pillow и lz4 под universal2 собираются болезненно, поэтому проще выпустить
+# два файла, а нужный выбирает install.sh по uname -m.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-14      # Apple Silicon
+            arch: arm64
+          - runner: macos-13      # Intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements-dev.txt
+
+      - name: Версия в коде совпадает с тегом
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          code="$(python -c 'import sys; sys.path.insert(0, "lib"); from version import VERSION; print(VERSION)')"
+          if [ "$tag" != "$code" ]; then
+            echo "тег $tag не совпадает с lib/version.py ($code)" >&2
+            exit 1
+          fi
+
+      - run: pytest -q
+
+      - run: pyinstaller --clean --noconfirm build/deru.spec
+
+      - name: Подпись ad-hoc
+        # без подписи macOS на Apple Silicon убивает процесс при запуске
+        run: codesign --force --sign - dist/deru
+
+      - name: Проверка запуска
+        run: ./dist/deru --version
+
+      - run: mv dist/deru dist/deru-macos-${{ matrix.arch }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deru-macos-${{ matrix.arch }}
+          path: dist/deru-macos-${{ matrix.arch }}
+          retention-days: 7
+
+  release:
+    needs: build
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      # artifact-архив не хранит права, а .dmg и install.sh ждут исполняемый файл
+      - run: chmod +x dist/deru-macos-*
+
+      - name: Собрать .dmg
+        run: build/make_dmg.sh dist/deru-macos-arm64 dist/deru-macos-x86_64 dist/DesktopExplorerRU.dmg
+
+      - name: Контрольные суммы
+        run: cd dist && shasum -a 256 deru-macos-arm64 deru-macos-x86_64 DesktopExplorerRU.dmg > SHA256SUMS
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            dist/deru-macos-arm64
+            dist/deru-macos-x86_64
+            dist/DesktopExplorerRU.dmg
+            dist/SHA256SUMS
