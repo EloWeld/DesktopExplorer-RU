@@ -101,7 +101,7 @@ Proposed command: <b>CHRONO RESTORE</b>
 Usage: Enter <b>filepath</b> of corrupted entry. Example: documents/test.res","CHR-ISSUE92: Запрос функции Chronolog
 Добавить доступ через командную строку для восстановления повреждённых .res файлов.
 Предлагаемая команда: <b>CHRONO RESTORE</b>
-Использование: Введите <b>путь/к/файлу</b> повреждённой записи. Пример: documents/test.res
+Использование: Введите <b>путь/к/файлу</b> повреждённой записи. Пример: documents/test.res"
 Websurfer_contents,Fiddler_HAL_Search1,41014904700788749,how to uninstlal,как удалить программу
 Websurfer_contents,Fiddler_HAL_Search10,41014904700788758,cmaa clubs drawing,cmaa clubs drawing
 Websurfer_contents,Fiddler_HAL_Search4,41014904700788752,home improvement tips,советы по обустройству дома
@@ -198,7 +198,7 @@ file_names,art_polaroid,574773780481,paint,paint
 file_names,construction_polaroid,574773780484,emotions,emotions
 file_names,court_polaroid,574769586176,camera,camera
 file_names,filename_adm_DEInstaller,7252309464571904,DE_Installer,DE_Installer
-file_names,filename_adm_conclusion,22790352355188744,conclusion,conclusion
+file_names,filename_adm_conclusion,22790352355188744,conclusion,заключение
 file_names,filename_adm_deAnalysis,22790352355188739,de_analysis,de_analysis
 file_names,filename_adm_deInstall,22790352355188743,deInstall,deInstall
 file_names,filename_adm_encryptInstructions,22790352355188752,encryptInstructions,encryptInstructions
@@ -214,7 +214,7 @@ file_names,filename_adm_towerF1_orb,22790352355188747,CrystalClearFog,CrystalCle
 file_names,filename_adm_towerF1_portrait,22790352355188748,BlindImage,BlindImage
 file_names,filename_adm_towerF7_window,22790352355188749,TwilightsDawn,TwilightsDawn
 file_names,filename_adm_towerOutside,22790352355188745,DawnsTwilight,DawnsTwilight
-file_names,filename_adm_whoAreYou,22790352355188737,whoAreYou,whoAreYou
+file_names,filename_adm_whoAreYou,22790352355188737,whoAreYou,ктоТыТакой
 file_names,filename_adm_youllregretthis,22790352355188742,youllregretthis,youllregretthis
 file_names,filename_core_chatlogs,32799440443006976,Chatlogs,Chatlogs
 file_names,filename_core_desktop,574773780529,Desktop,Desktop
@@ -276,11 +276,11 @@ file_names,filename_ghalibut_note2,7790713168191493,whatyear,whatyear
 file_names,filename_ghalibut_note3,7790713168191494,no,no
 file_names,filename_gmax_blackPawn,22790352355188790,blackPawn,blackPawn
 file_names,filename_gmax_chessFigurehead,22790352355188788,chessFigurehead,chessFigurehead
-file_names,filename_gmax_diveIn,22790352355188783,diveIn,diveIn
+file_names,filename_gmax_diveIn,22790352355188783,diveIn,нырнуть
 file_names,filename_gmax_fishingLure,22790352355188789,fishingLure,fishingLure
 file_names,filename_gmax_halibutShortcut,22790352355188782,Halibut,Halibut
 file_names,filename_gmax_inventory,22790352355188786,Inventory,Inventory
-file_names,filename_gmax_maelstrom,22790352355188784,maelstrom,maelstrom
+file_names,filename_gmax_maelstrom,22790352355188784,maelstrom,водоворот
 file_names,filename_gmax_mural,22790352355188791,mural,mural
 file_names,filename_gmax_nextRooms,22790352355188785,nextRooms,nextRooms
 file_names,filename_gmax_ship,22790352355188792,Ship,Ship

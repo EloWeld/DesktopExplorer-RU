@@ -245,7 +245,7 @@ OS_misc_contents,BIOS_MenuHeader,100777579437350912,- Меню настроек 
 OS_misc_contents,BIOS_Setting_Off,101130946621726720,Выкл
 OS_misc_contents,BIOS_Setting_On,101421595220762624,Вкл
 OS_misc_contents,BootUp_Sqnc_Disclaimer_1,78037984601956368,"Это тестовая сборка игры, предоставленная только для тестирования и сбора отзывов. Всё содержимое, включая (но не ограничиваясь) визуальные эффекты, звук, игровые механики, элементы интерфейса и повествовательные элементы, находится в разработке и может измениться. Итоговое качество, производительность и функциональность в финальном релизе могут значительно отличаться."
-OS_misc_contents,BootUp_Sqnc_InitalizeOverride_Guppy,98405417002983424,"Добро пожаловать, Guppy . . . . . . {0}"
+OS_misc_contents,BootUp_Sqnc_InitalizeOverride_Guppy,98405417002983424,"Добро пожаловать, Гуппи . . . . . . {0}"
 OS_misc_contents,BootUp_Sqnc_Label_1,78037984601956353,"T3 G3T, сертифицированная система OTE.
 Copyright (c) 1995, Spiralsoft Electronics Inc."
 OS_misc_contents,BootUp_Sqnc_Label_10,78037984601956362,MIDNIGHT TX-23
@@ -1186,7 +1186,7 @@ TerminalTowerInteractables,CMD_towerGuppy_Use_Circle_TookFigurehead,158892072423
 TerminalTowerInteractables,CMD_towerGuppy_Use_Mirror,121164357306408960,Это <param>MIRROR</param> уже используется (<cmd>USE</cmd>). Подобные артефакты можно найти только в <color=yellow>другом мире</color>
 TerminalTowerInteractables,TowerF1_LeftRoom_orbTerminalHijack,140736565817106438,"!@#$%^&*()_+-=[]\{}|;':"",./<>?"
 TerminalTowerInteractables,TowerF1_RightRoom_portraitTerminalHijack,140736565817106443,LOOK PORTRAIT
-TerminalTowerInteractables,TowerF2_confrontFearsTerminalHijack,173013179749621760,ВСТРЕТЬ СВОИ СТРАХИ
+TerminalTowerInteractables,TowerF2_confrontFearsTerminalHijack,173013179749621760,CONFRONT FEARS
 TerminalTowerInteractables,TowerGuppy_welcomeText,153337653485363200,Вы входите в комнату со странным чувством узнавания
 TerminalTowerInteractables,TowerGuppy_welcomeText_whitePawn,173643997052395520,Вы входите в комнату со странным чувством узнавания. Теперь на столе лежит <color=yellow>WHITE PAWN</color>
 TerminalTowerInteractables,desc_int_F1MainHall_gate_1puzzlebeaten,12063096872935424,"Прутья {gate_desc_look} затрещали после моих действий в комнате. Должно быть, уже близко. {gate_desc_use}"
@@ -1368,14 +1368,14 @@ Websurfer_contents,Chain_ToLabel,38850690825576460,Кому:
 Websurfer_contents,Chain_ToTitle,38850690825576459,Кому
 Websurfer_contents,DN_QCHR_Answer1Content,41737622475759684,NextOS не поддерживает никаких средств восстановления данных Chronolog. Реализовал решение с нуля. Отправьте запрос на esounder@cmail.com для дальнейшей помощи. 
 Websurfer_contents,DN_QCHR_Answer1FooterLeft,41737622475759685,10 голосов
-Websurfer_contents,DN_QCHR_Answer1FooterRight,41737622475759686,"ответил(а) 25 апреля 1997, MMTT"
+Websurfer_contents,DN_QCHR_Answer1FooterRight,41737622475759686,"ответил 25 апреля 1997, MMTT"
 Websurfer_contents,DN_QCHR_AnswerTitle,41737622475759683,1 ответ
 Websurfer_contents,DN_QNR_Answer1Content,41737622475759676,"Пожалуйста, воздержитесь от вопросов, нарушающих чужую конфиденциальность. Сообщение отправлено команде модерации. Если у вас добрые намерения, обратитесь в поддержку NextRooms."
 Websurfer_contents,DN_QNR_Answer1FooterLeft,41737622475759677,-1 голос
-Websurfer_contents,DN_QNR_Answer1FooterRight,41737622475759678,"ответил(а) 25 апреля 1997, MMTT"
+Websurfer_contents,DN_QNR_Answer1FooterRight,41737622475759678,"ответил 25 апреля 1997, MMTT"
 Websurfer_contents,DN_QNR_Answer2Content,41737622475759679,"к счастью, получить IP-адреса через клиент NextRooms невозможно. чтобы получить эти данные, пришлось бы взломать серверную инфраструктуру NextRooms!"
 Websurfer_contents,DN_QNR_Answer2FooterLeft,41737622475759680,4 голоса
-Websurfer_contents,DN_QNR_Answer2FooterRight,41737622475759681,"ответил(а) 27 фев 1997, Гарри Зелик"
+Websurfer_contents,DN_QNR_Answer2FooterRight,41737622475759681,"ответил 27 фев 1997, Гарри Зелик"
 Websurfer_contents,DN_QNR_AnswerTitle,41737622475759675,2 ответа
 Websurfer_contents,DN_YA_ButtonRow_Badges,41737622475759649,Награды
 Websurfer_contents,DN_YA_ButtonRow_Questions,41737622475759645,Вопросы
@@ -1386,23 +1386,23 @@ Websurfer_contents,DN_YA_ButtonRow_YourAnswers,41737622475759646,Ваши отв
 Websurfer_contents,DN_YA_Footer,41737622475759673,©1997 dw33bnation - Manol Fox Corp. Все права защищены.
 Websurfer_contents,DN_YA_Question1_Content,41737622475759653,"интересно, есть ли способ узнать IP-адрес или примерное местоположение по аккаунту NextRooms. это может быть угрозой безопасности, вот и любопытно."
 Websurfer_contents,DN_YA_Question1_FooterLeft,41737622475759654,1 голос 2 ответа
-Websurfer_contents,DN_YA_Question1_FooterRight,41737622475759655,"спросил(а) 27 фев 1997, xX_bonecrusher_Xx"
+Websurfer_contents,DN_YA_Question1_FooterRight,41737622475759655,"спросил 27 фев 1997, xX_bonecrusher_Xx"
 Websurfer_contents,DN_YA_Question1_Title,41737622475759652,как узнать местоположение по аккаунту NextRooms?
 Websurfer_contents,DN_YA_Question2_Content,41737622475759657,"я остановил процесс форматирования диска, и теперь Chronolog пуст. на рабочем столе записи ещё видны, но они повреждены. есть ли способ их восстановить?"
 Websurfer_contents,DN_YA_Question2_FooterLeft,41737622475759658,12 голосов 1 ответ
-Websurfer_contents,DN_YA_Question2_FooterRight,41737622475759659,"спросил(а) 2 марта 1997, GasStationGawd"
+Websurfer_contents,DN_YA_Question2_FooterRight,41737622475759659,"спросил 2 марта 1997, GasStationGawd"
 Websurfer_contents,DN_YA_Question2_Title,41737622475759656,Восстановление повреждённого файла Chronolog
 Websurfer_contents,DN_YA_Question3_Content,41737622475759661,Я КУПИЛ НОВЫЙ МОНИТОР И КОМПЬЮТЕР ВСЁ ЕЩЁ ВКЛЮЧЕН НО МОНИТОР ВЫКЛЮЧАЕТСЯ САМ. КАК ПОНЯТЬ ЭТО ПРОБЛЕМА С КАБЕЛЕМ?
 Websurfer_contents,DN_YA_Question3_FooterLeft,41737622475759662,-7 голосов 1 ответ
-Websurfer_contents,DN_YA_Question3_FooterRight,41737622475759663,"спросил(а) 16 марта 1997, pop_parker"
+Websurfer_contents,DN_YA_Question3_FooterRight,41737622475759663,"спросил 16 марта 1997, pop_parker"
 Websurfer_contents,DN_YA_Question3_Title,41737622475759660,МОНИТОР ВЫКЛЮЧАЕТСЯ ПОМОГИТЕ
 Websurfer_contents,DN_YA_Question4_Content,41737622475759665,"у меня есть контейнер, и какие бы теги стилей я ни добавлял, он всё равно не по центру. помогите!"
 Websurfer_contents,DN_YA_Question4_FooterLeft,41737622475759666,-1 голос 1 ответ
-Websurfer_contents,DN_YA_Question4_FooterRight,41737622475759667,"спросил(а) 16 марта 1997, derg0z"
+Websurfer_contents,DN_YA_Question4_FooterRight,41737622475759667,"спросил 16 марта 1997, derg0z"
 Websurfer_contents,DN_YA_Question4_Title,41737622475759664,Как отцентрировать контейнер в WebSurferStudio?
 Websurfer_contents,DN_YA_Question5_Content,41737622475759669,"здравствуйте, у меня есть общая папка для обмена файлами изображений между пользователями, и как только в папке становится больше определённого количества файлов, ОС запускает безопасный режим. почему???"
 Websurfer_contents,DN_YA_Question5_FooterLeft,41737622475759670,6 голосов 7 ответов
-Websurfer_contents,DN_YA_Question5_FooterRight,41737622475759671,"спросил(а) 16 марта 1997, drunk3n_n1nj4"
+Websurfer_contents,DN_YA_Question5_FooterRight,41737622475759671,"спросил 16 марта 1997, drunk3n_n1nj4"
 Websurfer_contents,DN_YA_Question5_Title,41737622475759668,NextOS запускает безопасный режим после использования общей папки
 Websurfer_contents,DN_YA_SectionTitle,41737622475759651,Ваши ответы
 Websurfer_contents,DN_YA_ShowingTitle,41737622475759672,Показано 1–5 из 548
@@ -1962,7 +1962,7 @@ chronolog_contents,GUPPY_8_ANS,78247135655485458,"я была так близк�
 
 эммет ясно сказал, что не хотел, чтобы всё так обернулось.<page>то, что он увидел в головоломках, которые ты от меня скрывал, судя по всему, убедило его, что вся эта ситуация совершенно безнадёжна. ты чудовище.
 
-и теперь я тоже говорю напрямую с тобой, прямо как макс.<page>но я вижу, что слушать тебя делает с людьми. и если ты всё это время заманивал меня, придерживая информацию, что мешает тебе так же активно скрывать то, что я искала всё это время? в чём ты пытаешься меня убедить?<page>не знаю, правда ли всё это, но подыгрывать — мой единственный выбор."
+и теперь я тоже говорю напрямую с тобой, прямо как макс.<page>но я вижу, к чему приводит слушать тебя. и если ты всё это время заманивал меня, придерживая информацию, что мешает тебе так же активно скрывать то, что я искала всё это время? в чём ты пытаешься меня убедить?<page>не знаю, правда ли всё это, но подыгрывать — мой единственный выбор."
 chronolog_contents,GUPPY_8_WRITEBTN_1,78247135655485459,…подыгрывать — мой единственный выбор.
 chronolog_contents,GUPPY_9,78247135655485460,последний детективный дневник guppy
 chronolog_contents,GUPPY_9_ANS,78247135655485461,"последний детективный дневник guppy
@@ -2191,7 +2191,7 @@ full_screen_sequences,Conversation_AGInterlude_14,1853217066442763,Теперь 
 full_screen_sequences,Conversation_AGInterlude_15,1853217066442764,"Учитывая твоё знание программы,"
 full_screen_sequences,Conversation_AGInterlude_16,1853217066442765,Тебя не должно удивлять присутствие Desktop Explorer на твоём компьютере.
 full_screen_sequences,Conversation_AGInterlude_17,1853217066442766,"По крайней мере, теперь к тебе наконец можно обращаться по имени."
-full_screen_sequences,Conversation_AGInterlude_18,1853217066442767,"Это ради твоего же блага, Guppy"
+full_screen_sequences,Conversation_AGInterlude_18,1853217066442767,"Это ради твоего же блага, Гуппи"
 full_screen_sequences,Conversation_AGInterlude_2,1853217062248450,<color=#B9BFFB>Вы находите гадальный автомат <color=#F9A31B>ZAR-RO</color></color>
 full_screen_sequences,Conversation_AGInterlude_3,1853217066442752,Ты не Эммет Саундер.
 full_screen_sequences,Conversation_AGInterlude_4,1853217066442753,Не пытайся отвечать. Читай внимательно.
@@ -2350,7 +2350,7 @@ nextrooms_dialogues,,171026450549301250,Аквариум с разрушенны
 nextrooms_dialogues,,171026450549301251,Пустой мусорный бак. 
 nextrooms_dialogues,,171026450549301252,"Мусорный бак, полный файлов. Присмотревшись, видишь семейные фотографии среди мятых документов."
 nextrooms_dialogues,,171026450549301253,"Мусорный бак, частично заполненный пеплом. Среди тускло тлеющих углей внизу лежит маленький предмет."
-nextrooms_dialogues,,171026450549301254,"Знакомого вида рисунок от руки. Он частично повреждён, а его содержание кажется личным. Несмотря на это, ты не можешь удержаться и не узнать, что за этим стоит. Ты должен(а) узнать всё."
+nextrooms_dialogues,,171026450549301254,"Знакомого вида рисунок от руки. Он частично повреждён, а его содержание кажется личным. Несмотря на это, ты не можешь удержаться и не узнать, что за этим стоит. Ты должен узнать всё."
 nextrooms_dialogues,,171026450549301255,Прикрепить наживку
 nextrooms_dialogues,,171026450549301256,Прикрепить фигуру
 nextrooms_dialogues,,171026450549301257,Рыболовная наживка идеально садится на висящий крючок.
@@ -2758,7 +2758,7 @@ nextrooms_dialogues,Generic_LoadingTip4,110308848164659216,Не забудь р�
 nextrooms_dialogues,Generic_LoadingTip5,153346191528026112,"Приводи друзей в NextRooms, но не забывай встречаться с ними и вне игры!"
 nextrooms_dialogues,Generic_LookCloser_Option,155536050422276096,Присмотреться
 nextrooms_dialogues,Generic_NewItem_Inventory,110308848164659224,"<imp>{0}</imp> добавлен(о) в твой <imp>инвентарь</imp>. Ты можешь получить к нему доступ в любое время, открыв папку инвентаря нажатием на кнопку <sprite name=""nextrooms_inventory"">."
-nextrooms_dialogues,Generic_NewNavigation_Section,153190742321258496,"Ты разблокировал(а) <imp>{0}</imp>. Используй кнопку этажей <sprite name=""nextrooms_floors"">, чтобы свободно перемещаться по NextRooms."
+nextrooms_dialogues,Generic_NewNavigation_Section,153190742321258496,"Ты разблокировал <imp>{0}</imp>. Используй кнопку этажей <sprite name=""nextrooms_floors"">, чтобы свободно перемещаться по NextRooms."
 nextrooms_dialogues,Generic_Next_Option,57229489116012544,Далее
 nextrooms_dialogues,Generic_NoConversationsAvailable,110308848164659223,"Сейчас здесь нет новых восстановленных разговоров для просмотра. Если хочешь перечитать разговор ещё раз, найдёшь его расшифровку в папке <imp>chatlogs</imp> <sprite name=""nextrooms_chatlogs"">."
 nextrooms_dialogues,Generic_Ok_Option,88299247944851456,ОК
@@ -2783,10 +2783,10 @@ nextrooms_dialogues,GlassBox_LightsOff,85602595010240512,"Витрина с че
 nextrooms_dialogues,GlassBox_OpenButPhotoStillInside,173923694113972225,"Витрина с волшебной шляпой. Заглянув внутрь, видишь какой-то приз."
 nextrooms_dialogues,GlassBox_Unlock_Option,85602595010240514,(Заменить) на Generic_Unlock
 nextrooms_dialogues,GlassBox_Unlocked,98497550288412673,"Витрина с волшебной шляпой. Она уже дала тебе то, что нужно."
-nextrooms_dialogues,GuppyPainting_AlreadyOnFire,183389113736486912,"Рисунок от руки. Он — часть того, что ты наконец отпустил(а)."
+nextrooms_dialogues,GuppyPainting_AlreadyOnFire,183389113736486912,"Рисунок от руки. Он — часть того, что ты наконец отпустил."
 nextrooms_dialogues,GuppyPainting_InannaWithTrash,189247455939780609,Содержимое корзины для мусора сожжено.
 nextrooms_dialogues,GuppyPainting_InannaWithoutTrash,188715156164829184,В <imp>пустой</imp> корзине для мусора <imp>ничего</imp> не было. Сжигать было нечего.
-nextrooms_dialogues,GuppyPainting_InitialDialogue,171371337203310595,"Знакомого вида рисунок от руки. Он частично повреждён, а его содержание кажется личным. Ты должен(а) узнать всё об этом."
+nextrooms_dialogues,GuppyPainting_InitialDialogue,171371337203310595,"Знакомого вида рисунок от руки. Он частично повреждён, а его содержание кажется личным. Ты должен узнать всё об этом."
 nextrooms_dialogues,GuppyTrashCan_AfterFishingLure,189570825969459200,"Корзина для мусора, частично заполненная пеплом. Предложить больше нечего."
 nextrooms_dialogues,GuppyTrashCan_EmptyTrashCan,171371337203310592,Пустая корзина для мусора.
 nextrooms_dialogues,GuppyTrashCan_FullTrashCan,171371337203310593,"Корзина для мусора, полная файлов. Присмотревшись, видишь семейные фотографии среди мятых документов."
@@ -2828,7 +2828,7 @@ nextrooms_dialogues,Kamarena_VhsStoreDialogue4,100455706484793352,"<color=#B9BFF
 <color=#E0A3E1>M4x1mus:</color> кулкулкулкул дааа я точно с этим справлюсь лол ... наверное"
 nextrooms_dialogues,Kamarena_VhsStoreNotification,100455706484793353,(Заменить) на Generic_RoomieConversation_Restored с параметром K4M4R3N4
 nextrooms_dialogues,LeaveCoin,51775537524236288,(Заменить) на Generic_Leave
-nextrooms_dialogues,MagicBall_HasPickedMagicBall,187838118738518016,Ты уже забрал(а) магический шар. Больше здесь тебе делать нечего.
+nextrooms_dialogues,MagicBall_HasPickedMagicBall,187838118738518016,Ты уже забрал магический шар. Больше здесь тебе делать нечего.
 nextrooms_dialogues,MagicBall_InitialDialogue,70615568858734596,"Эта часть магазина посвящена гаданиям. Взгляд цепляется за волшебный шар 8. Использовать <imp>ключ</imp>, чтобы открыть сейф?"
 nextrooms_dialogues,MagicBall_LightsOff,85602595006046208,"Здесь продают игрушки и книги, связанные с гаданием. Без света трудно разобрать, что есть что."
 nextrooms_dialogues,MagicBall_MissingKey,173923694113972224,"Этот отдел магазина посвящён гаданиям. Твоё внимание привлекает магический шар предсказаний, но тебе не хватает <imp>magicKey</imp>, чтобы открыть его сейф."
@@ -3709,9 +3709,9 @@ pizarro_dialogue_contents,Admin_Cutscene_Intro3,87701460408590338,"Судя по
 pizarro_dialogue_contents,Admin_Cutscene_Intro4,87701460408590339,"Запусти shell-скрипт Desktop Explorer, когда будешь готов."
 pizarro_dialogue_contents,Admin_Cutscene_Intro5,87701460408590340,Пришло время увидеть плоды своего труда.
 pizarro_dialogue_contents,Admin_Cutscene_Intro6,87701460408590341,"Судя по данным твоего компьютера, терминал — твоя основная используемая программа. Неудивительно."
-pizarro_dialogue_contents,Admin_Cutscene_Intro7,87701460408590342,"Desktop Explorer, как ты и задумал(а), — головоломка, созданная под твои личные потребности и опыт"
+pizarro_dialogue_contents,Admin_Cutscene_Intro7,87701460408590342,"Desktop Explorer, как ты и задумал, — головоломка, созданная под твои личные потребности и опыт"
 pizarro_dialogue_contents,Admin_Cutscene_Intro8,87701460408590343,"Взамен тебе предстоит решать головоломки, связанные с этими техническими функциями."
-pizarro_dialogue_contents,Admin_Cutscene_Intro9,87701460408590344,"Правда, они будут построены на интерфейсе, которого ты раньше не видел(а)."
+pizarro_dialogue_contents,Admin_Cutscene_Intro9,87701460408590344,"Правда, они будут построены на интерфейсе, которого ты раньше не видел."
 pizarro_dialogue_contents,Cutscene_Max_Intro12,2479895874625542,"Например, можешь сказать мне, что ты видишь здесь на первый взгляд?"
 pizarro_dialogue_contents,Cutscene_Max_Intro13,2479895874625543,"Хм, интересно... 
 Если мне понадобится от тебя что-то ещё, ну... 
@@ -3726,7 +3726,7 @@ pizarro_dialogue_contents,GUP_GMax_Start,95710111845048320,"О, новый об�
 pizarro_dialogue_contents,GUP_Placing_FirstPiece,89085743668912241,"Ого! На секунду тебя потерял, но всё в порядке, не переживай."
 pizarro_dialogue_contents,GUP_Placing_SecondPiece,89085743668912242,"Упс! Ладно... кажется, Desktop Explorer изначально не был рассчитан на присутствие сразу в стольких профилях. Лучше сбавить темп."
 pizarro_dialogue_contents,GUP_Placing_ShipWheel,89085743668912243,Погоди! Я же сказал сбавить темп! Что ты делаешь?
-pizarro_dialogue_contents,GUP_Prologue_DesktopTraversal,55070476945317891,"Ах, ты заметил(а) новые значки! Они побуждают к исследованию. Может, стоит осмотреться, кто знает? Хи-хи!"
+pizarro_dialogue_contents,GUP_Prologue_DesktopTraversal,55070476945317891,"Ах, ты заметил новые значки! Они побуждают к исследованию. Может, стоит осмотреться, кто знает? Хи-хи!"
 pizarro_dialogue_contents,GUP_Prologue_IntroGateKeep1,89085743668912238,"Привет! Спасибо, что уста-
 
 Ах. Guppy! Наконец-то я могу называть тебя по имени. 
@@ -3745,7 +3745,7 @@ pizarro_dialogue_contents,Generic_ExhaustedDialogue_1,78660883985719309,"Про�
 pizarro_dialogue_contents,Generic_ExhaustedDialogue_2,78660883985719310,"Думаю, я уже достаточно наговорил, можешь идти дальше!"
 pizarro_dialogue_contents,Generic_ExhaustedDialogue_3,78660883985719311,"Блин, у меня закончились слова... Нет, серьёзно! Мне нечего сказать!"
 pizarro_dialogue_contents,Generic_ExhaustedDialogue_4,89085743668912140,"Извини, дружище, мне больше нечего сказать!"
-pizarro_dialogue_contents,Generic_ExhaustedDialogue_5,89085743668912141,"Думаю, я уже достаточно наговорил, дальше справишься сам(а)! Я верю!"
+pizarro_dialogue_contents,Generic_ExhaustedDialogue_5,89085743668912141,"Думаю, я уже достаточно наговорил, дальше справишься сам! Я верю!"
 pizarro_dialogue_contents,Generic_ExhaustedDialogue_6,89085743668912142,"Уф... Кажется, мне больше нечего нового сказать... Прости!"
 pizarro_dialogue_contents,Generic_HintPushback,30479295196422145,Привет! Чем я могу тебе помочь?
 pizarro_dialogue_contents,Generic_HintPushback2,80917554548170755,Эй! Как дела?
@@ -3765,10 +3765,10 @@ pizarro_dialogue_contents,Generic_PuzzleBeat8,147701358610,Вот это сме�
 pizarro_dialogue_contents,Generic_PuzzleBeat9,147701358611,Ты ведь обожаешь головоломки? Уж больно на то похоже! Ещё одна позади ;)
 pizarro_dialogue_contents,Generic_RejectHintResponseBank1,147701358596,"Ой! Просто хотел поздороваться? Ну, и тебе привет ;)"
 pizarro_dialogue_contents,Generic_RejectHintResponseBank2,147701358597,"Эй, не стыдно нуждаться в помощи! Я не осуждаю :)"
-pizarro_dialogue_contents,Generic_RejectHintResponseBank3,147701358598,Передумал(а)? Ничего страшного! Я всё равно буду здесь.
+pizarro_dialogue_contents,Generic_RejectHintResponseBank3,147701358598,Передумал? Ничего страшного! Я всё равно буду здесь.
 pizarro_dialogue_contents,Generic_RejectHintResponseBank4,147701358599,"Значит, без подсказки! Буду наготове. Меня зовут Pizarro, а подсказки — моё призвание!"
-pizarro_dialogue_contents,Generic_RejectHintResponseBank5,147701358600,"Круто, круто… Как будто мне так уж хотелось, чтобы ты спросил(а) подсказку!"
-pizarro_dialogue_contents,Generic_RejectHintResponseBank6,147701358601,"Хочешь справиться сам(а)? Давай, я за тебя болею!"
+pizarro_dialogue_contents,Generic_RejectHintResponseBank5,147701358600,"Круто, круто… Как будто мне так уж хотелось, чтобы ты спросил подсказку!"
+pizarro_dialogue_contents,Generic_RejectHintResponseBank6,147701358601,"Хочешь справиться сам? Давай, я за тебя болею!"
 pizarro_dialogue_contents,Generic_RejectHintResponseBank7,147701358602,"Ладно, ладно, крутыш ;) Кому вообще нужны подсказки, я прав?"
 pizarro_dialogue_contents,Generic_Reply_OK,30567602282553345,ОК
 pizarro_dialogue_contents,Generic_SketchyAddOnInstalledPizarroPopup,14854274323308544,"Взгляни ещё раз на Sketchy <sprite name=""sketchyicon""> и его цветовую палитру! Эти новые цвета напоминают мне об одном наборе перепутанных проводов..."
@@ -3789,7 +3789,7 @@ pizarro_dialogue_contents,Generic_TalkToMe_22,89085743668912136,"Жаль, чт�
 pizarro_dialogue_contents,Generic_TalkToMe_23,89085743668912137,...го-го-го-головоломки!
 pizarro_dialogue_contents,Generic_TalkToMe_24,89085743668912138,"Остерегайся незнакомцев из интернета! Хорошо, что у тебя нет интернета, а я тебе не чужой!"
 pizarro_dialogue_contents,Generic_TalkToMe_25,89085743668912139,"Хм-м... извечный вопрос... пицца, бургеры или головоломки?"
-pizarro_dialogue_contents,Generic_TalkToMe_3,78660883985719298,Ты пил(а) воду в последнее время? А мне не нужно — я же блокнот!
+pizarro_dialogue_contents,Generic_TalkToMe_3,78660883985719298,Ты пил воду в последнее время? А мне не нужно — я же блокнот!
 pizarro_dialogue_contents,Generic_TalkToMe_4,78660883985719299,"Меня зовут Pizarro, а подсказки — моё призвание!"
 pizarro_dialogue_contents,Generic_TalkToMe_5,78660883985719300,Делаешь заметки? Почему бы не воспользоваться notepage? Он прямо здесь!
 pizarro_dialogue_contents,Generic_TalkToMe_6,78660883985719301,Какая твоя любимая головоломка? Я всегда в настроении для хорошего кроссворда.
@@ -3825,15 +3825,15 @@ pizarro_dialogue_contents,HAL_P4Portonus_EndMessage,17418640025444355,Ах! Ка
 pizarro_dialogue_contents,HAL_P5CreatedBy_EndMessage,17418640025444356,Отличная мысль! Но что это вообще за имя такое? 
 pizarro_dialogue_contents,HAL_P6FleetingFace_EndMessage,17418640025444357,"Ого, от тебя ничего не ускользает! Видимо, у рыбаков отличное зрение."
 pizarro_dialogue_contents,HAL_P8DeadEnd_BlockedEntrance,30567602282553359,"Погоди, что случилось с этой головоломкой? Не помню, чтобы эти файлы были здесь раньше. Что происходит?"
-pizarro_dialogue_contents,HAL_P8DeadEnd_EndMessage,30567602282553360,"Отличная работа! Ты прошёл(а) головоломку 8. Но дела становятся немного странными. Может, остановишься на сегодня?"
-pizarro_dialogue_contents,HAL_P8DeadEnd_SequenceBreakEndMessage,30567602282553361,Погоди... откуда ты это узнал(а)?
+pizarro_dialogue_contents,HAL_P8DeadEnd_EndMessage,30567602282553360,"Отличная работа! Ты прошёл головоломку 8. Но дела становятся немного странными. Может, остановишься на сегодня?"
+pizarro_dialogue_contents,HAL_P8DeadEnd_SequenceBreakEndMessage,30567602282553361,Погоди... откуда ты это узнал?
 pizarro_dialogue_contents,HAL_P9Hanoi_OpenQuestion4,30567602282553364,"Погоди... Этот вопрос кажется неуместным. Это точно не часть головоломки... Ты знаешь, о ком они говорят?"
 pizarro_dialogue_contents,HAL_PXPodiumEnd_Start,30567602286747658,"Вот и всё, это был Desktop Explorer! Надеюсь, теперь ты знаешь больше не только о своём компьютере, но и о себе."
 pizarro_dialogue_contents,HAL_R1SortBy_Start,147705552929,Эта сложная. Зато картинки милые!
 pizarro_dialogue_contents,HAL_R2About_EndMessage,30567602286747657,"Не так уж и сложно, правда? Ты почти у цели. После этого сможешь забыть всё и отдохнуть в блаженном неведении."
 pizarro_dialogue_contents,HAL_R2About_Redirection,147705552941,"Ой! Ты снова здесь. Пройди остальные пути, чтобы получить доступ к этой головоломке!"
 pizarro_dialogue_contents,HAL_R2About_Start,147705552931,Эта головоломка немного длиннее остальных. Но предупреждаю! Кое-что может быть тяжело пережить. Не теряй концентрацию!!
-pizarro_dialogue_contents,HAL_R2About_Step2Question,30567602286747651,"Пожалуйста, ответь честно: ты сделал(а) всё возможное, чтобы спасти брата?"
+pizarro_dialogue_contents,HAL_R2About_Step2Question,30567602286747651,"Пожалуйста, ответь честно: ты сделал всё возможное, чтобы спасти брата?"
 pizarro_dialogue_contents,HAL_R2About_Step2Question_Followup1,30567602286747654,"Ты лжёшь. Эта головоломка не закончится, пока ты не будешь честен."
 pizarro_dialogue_contents,HAL_R2About_Step2Question_Followup2,30567602286747655,"Ты говоришь правду. Единственный способ преодолеть свою вину — это то, что уведёт тебя из этого храма. Скоро увидишь!"
 pizarro_dialogue_contents,HAL_R2About_Step2Question_Reply1,30567602286747652,Да
@@ -3846,7 +3846,7 @@ pizarro_dialogue_contents,HAL_T2Hourglass_EndMessage,30567602286747650,"Слож
 pizarro_dialogue_contents,HAL_T2Hourglass_OnHourglassOpen,24683476207788032,"Старинное устройство для отслеживания времени, какая древность! Наши современные часы куда лучш- погоди, почему оно покраснело...?"
 pizarro_dialogue_contents,HAL_T2Sapphire_EndMessage,117095381274189824,"Как же долго... Похоже, терпение и правда окупается! Наслаждайся своим самоцветом."
 pizarro_dialogue_contents,HAL_TalkToMe_Puzzle2,78660883989913608,"Зажигать факелы одними лишь словами... возможно, стоит запомнить это имя!"
-pizarro_dialogue_contents,HAL_TalkToMe_Puzzle5,78660883989913609,"Все файлы головоломок созданы Desktop Explorer, ты заметил(а)?"
+pizarro_dialogue_contents,HAL_TalkToMe_Puzzle5,78660883989913609,"Все файлы головоломок созданы Desktop Explorer, ты заметил?"
 pizarro_dialogue_contents,HAL_TalkToMe_Puzzle8,78660883989913610,"Всё становится немного жутковато... У тебя всё получится! Просто... игнорируй ощущение, что за тобой наблюдают."
 pizarro_dialogue_contents,HAL_TalkToMe_Puzzle9,78660883989913611,"Эта атмосфера... заставляет меня хотеть попутешествовать по миру, знаешь? Или во времени, я не знаю!"
 pizarro_dialogue_contents,HAL_TalkToMe_PuzzleA2,89085743668912162,"Я тут подумал... тебе стоит быть осторожнее со словами, которые ты используешь. Похоже, они весьма могущественны!"
@@ -3856,7 +3856,7 @@ pizarro_dialogue_contents,HAL_TempleIntro_Gatekeep1,30567602282553367,"Эй! Т�
 pizarro_dialogue_contents,HAL_TempleIntro_Gatekeep2,30567602282553368,"Знаю, знаю... история очень интригующая!  Но сначала тебе стоит кое-что записать."
 pizarro_dialogue_contents,HAL_TempleIntro_Gatekeep3,30567602282553369,Игнорировать системное уведомление — плохая идея!  Chronolog ждёт!
 pizarro_dialogue_contents,HAL_TempleIntro_Gatekeep4,30567602282553370,"Я знаю, что у тебя проблемы с памятью, а не с чтением.  Пожалуйста, следуй системным уведомлениям."
-pizarro_dialogue_contents,HAL_Tip_General_1,78660883985719313,"Когда бродишь по интернету, твоя личная история поможет отследить сайты, которые ты уже посещал(а)!"
+pizarro_dialogue_contents,HAL_Tip_General_1,78660883985719313,"Когда бродишь по интернету, твоя личная история поможет отследить сайты, которые ты уже посещал!"
 pizarro_dialogue_contents,HAL_Tip_General_10,78660883985719322,Трудно читать файлы notepage? Текст можно увеличить через вкладку «Вид»!
 pizarro_dialogue_contents,HAL_Tip_General_11,89085743668912148,"Помни, что Desktop Explorer сообщает пароли только в этом формате: <b>{format}</b>. Если только тебе не нужно разгадать его самостоятельно"
 pizarro_dialogue_contents,HAL_Tip_General_12,89085743668912149,В Notepage можно настраивать текст с помощью определённых тегов. Поэкспериментируй и разгадай их все!
@@ -3876,7 +3876,7 @@ pizarro_dialogue_contents,HAL_Tip_General_9,78660883985719321,"Одноврем�
 pizarro_dialogue_contents,HAL_Tip_Puzzle1,78660883985719323,"Если окно слишком маленькое, всегда можно воспользоваться полосой прокрутки, чтобы увидеть всё его содержимое!"
 pizarro_dialogue_contents,HAL_Tip_Puzzle2,78660883989913600,"Помнишь, что я говорил про подменю! Обязательно проверяй их, даже в программах вне проводника!"
 pizarro_dialogue_contents,HAL_Tip_Puzzle3,78660883989913601,При создании файла StoryTeller+ можно добавлять < ?-- комментарии --> которые не будут показаны в готовой истории. Это только для твоих личных заметок!
-pizarro_dialogue_contents,HAL_Tip_Puzzle4,78660883989913602,"Если засомневался(-лась) в имени файла, который назвал(а) раньше, всегда можно переименовать его через правый клик по значку!"
+pizarro_dialogue_contents,HAL_Tip_Puzzle4,78660883989913602,"Если засомневался в имени файла, который назвал раньше, всегда можно переименовать его через правый клик по значку!"
 pizarro_dialogue_contents,HAL_Tip_Puzzle5,78660883989913603,Хочешь узнать дату создания файла? Найди это и многое другое в свойствах — через правый клик по значку!
 pizarro_dialogue_contents,HAL_Tip_Puzzle6,78660883989913604,"У твоего проводника много полезных функций на панели меню, обязательно загляни туда!"
 pizarro_dialogue_contents,HAL_Tip_Puzzle8,78660883989913605,"Навигация проводника позволяет не только двигаться назад и вперёд, но и подниматься «вверх» по стеку папок!"
@@ -3920,13 +3920,13 @@ pizarro_dialogue_contents,MAX_TalkToMe_Arcade,93106007402602498,Тебе вед�
 pizarro_dialogue_contents,MAX_TalkToMe_Corkboard,93106007402602500,"Мне жаль, что до этого дошло."
 pizarro_dialogue_contents,MAX_TalkToMe_MagicStore,93106007402602497,"Лучшее в фокусе — когда всё происходит не так, как ты ожидаешь! Тебе удалось увидеть джокера?"
 pizarro_dialogue_contents,MAX_TalkToMe_Prologue,89085743668912217,"Нелегко поддерживать всё это без подключения к интернету. Надеюсь, ты это ценишь!"
-pizarro_dialogue_contents,MAX_TalkToMe_UnderConstruction,93106007402602499,"Знаю, наверное, было тяжело увидеть то, что ты увидел(а) в этом торговом центре. Держись, ты почти у цели."
+pizarro_dialogue_contents,MAX_TalkToMe_UnderConstruction,93106007402602499,"Знаю, наверное, было тяжело увидеть то, что ты увидел в этом торговом центре. Держись, ты почти у цели."
 pizarro_dialogue_contents,MAX_TalkToMe_VHSStore,93106007402602496,"Фильмы в Video Store выглядели довольно круто, не находишь? Я слышал о них много хорошего!"
 pizarro_dialogue_contents,Max_AfterArtShop_Reminder,96055009186144256,"Не знаешь ли ты место, где твои новые цвета из Sketchy могли бы быть оооочень полезны?"
 pizarro_dialogue_contents,Max_AfterMaze_Reminder,96055009186144258,"Отлично! Теперь ты снова сможешь войти в NextRooms — ну знаешь, со своими учётными данными. Как только окажешься там, тебя ждёт ещё больше головоломок!"
 pizarro_dialogue_contents,Max_AfterPhotoLab_Reminder,96055009186144257,"Похоже, ты нашёл все моментальные фото! Стоит вернуться в свою комнату, чтобы их рассмотреть."
 pizarro_dialogue_contents,Max_Arcade_CopperBoxReaction,98876838418309120,100 билетов!? Вот это эксклюзив! Ты тут застрянешь на часы!
-pizarro_dialogue_contents,Max_Arcade_SoldOutReaction,98876838422503424,"Погоди-ка... ты купил(а) вообще всё? Впечатляет! Прирождённый(ая) комплитист, да?"
+pizarro_dialogue_contents,Max_Arcade_SoldOutReaction,98876838422503424,"Погоди-ка... ты купил вообще всё? Впечатляет! Прирождённый комплитист, да?"
 pizarro_dialogue_contents,Max_BrokenCircuitsA_Solve,89085743668912167,"Ой! Кажется, в атриуме торгового центра что-то изменилось!"
 pizarro_dialogue_contents,Max_Cutscene_Intro1,30567602286747660,"Привет, и спасибо, что установил Desktop Explorer!"
 pizarro_dialogue_contents,Max_Cutscene_Intro10,30567602286747669,"И увидеть, что твои друзья на самом деле дум-<?resumeCutscene> "
@@ -3960,11 +3960,11 @@ pizarro_dialogue_contents,Max_PhotoLab_EnterFirstTime,89085743668912179,"Эта 
 pizarro_dialogue_contents,Max_Polaroids_Solve,89085743668912180,"Теперь ты видишь, в чём была проблема с самого начала. Мне очень жаль."
 pizarro_dialogue_contents,Max_TheEnd_Congrats,89085743668912181,"Вот и всё, это был Desktop Explorer! Надеюсь, теперь ты знаешь больше не только о своём компьютере, но и о себе."
 pizarro_dialogue_contents,Max_TimeMazeA_EnterFirstTime,89085743668912166,"Ого, не думаю, что здесь живёт какой-то сосед... Что это такое? "
-pizarro_dialogue_contents,Max_TimeMazeA_EnterSecondTime,89085743668912168,"Эй! Знаю, ты, наверное, занят(а)... но, пожалуйста, помоги мне вот с этим! Что ты видишь на этом изображении?"
+pizarro_dialogue_contents,Max_TimeMazeA_EnterSecondTime,89085743668912168,"Эй! Знаю, ты, наверное, занят... но, пожалуйста, помоги мне вот с этим! Что ты видишь на этом изображении?"
 pizarro_dialogue_contents,Max_TimeMazeA_EnterSecondTime_AnswerA,89085743668912169,Птица
 pizarro_dialogue_contents,Max_TimeMazeA_EnterSecondTime_AnswerB,89085743668912170,Череп
 pizarro_dialogue_contents,Max_TimeMazeA_EnterSecondTime_Response,89085743668912171,"А! Теперь вижу, спасибо!"
-pizarro_dialogue_contents,Max_TimeMazeA_OpenStp,97971931758714880,"StoryTellers в NextRooms, да? Готов поспорить, такого ты раньше не видел(а)!"
+pizarro_dialogue_contents,Max_TimeMazeA_OpenStp,97971931758714880,"StoryTellers в NextRooms, да? Готов поспорить, такого ты раньше не видел!"
 pizarro_dialogue_contents,Max_Tip_Arcade,89085743668912210,"Бывало, что файл нравился тебе настолько, что хотелось иметь два таких? Можешь продублировать его правым щелчком по иконке! Ого!"
 pizarro_dialogue_contents,Max_Tip_BrokenCircuitsA,89085743668912205,Хочешь добавить мелкие детали? В Sketchy всегда можно настроить размер кисти!
 pizarro_dialogue_contents,Max_Tip_Corkboard,89085743668912215,"Файлы в проводнике можно сортировать по-разному, например по имени или по дате!"
@@ -4002,7 +4002,7 @@ pizarro_dialogue_contents,SAFE_HAL_duringFolder3,89085743668912253,"Тебе н�
 pizarro_dialogue_contents,SAFE_HAL_duringFolder4,89085743668912254,"Я помог каждому из них побороть свою натуру. Твоя натура — лезть в то, что тебе неподвластно. Ты всё только испортишь."
 pizarro_dialogue_contents,SAFE_HAL_end,89085743668912255,Тебе нужно наУЧИТЬСЯ ОТПУСКАТЬ.ТЫНЕ МОЖЕШЬ ДЕРЖАТЬВСЁ ПОДКОНТРОЛЕМ
 pizarro_dialogue_contents,SAFE_MAX_duringFolder1,89085743668912246,ПрИвет! Guppy! Снова здравствуй! Это безопасный режим компьютера! NextOS запускает его при возникновении критической ошибки.
-pizarro_dialogue_contents,SAFE_MAX_duringFolder2,89085743668912247,"Вижу, ты нашёл файлы компилятора Desktop Explorer! С этим не стоит играться. Ты только что удалил(а) модуль Эммета Саундера!"
+pizarro_dialogue_contents,SAFE_MAX_duringFolder2,89085743668912247,"Вижу, ты нашёл файлы компилятора Desktop Explorer! С этим не стоит играться. Ты только что удалил модуль Эммета Саундера!"
 pizarro_dialogue_contents,SAFE_MAX_duringFolder3,89085743668912248,"Благодаря тебе больше никто и никогда не увидит его последние слова! Хотя, знаешь, ничего ценного не потеряно."
 pizarro_dialogue_contents,SAFE_MAX_duringFolder4,89085743668912249,"Как насчёт того, чтобы вернуться в твой профиль? Я могу восстановить любой файл, который ты ищешь."
 pizarro_dialogue_contents,SAFE_MAX_end,89085743668912250,если ты удаляешь модУЛЬ ПОЛЬЗОВАТЕЛЯ ТЫУДАЛЯЕШЬ ЧАСТЬ DESKTOP EPXLRE
@@ -4183,9 +4183,9 @@ stp_contents,HAL_A1Scales_balance,658634694678,"Переступив этот п
 На весах выгравирован <incr>знакомый символ</incr>.
 
 <color=#0000FF><?-- Ты уже научился раскрывать секреты лунного символа раньше --></color>"
-stp_contents,HAL_A1Scales_balance_balanced,24591550959837185,<redden>уравновешен(а)</redden>
-stp_contents,HAL_A1Scales_balance_left,24591550951448576,наклонён(а) <redden>влево</redden>
-stp_contents,HAL_A1Scales_balance_right,24591550959837184,наклонён(а) <redden>вправо</redden>
+stp_contents,HAL_A1Scales_balance_balanced,24591550959837185,<redden>уравновешены</redden>
+stp_contents,HAL_A1Scales_balance_left,24591550951448576,наклонёны <redden>влево</redden>
+stp_contents,HAL_A1Scales_balance_right,24591550959837184,наклонёны <redden>вправо</redden>
 stp_contents,HAL_A3YellowLockbox_lockbox,658638888961,"В руках у тебя маленький жёлтый сундук с сокровищами. Ты представляешь, что может скрываться внутри: золотые монеты, запретные амулеты, <shake a=0.3>карта отсюда?</shake>
  
 Открыв его, ты не находишь ничего, кроме маленькой записки. С ней ничего не поделать, кроме как истолковать её смысл. Что бы это ни значило, ты уверен: получение <glow>этого послания — твоя награда за прохождение пути этого храма.</glow>
@@ -4227,7 +4227,7 @@ stp_contents,HAL_P3FakeWall_detectivememories,658634694659,"Разгадав з�
 Ты думаешь: <wave a=0.5 f=0.5>«На этих пещерных стенах нет никаких строк! Детектив я или нет, что мне теперь делать?»</wave>
  
 <color=#0000FF><?-- Слева ты замечаешь, что одна из стен тоньше остальных. На ней высечено слово <b>{SALVE}</b>.--></color>"
-stp_contents,HAL_P4Portonus_keystp,12005341020545024,"Ты крепко сжимаешь ключ и концентрируешься. Ты совсем близко, но никак не можешь ясно представить себе <incr>образ</incr>.
+stp_contents,HAL_P4Portonus_keystp,12005341020545024,"Ты крепко сжимаешь ключ и концентрируешься. Ты совсем близко, но никак не можешь ясно представить себе <incr>картинку</incr>.
 "
 stp_contents,HAL_P4Portonus_leftdoor,658634694661,"Открыв её, ты видишь лишь стену с нарисованной на ней рунической надписью. Под руной <swing a=0.5>ты видишь слово на алфавите, который можешь прочесть.</swing> Это название руны?"
 stp_contents,HAL_P4Portonus_rightdoor,658634694662,"Открыв её, ты видишь лишь стену с нарисованной на ней рунической надписью. Под руной <swing a=0.5>ты видишь слово на алфавите, который можешь прочесть.</swing> Это как-то связано с другой дверью?"
@@ -4316,12 +4316,12 @@ stp_contents,HAL_R2About_pillagedTomb_CorrectPhrase,104111633712799745,"""<color
 
 Закрытый саркофаг на мгновение яростно содрогается, отвечая на твой зов. Словно начиная пробуждаться, его правый глаз загорается.
 
-Ты исполнил(а) желание фараона. <shake a=0.3>Почтишь ли ты теперь её наследие?</shake>"
+Ты исполнил желание фараона. <shake a=0.3>Почтишь ли ты теперь её наследие?</shake>"
 stp_contents,HAL_R2About_pillagedTomb_IncorrectPhrase,104111633712799744,"""<color=#9800a8><phrase>{incorrect_phrase}</phrase></color>"" 
 
 Ничего не происходит. Закрытый саркофаг остаётся неподвижным. Его сплошные глаза ощущаются как древний, пронизывающий взгляд. 
 
-<color=#0000FF><?-- Какую бы фразу ты ни произнёс(ла), она должна прозвучать безупречно, слово в слово. --></color>
+<color=#0000FF><?-- Какую бы фразу ты ни произнёс, она должна прозвучать безупречно, слово в слово. --></color>
 
 На полу лицом вверх лежит иссохший <redden>труп</redden>. <swing a=0.3>Ещё один погибший искатель приключений с <redden>историей</redden>, которую он больше не сможет рассказать.</swing> 
 
@@ -4471,10 +4471,10 @@ stp_contents,HAL_introCutscene_countlessRegrets,658634694675,"<notype>Как б�
 stp_contents,HAL_introCutscene_intriguingStory,658634694674,<notype>Когда-то давно отважный исследователь вошёл в мир</notype> <wave a=0.2>компьютеров и головоломок</wave>...
 stp_contents,JanitorCloset_CrimeScene,27676523875000320,"Каждый инстинкт заставляет тебя бежать, когда <shake a=0.3>безжизненное тело падает на пол перед тобой.</shake> Оно было здесь всегда? Бегство даётся тебе естественно. Ты готов сорваться с места. Но впервые в жизни ты останавливаешься и задумываешься, от чего именно ты бежишь.
 
-Кто эти жертвы? Как ты оказался(ась) <shake a=0.3>посреди такого количества страданий?</shake> Если ты ничего не сделаешь, <shake a=0.3>когда это вообще прекратится?</shake> Если ты сбежишь в неведении, <shake a=0.3>когда ты перестанешь так поступать?</shake> Когда ты наконец предпримешь <redden>действие</redden>?"
-stp_contents,MAX_P0Prologue_desperate_steps,3245203736485888,"<wave a=0.5 f=0.5>Ты всегда чувствовал(а), будто бежишь от чего-то.</wave> Ты никогда не знал(а), что это и почему оно преследует тебя. Ты оглядываешься, и кажется, что рядом нет никого, кто мог бы помочь.
+Кто эти жертвы? Как ты оказался <shake a=0.3>посреди такого количества страданий?</shake> Если ты ничего не сделаешь, <shake a=0.3>когда это вообще прекратится?</shake> Если ты сбежишь в неведении, <shake a=0.3>когда ты перестанешь так поступать?</shake> Когда ты наконец предпримешь <redden>действие</redden>?"
+stp_contents,MAX_P0Prologue_desperate_steps,3245203736485888,"<wave a=0.5 f=0.5>Ты всегда чувствовал, будто бежишь от чего-то.</wave> Ты никогда не знал, что это и почему оно преследует тебя. Ты оглядываешься, и кажется, что рядом нет никого, кто мог бы помочь.
 
-Окружённый(ая) заброшенными зданиями, ты можешь пойти куда угодно. Когда жизнь захлёстывает тебя возможностями, лучше всего
+Окружённый заброшенными зданиями, ты можешь пойти куда угодно. Когда жизнь захлёстывает тебя возможностями, лучше всего
 
 <redden>З А М Е Р Е Т Ь.</redden>
 
@@ -4542,7 +4542,7 @@ stp_contents,PetStore_broken_aquarium,10503295477997568,"Ты стоишь пе�
 
 В конце концов, лучший способ представить себе такое — это <swing a=0.5>сменить обстановку</swing>, и, самое главное, <redden>ЗАМРИ</redden>.
 
-<color=#0000FF><?-- Похоже на совет, которому ты уже следовал(а) раньше --></color>"
+<color=#0000FF><?-- Похоже на совет, которому ты уже следовал раньше --></color>"
 stp_contents,PhotoLab_UncomfortableTruths,40547678826782723,"Сдерживать порыв убежать невероятно тяжело. Вместе с одиноким манекеном испачканные кровью файлы на этом столе рисуют тревожную картину. Из всех заброшенных магазинов <shake a=0.3>именно эта фотолаборатория пугает тебя больше всего.</shake>
 
 Во всех файлах упоминается папка под названием “Дело”. К одной из страниц прикреплена записка со следующим текстом:
