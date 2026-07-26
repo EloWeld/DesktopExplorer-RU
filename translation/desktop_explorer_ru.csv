@@ -31,7 +31,7 @@ Credits,credits_thanksForPlaying,616901369878,Спасибо за игру!
 Credits,credits_writing,616901369866,Сценарий
 OS_Alerts,,201456084747018240,Уже установлено
 OS_Alerts,,201456084751212544,Desktop Explorer уже установлен. Его папку можно найти на рабочем столе.
-OS_Alerts,,201456084751212545,Правки не сохранены
+OS_Alerts,,201456084751212545,Изменения не сохранены
 OS_Alerts,,201456084751212546,"В этом файле есть несохранённые изменения. Вы уверены, что хотите закрыть его? Все изменения будут потеряны."
 OS_Alerts,,96708851011674112,Доступна новая запись Chronolog для заполнения
 OS_Alerts,,96731321487843328,Доступна новая запись Chronolog для заполнения
@@ -42,7 +42,7 @@ OS_Alerts,,99374234868899840,Создан файл с путём: {0}
 OS_Alerts,AddRommieAlertDescription,88815206677864448,Добавить код друга Roomie
 OS_Alerts,AddRommieAlertTitle,88814986040696832,NextRooms
 OS_Alerts,CannotChangeScreenSaverDueToMazePuzzleBody,222490104813314048,"Изменение настроек заставки заблокировано текущим процессом: DesktopExplorerPuzzle. Завершите головоломку пролога, чтобы вернуть контроль над этим меню."
-OS_Alerts,CannotChangeScreenSaverDueToMazePuzzleTitle,222490104804925440,Оповещение! — заблокировано DesktopExplorer
+OS_Alerts,CannotChangeScreenSaverDueToMazePuzzleTitle,222490104804925440,Внимание! — Заблокировано приложением DesktopExplorer
 OS_Alerts,ChronologDataCorruptionBody,3806912553410561,Не удаётся изменить реестр записей (Ошибка Chronolog: в реестре присутствует как минимум одна повреждённая запись. (Исключение CHR0N0:0xUMZAUSA))
 OS_Alerts,ChronologDataCorruptionDescription,3658443700297730,Не удаётся изменить реестр записей (Ошибка Chronolog: в реестре присутствует как минимум одна повреждённая запись. (Исключение CHR0N0:0xUMZAUSA))
 OS_Alerts,ChronologEntryCorruptedBody,130855088505741312,Не удаётся открыть файл (Ошибка Chronolog: файл записи повреждён. Восстановление невозможно. (Исключение CHR0N0: 0xNFMRUHBXARGWC))
@@ -73,7 +73,7 @@ OS_Alerts,GAdminIncorrectChessboardSolutionAlertBody,162826729678692354,Коро
 OS_Alerts,GAdminIncorrectChessboardSolutionAlertTitle,162826729678692353,Королевский зевок
 OS_Alerts,GAdminInvalidChessboardBlackPiecesAlertBody,198639457697521664,Обнаружено недопустимое количество чёрных фигур. Дубликаты удалены.
 OS_Alerts,GAdminInvalidChessboardPiecesAlertTitle,198639457680744448,Недопустимое количество шахматных фигур
-OS_Alerts,GAdminInvalidChessboardPositionAlertBody,162802690067259393,Обнаружен недопустимый формат переименованного файла. Имя файла шахматной фигуры возвращено к исходному.
+OS_Alerts,GAdminInvalidChessboardPositionAlertBody,162802690067259393,Обнаружено недопустимое имя файла. Исходное имя шахматной фигуры восстановлено.
 OS_Alerts,GAdminInvalidChessboardPositionAlertTitle,162802690067259392,Неверное имя файла
 OS_Alerts,GAdminInvalidKingQuantityAlertBody,162802690067259394,Обнаружено недопустимое количество белых королей. Добавленные файлы удалены.
 OS_Alerts,GAdminInvalidKnightQuantityAlertBody,162802690067259395,Обнаружено недопустимое количество белых коней на доске. Добавленные файлы удалены.
@@ -81,7 +81,7 @@ OS_Alerts,GAdminInvalidPawnQuantityAlertBody,198767153844838400,Обнаруже
 OS_Alerts,GAdminInvalidRookQuantityAlertBody,162802690067259396,Обнаружено недопустимое количество белых ладей на доске. Добавленные файлы удалены.
 OS_Alerts,GAdminSolvedChessboardAlertBody,165607979858518016,"Отлично, королю некуда бежать"
 OS_Alerts,GAdminSolvedChessboardAlertTitle,165607979854323712,Шах и мат
-OS_Alerts,GHalibutCannotRestoreBody,208510760357191682,"У этого файла нет каталога, куда можно вернуться, — он существует между рабочими столами"
+OS_Alerts,GHalibutCannotRestoreBody,208510760357191682,"У этого файла нет родительской директории, — он существует между рабочими столами"
 OS_Alerts,GHalibutCannotRestoreTitle,208510760357191681,WasteBinRecoveryException
 OS_Alerts,GenericAlertTitle,3658443700297733,Внимание
 OS_Alerts,GuppyLogOffNotAllowedBody,186382199081132033,Не удаётся выполнить запрос пользователя. (Ошибка ОС: открытый исполняемый файл DEDAEMON препятствует операции (Исключение ОС: 0xMCPUMULCIQLSS))
@@ -109,7 +109,7 @@ OS_Alerts,NavigationExceptionAlertBody,3806912557604866,"Не удаётся о�
 OS_Alerts,NavigationExceptionAlertDescription,3669725941850114,"Не удаётся открыть файл, путь = 'X:\\Users\\...\\{0}' (Ошибка ОС: не найден синтаксис имени файла, каталога или метки тома. (Исключение FILESYS: 0xMEVXRBZYOTG))"
 OS_Alerts,NavigationExceptionHalibutBody,3806912557604867,"Не удаётся открыть файл, путь = 'X:\\Users\\Halibut\\...\\{0}' (Ошибка DE_Error: файл вне CAVE не найден. ЗАСТРЯЛО ДО РЕШЕНИЯ ГОЛОВОЛОМКИ. (Исключение PLYBS: YFIHEWXUWXCG))"
 OS_Alerts,NavigationExceptionHalibutDescription,3669725941850115,"Не удаётся открыть файл, путь = 'X:\\Users\\Halibut\\...\\{0}' (Ошибка ОС: не найден синтаксис имени файла, каталога или метки тома. (Исключение FILESYS: 0xMEVXRBZYOTG))"
-OS_Alerts,NoArcadeCreditsInInventoryBody,201525247586852864,Невозможно сыграть. Для игры на аркадных автоматах в инвентаре нужна ИГРОВАЯ КАРТА.
+OS_Alerts,NoArcadeCreditsInInventoryBody,201525247586852864,Не удалось начать игру. Для игры на аркадных автоматах в инвентаре должна быть ИГРОВАЯ КАРТА.
 OS_Alerts,NoInternetAlertBody,3806912557604874,Подключение к интернету недоступно.
 OS_Alerts,NoInternetAlertTitle,3806912557604873,Ошибка сети
 OS_Alerts,OutOfMemoryExceptionAlertBody,3806912557604886,В системе закончилась память. Необходимо закрыть {0} окно(а).
@@ -132,9 +132,9 @@ OS_Alerts,SecurityQuestion_MaxProfile_Ans1_2,215821849998647296,Стегозав
 OS_Alerts,SecurityQuestion_MaxProfile_Ans2,102892066348982279,Каскадия
 OS_Alerts,SecurityQuestion_MaxProfile_Ans2_2,215821849998647297,Каскадия
 OS_Alerts,SecurityQuestion_MaxProfile_Ans3,102892066348982280,Файза
-OS_Alerts,SecurityQuestion_MaxProfile_Hint1,102892066348982275,"по-детски, знаю… ПРИМИРИСЬ С ЭТИМ!! ¯\_(ツ)_/¯ B)"
+OS_Alerts,SecurityQuestion_MaxProfile_Hint1,102892066348982275,"по-детски, знаю… СМИРИСЬ С ЭТИМ!! ¯\_(ツ)_/¯ B))"
 OS_Alerts,SecurityQuestion_MaxProfile_Hint2,102892066348982276,"САМАЯ КРУТАЯ художественная школа на северо-западе, ну естественно"
-OS_Alerts,SecurityQuestion_MaxProfile_Hint3,102892066348982277,"да, включая второе имя… далеко не так круто, как MAX1MUS!"
+OS_Alerts,SecurityQuestion_MaxProfile_Hint3,102892066348982277,"да, включая моё второе имя… далеко не так круто, как MAX1MUS!"
 OS_Alerts,SecurityQuestion_MaxProfile_IncorrectAnswer,102892066348982282,Неверный ответ!
 OS_Alerts,SecurityQuestion_MaxProfile_Q1,102892066348982272,Какой мой любимый динозавр?
 OS_Alerts,SecurityQuestion_MaxProfile_Q2,102892066348982273,Что означает ПЕРВАЯ БУКВА названия моей будущей школы? 
@@ -157,17 +157,17 @@ OS_Alerts,SysNotifGAdminFigureheadWrite,162826729678692352,Новый файл �
 OS_Alerts,SysNotifGHalibutFishingLureWrite,208933395968811008,Новый файл добавлен в <b>folder:INVENTORY</b> пользователя <b>USER:M4x1mus</b> — <b>fishingLure.img</b>
 OS_Alerts,SysNotifWriteChronologEntryBody,94992533543706624,Доступна новая запись Chronolog для заполнения.
 OS_Alerts,SystemNotificationNewFileAdded,109602412539404288,Добавлен новый файл: {0}
-OS_Alerts,TemplePodiumPathChosen,173268375868268545,Око Гора зафиксировало ваш выбор пути
+OS_Alerts,TemplePodiumPathChosen,173268375868268545,Око Гора запомнило выбранный вами путь
 OS_Alerts,TimeSettingsApplyChangesError,194033432449245185,Не удаётся окончательно изменить системные дату и время (Ошибка TimeSettings: нарушение повествовательной темпоральности недопустимо (Исключение T1M3S3T: 0xIWTFSAG))
 OS_Alerts,TimeSettingsApplyChangesTitle,194033432449245184,TimeSettings Exception
 OS_Alerts,UnsavedChangesBody,200785471489433600,"В этом файле есть несохранённые изменения. Вы уверены, что хотите закрыть его? Все изменения будут потеряны."
-OS_Alerts,UnsavedChangesTitle,200785471472656384,Правки не сохранены
+OS_Alerts,UnsavedChangesTitle,200785471472656384,Изменения не сохранены
 OS_Alerts,WasteBinDeleteFileExceptionBody,3806912557604880,"У текущего пользователя нет прав на удаление: {0}%."""
 OS_Alerts,WasteBinDeleteNonPlayerCreatedBody,183517156652081152,"Не удаётся окончательно удалить файл, путь = 'X:\\Users\\...\\{0}' (Ошибка ОС: не удалось определить наличие у пользователя нужных прав (Исключение FILESYS: 0xVFVCGTTK))"
 OS_Alerts,WasteBinEmptyAlertBody,3806912553410564,"Вы уверены, что хотите окончательно удалить объекты из WasteBin?"
 OS_Alerts,WasteBinEmptyAlertDescription,3658443700297734,"Вы уверены, что хотите окончательно удалить объекты из WasteBin?"
-OS_Alerts,WasteBinEmptySecondAlertBody,3806912553410565,"Вы ДЕЙСТВИТЕЛЬНО уверены? Эти файлы станут недоступны, пока вы не начнёте сохранение заново."
-OS_Alerts,WasteBinEmptySecondAlertDescription,3658443700297735,"Вы ДЕЙСТВИТЕЛЬНО уверены? Эти файлы станут недоступны, пока вы не начнёте сохранение заново."
+OS_Alerts,WasteBinEmptySecondAlertBody,3806912553410565,"Вы ДЕЙСТВИТЕЛЬНО уверены? Эти файлы будут недоступны, пока вы не перезапустите файл сохранения."
+OS_Alerts,WasteBinEmptySecondAlertDescription,3658443700297735,"Вы ДЕЙСТВИТЕЛЬНО уверены? Эти файлы будут недоступны, пока вы не перезапустите файл сохранения."
 OS_Alerts,WasteBinOpenFileAlertBody,3806912553410566,"Файл нельзя открыть, находясь в WasteBin. Восстановить его в исходном расположении?"
 OS_Alerts,WasteBinOpenFileAlertDescription,3658443700297736,"Файл нельзя открыть, находясь в WasteBin. Восстановить его в исходном расположении?"
 OS_Alerts,WhatIsLeftAlertBody,193319471701549057,"В системе закончилась память. Раньше она была захламлена чувством вины. Чтобы продолжить, нужно её отпустить."
@@ -188,7 +188,7 @@ OS_misc_contents,,77882855525441549,Второе устройство:
 OS_misc_contents,,77882855525441550,RD52323
 OS_misc_contents,,77882855525441551,Инициализация экрана входа . . . . . . . . . /
 OS_misc_contents,,77882855525441552,"Это тестовая сборка игры, предоставленная только для тестирования и сбора отзывов. Всё содержимое, включая (но не ограничиваясь) визуальные эффекты, звук, игровые механики, элементы интерфейса и повествовательные элементы, находится в разработке и может измениться. Итоговое качество, производительность и функциональность в финальном релизе могут значительно отличаться."
-OS_misc_contents,,77882855525441554,Листать
+OS_misc_contents,,77882855525441554,Навигация
 OS_misc_contents,,77882855525441555,Интерфейсный мистический квест
 OS_misc_contents,,77882855525441556,Начать игру
 OS_misc_contents,,77882855525441557,Настройки
@@ -205,12 +205,12 @@ OS_misc_contents,,77882855525441567,- Меню настроек NEXT OS -
 OS_misc_contents,,77882855525441568,Назад
 OS_misc_contents,,77882855525441569,Применить
 OS_misc_contents,,77882855525441570,Настроить
-OS_misc_contents,,77882855525441571,Листать
+OS_misc_contents,,77882855525441571,Навигация
 OS_misc_contents,,77882855525441572,Разрешение
 OS_misc_contents,,77882855525441573,Полный экран
 OS_misc_contents,,77882855525441574,Режим CRT
 OS_misc_contents,,77882855525441575,-Хроматическая аберрация
-OS_misc_contents,,77882855525441576,-Интенсивность развёртки
+OS_misc_contents,,77882855525441576,-Интенсивность сканлайнов
 OS_misc_contents,,77882855525441577,ВЫКЛ
 OS_misc_contents,,77882855525441578,НИЗКАЯ
 OS_misc_contents,,77882855525441579,СРЕДНЯЯ
@@ -221,9 +221,9 @@ OS_misc_contents,Adm_Tower_Title,112125597210107904,БАШНЯ
 OS_misc_contents,BIOS_AdvCRT_FilmGrain,100775841934336005,Зернистость
 OS_misc_contents,BIOS_AdvCRT_Header,100775841934336001,Расширенный CRT
 OS_misc_contents,BIOS_AdvCRT_RGBBlur,100775841934336004,Размытие RGB
-OS_misc_contents,BIOS_AdvCRT_Scanlines,100775841934336002,Развёртка
+OS_misc_contents,BIOS_AdvCRT_Scanlines,100775841934336002,Сканлайны
 OS_misc_contents,BIOS_AdvCRT_ScreenCurve,100775841934336003,Изгиб экрана
-OS_misc_contents,BIOS_Audio_Ambience,100768195114164226,Атмосфера
+OS_misc_contents,BIOS_Audio_Ambience,100768195114164226,Окружение
 OS_misc_contents,BIOS_Audio_Header,100738524158877702,Звук
 OS_misc_contents,BIOS_Audio_Master,100768195109969920,Общая громкость
 OS_misc_contents,BIOS_Audio_Music,100768195114164224,Музыка
@@ -265,7 +265,7 @@ OS_misc_contents,BootUp_Sqnc_Label_9,78037984601956361,Дополнительн�
 OS_misc_contents,BootUp_Sqnc_Login_Screen,85897608868913152,Экран входа
 OS_misc_contents,BootUp_Sqnc_Safe_Mode,85897608877301760,БЕЗОПАСНЫЙ РЕЖИМ
 OS_misc_contents,Chrono_WriteEntry,2154513468219392,Написать
-OS_misc_contents,Chronolog_About_Text,5761032113872899,«Не дай своим воспоминаниям пройти мимо... Занеси их в Chronolog и сохрани навсегда!»
+OS_misc_contents,Chronolog_About_Text,5761032113872899,«Не дай своим воспоминаниям ускользнуть... Занеси их в Chronolog и сохрани навсегда!»
 OS_misc_contents,ColorlensInstaller_Hal_1,515453739013,Установка Colorlens
 OS_misc_contents,ColorlensInstaller_Hal_2,515453739014,Поиск цветовых индексов...
 OS_misc_contents,ColorlensInstaller_Hal_3,515453739015,Настройка призматики...
@@ -297,8 +297,8 @@ OS_misc_contents,DEInstaller_Hal_5,515453739011,Декодирование из�
 OS_misc_contents,DEInstaller_Hal_6,515453739012,Настройка иерархии файлов...
 OS_misc_contents,DEInstaller_Marketing_Demo_1,17418858888421376,Установка демо
 OS_misc_contents,DEInstaller_Marketing_Demo_2,17418858901004288,Демо уже доступно!
-OS_misc_contents,DEInstaller_Max_4,117877846599262208,Картирование коридоров...
-OS_misc_contents,DEInstaller_Max_6,117877846599262209,Раскладка улик...
+OS_misc_contents,DEInstaller_Max_4,117877846599262208,Построение карты коридоров...
+OS_misc_contents,DEInstaller_Max_6,117877846599262209,Раскладывание улик...
 OS_misc_contents,HAL_PuzzleT2_Password2,104120708584431618,шестьдесят-семь
 OS_misc_contents,HAL_PuzzleT2_Password3,104120708584431619,шестьдесятсемь
 OS_misc_contents,HAL_PuzzleT2_Password4,104120708584431620,шестьдесят семь
@@ -306,13 +306,13 @@ OS_misc_contents,HAL_PuzzleT2_Password5,104120708588625920,шесть-семь
 OS_misc_contents,HAL_PuzzleT2_Password6,104120708588625921,шестьсемь
 OS_misc_contents,HAL_PuzzleT2_Password7,104120708588625922,шесть семь
 OS_misc_contents,Halibut_A2_CorrectPhrase,106992481529225217,МЫ НЕПОЛНЫ БЕЗ ТЕБЯ
-OS_misc_contents,MAZE_PointerText_AfterGlitch,95281148689637379,"<shake a=0.02 f=0.5>Чтобы разорвать этот круг, нужно много боли и смелости.</shake>"
+OS_misc_contents,MAZE_PointerText_AfterGlitch,95281148689637379,"<shake a=0.02 f=0.5>Чтобы разорвать этот круг, нужно пережить много боли и найти в себе смелость.</shake>"
 OS_misc_contents,MAZE_PointerText_FirstLaps,95281148689637376,"Иногда кажется, что жизнь <shake a=0.02 f=0.5>идёт по кругу.</shake>"
 OS_misc_contents,MAZE_PointerText_LastLaps,95281148689637378,Ты можешь <shake a=0.02 f=0.5>сам выбирать</shake> свой путь. Используй <glow>WASD</glow> для передвижения.
 OS_misc_contents,MAZE_PointerText_LaterLaps,95281148689637377,"<incr>Один шаг</incr> — это всё, что нужно, чтобы перестать ходить по кругу."
 OS_misc_contents,NextOS_Copyright_Text_1,5761032105484288,Copyright © 1995-1998 Spiralsoft Corp.
 OS_misc_contents,NextOS_Copyright_Text_2,5761032113872897,Это программное обеспечение создано компанией Spiralsoft (c)
-OS_misc_contents,Notepage_About_Text,5761032113872904,"«Забудь про старую ручку и бумагу. Все твои заметки — организованно, в цифровом мире»"
+OS_misc_contents,Notepage_About_Text,5761032113872904,"«Оставь ручку и бумагу в прошлом. Храни все свои заметки в цифровом мире»"
 OS_misc_contents,OS_AdminPSOD_ErrorMessage,82748122252435459,"Произошло фатальное исключение 0M:(03)
 Восстановление данных до неожиданной ошибки . . .
 
@@ -381,10 +381,10 @@ OS_misc_contents,OS_FileDialog_Look_In,75355315447521294,Папка
 OS_misc_contents,OS_FileDialog_OpenFile,87072534124552192,Открыть файл
 OS_misc_contents,OS_FileExplorer_Delete_File,75355315447521313,Удалить файл
 OS_misc_contents,OS_FileExplorer_HiddenFiles,75355315447521322,Скрытые файлы
-OS_misc_contents,OS_FileExplorer_Invert_Selection,75355315447521315,Обратить выделение
+OS_misc_contents,OS_FileExplorer_Invert_Selection,75355315447521315,Инвертировать выделение
 OS_misc_contents,OS_FileExplorer_ItemCount,83296929851629568,{0} объект(ов)
 OS_misc_contents,OS_FileExplorer_New_WIndow,75355315447521312,Новое окно
-OS_misc_contents,OS_FileExplorer_Rename_File,75355315447521314,Имя файла
+OS_misc_contents,OS_FileExplorer_Rename_File,75355315447521314,Переименовать
 OS_misc_contents,OS_FileExplorer_SortByDate,75355315447521320,По дате
 OS_misc_contents,OS_FileExplorer_SortByName,75355315447521318,По имени
 OS_misc_contents,OS_FileExplorer_SortBySize,75355315447521319,По размеру
@@ -413,7 +413,7 @@ OS_misc_contents,OS_InputDialog_PasswordValidation,75355315447521326,Невер�
 OS_misc_contents,OS_InputDialog_RenameBody,75355315447521324,Введите новое имя этого файла
 OS_misc_contents,OS_InputDialog_RenameInvalidExtension,75355315447521329,"Пожалуйста, используйте корректное расширение файла (.npg, .stp и т. д.)"
 OS_misc_contents,OS_InputDialog_RenameMissingExtensionValidation,75355315447521327,"Пожалуйста, укажите расширение в имени файла"
-OS_misc_contents,OS_Login_Alert,89094151528767488,"<color=""red>!</color> Тревога <color=""red>!</color>"
+OS_misc_contents,OS_Login_Alert,89094151528767488,"<color=""red>!</color> Внимание <color=""red>!</color>"
 OS_misc_contents,OS_Login_IncorrectPassword,85912778722762757,Неверный пароль!
 OS_misc_contents,OS_Login_LogIn,85912778722762755,Войти
 OS_misc_contents,OS_Login_Password,85912778722762756,Введите пароль
@@ -444,7 +444,7 @@ OS_misc_contents,OS_Settings_DesktopTheme,75355315447521351,Тема рабоч�
 OS_misc_contents,OS_Settings_FullScreenMode,75355315447521354,Полноэкранный режим
 OS_misc_contents,OS_Settings_General,75355315447521347,Общие
 OS_misc_contents,OS_Settings_Preview,75355315447521359,Предпросмотр
-OS_misc_contents,OS_Settings_ScanlineStrength,75355315447521357,Интенсивность развёртки
+OS_misc_contents,OS_Settings_ScanlineStrength,75355315447521357,Интенсивность сканлайнов
 OS_misc_contents,OS_Settings_ScreenResolution,75355315447521353,Разрешение экрана
 OS_misc_contents,OS_Settings_ScreenSaver,75355315447521348,Заставка
 OS_misc_contents,OS_Settings_SystemPreferences,75355315447521350,Параметры системы
@@ -475,7 +475,7 @@ OS_misc_contents,OS_TitleScreen_Discord,78037984601956374,Наш Discord
 OS_misc_contents,OS_TitleScreen_Enter,78037984601956377,Выбрать
 OS_misc_contents,OS_TitleScreen_Exit,78037984601956375,Выход
 OS_misc_contents,OS_TitleScreen_Navigate,78037984601956370,Листать
-OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimer,118477502832173057,Выбранный язык <color=#F9A31B>НЕЛЬЗЯ</color> будет изменить позже в игре. Всё в порядке?
+OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimer,118477502832173057,Выбранный язык <color=#F9A31B>НЕЛЬЗЯ</color> будет изменить позже в игре. Вас это устраивает?
 OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimerTitle,118477502832173056,УВЕДОМЛЕНИЕ О ЯЗЫКЕ
 OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimer_Option1,118477502832173058,"ДА, НАЧАТЬ ИГРУ"
 OS_misc_contents,OS_TitleScreen_NewFileLanguageDisclaimer_Option2,118477502832173059,НАЗАД
@@ -489,7 +489,7 @@ OS_misc_contents,OS_TitleScreen_Options_Footer_Label_3,78037984601956386,Нас�
 OS_misc_contents,OS_TitleScreen_Options_Footer_Label_4,78037984601956387,Листать
 OS_misc_contents,OS_TitleScreen_Options_Fullscreen,78037984601956389,Полный экран
 OS_misc_contents,OS_TitleScreen_Options_Resolution,78037984601956388,Разрешение
-OS_misc_contents,OS_TitleScreen_Options_Scanline,78037984601956392,-Интенсивность развёртки
+OS_misc_contents,OS_TitleScreen_Options_Scanline,78037984601956392,-Интенсивность сканлайнов
 OS_misc_contents,OS_TitleScreen_Options_Title,78037984601956383,- Меню настроек NEXT OS -
 OS_misc_contents,OS_TitleScreen_Options_Value_High,78037984601956396,ВЫСОКАЯ
 OS_misc_contents,OS_TitleScreen_Options_Value_Low,78037984601956394,НИЗКАЯ
@@ -502,7 +502,7 @@ OS_misc_contents,OS_TitleScreen_StartOver,78037984601956381,НОВАЯ ИГРА
 OS_misc_contents,OS_TitleScreen_SubTitle,78037984601956371,Интерфейсный мистический квест
 OS_misc_contents,OS_TitleScreen_Wishlist,78037984601956376,В вишлист на Steam!
 OS_misc_contents,OS_TitleScreen_YesStartOver,100705494904070145,"ДА, НАЧАТЬ НОВУЮ ИГРУ"
-OS_misc_contents,OS_VolumeMixer_Ambience,75355315451715596,Атмосфера
+OS_misc_contents,OS_VolumeMixer_Ambience,75355315451715596,Окружение
 OS_misc_contents,OS_VolumeMixer_Master,75355315451715593,Общий 
 OS_misc_contents,OS_VolumeMixer_Music,75355315451715595,Музыка
 OS_misc_contents,OS_VolumeMixer_Mute,75355315451715591,Без звука
