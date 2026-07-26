@@ -23,6 +23,17 @@ import state                                          # noqa: E402
 import steam                                          # noqa: E402
 from errors import DeruError, GameNotFound            # noqa: E402
 from version import VERSION                           # noqa: E402
+from wizard import WizardReporter                     # noqa: E402
+
+# Необязательные надстройки мастера (локальный мод хоткеев) подключаются из
+# mod/installer, который не коммитится и в релизные сборки не входит. Если
+# папки нет, hkmod равен None и мастер работает без дополнительных пунктов.
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "mod", "installer"))
+try:
+    import deru_hotkeys as hkmod                      # noqa: E402
+except ImportError:
+    hkmod = None
 
 ISSUES = "https://github.com/EloWeld/DesktopExplorer-RU-MacOS/issues"
 
@@ -34,51 +45,7 @@ WARNINGS = [
 ]
 
 
-class WizardReporter(patcher.Reporter):
-    """Progress as a checklist: a spinner on the running step, a tick behind it.
-
-    Verbose detail (which atlas got repacked at what size) goes to the log file
-    rather than the screen — it matters when something breaks and only then.
-    """
-
-    def __init__(self, console, log):
-        self.console = console
-        self.log = log
-        self.status = None
-        self.title = ""
-
-    def step(self, key, title):
-        self._stop()
-        self.title = title
-        self.log.write(f"\n== {title}\n")
-        self.status = self.console.status(f"[cyan]{title}[/]", spinner="dots")
-        self.status.start()
-
-    def ok(self, detail=""):
-        self._stop()
-        self.log.write(f"   ok: {detail}\n")
-        line = Text("  ✓ ", style="green")
-        line.append(f"{self.title:<22}", style="white")
-        line.append(detail, style="dim")
-        self.console.print(line)
-
-    def note(self, text):
-        self.log.write(f"   {text}\n")
-
-    def warn(self, text):
-        self.log.write(f"   ! {text}\n")
-        self.console.print(f"  [yellow]![/] [dim]{text}[/]")
-
-    def _stop(self):
-        if self.status is not None:
-            self.status.stop()
-            self.status = None
-
-    def close(self):
-        self._stop()
-
-
-def header(console, game, status):
+def header(console, game, status, hk_status=None):
     """The panel at the top: where the game is and what state it is in."""
     body = Table.grid(padding=(0, 2))
     body.add_column(style="dim", justify="right")
@@ -93,12 +60,14 @@ def header(console, game, status):
     else:
         dot, style = "○", "cyan"
     label = status.label() if status else "укажите папку с игрой"
-    body.add_row("Статус:", f"[{style}]{dot}[/] {label}")
+    body.add_row("Перевод:", f"[{style}]{dot}[/] {label}")
+    if hk_status is not None and hkmod is not None:
+        hkmod.header_row(body, hk_status)
     console.print(Panel(body, title=f"Desktop Explorer — русификатор  v{VERSION}",
                         title_align="left", border_style="cyan"))
 
 
-def menu(console, game, status):
+def menu(console, game, status, hk_status=None):
     """Draw the menu and return the chosen action key."""
     items = []
     if game and status is not None:
@@ -108,6 +77,8 @@ def menu(console, game, status):
             items.append(("install", "Установить русский язык"))
         if status.installed or status.stale:
             items.append(("restore", "Удалить русификатор (вернуть как было)"))
+    if hkmod is not None:
+        items.extend(hkmod.menu_items(game, hk_status))
     items.append(("path", "Указать папку с игрой вручную"))
     items.append(("quit", "Выход"))
 
@@ -121,9 +92,9 @@ def menu(console, game, status):
 
 
 def ask_path(console):
-    """Ask for the game folder. Dragging it from Finder is the easy way."""
+    """Ask for the game folder. Dragging it into the terminal is the easy way."""
     console.print()
-    console.print("  [dim]Перетащите папку с игрой из Finder прямо сюда — "
+    console.print("  [dim]Перетащите папку с игрой прямо в это окно — "
                   "путь подставится сам.[/]")
     console.print("  [dim]Пустая строка — вернуться в меню.[/]")
     raw = Prompt.ask("  Папка", default="", show_default=False)
@@ -211,20 +182,24 @@ def main(argv=None):
     try:
         while True:
             problem = None
+            hk_layout = hk_status = None
             if game:
                 try:
                     layout, status = resolve(game)
                 except DeruError as err:
                     problem, game, layout, status = err, None, None, None
+                else:
+                    hk_layout, hk_status = (hkmod.resolve(game)
+                                            if hkmod is not None else (None, None))
 
             console.clear()
-            header(console, game, status)
+            header(console, game, status, hk_status)
             if problem is not None:
                 console.print(f"  [yellow]{problem.message}[/]")
                 if problem.hint:
                     console.print(f"  [dim]{problem.hint}[/]")
 
-            action = menu(console, game, status)
+            action = menu(console, game, status, hk_status)
             if action == "quit":
                 return 0
             if action == "path":
@@ -238,6 +213,8 @@ def main(argv=None):
                     run_install(console, layout, log)
                 elif action == "restore":
                     run_restore(console, layout, log)
+                elif hkmod is not None and hkmod.handle(action, console, hk_layout, log):
+                    pass
             except DeruError as err:
                 console.print()
                 console.print(Panel(f"{err.message}\n\n[dim]{err.hint or ''}[/]",

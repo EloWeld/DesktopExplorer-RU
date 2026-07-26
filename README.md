@@ -43,11 +43,21 @@ Right-click is not optional: the app is not signed with a paid Apple
 certificate, and a plain double-click is refused by Gatekeeper. The `curl`
 route above avoids that entirely.
 
+**Windows — one command.** Paste this into PowerShell and press Enter:
+
+```powershell
+irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.ps1 | iex
+```
+
+It downloads the wizard from the latest release, verifies its checksum, runs
+it and deletes it afterwards. The build is not code-signed, so an antivirus
+may grumble about an unknown publisher — the checksum above is what actually
+vouches for the file.
+
 Then launch the game — it starts in Russian. If it does not, pick
 **Options → Language → Русский язык**.
 
-Windows and Linux: run from source for now (see *From source* below); a
-Windows build is planned.
+Linux: run from source for now (see *From source* below).
 
 ### Uninstall
 
@@ -62,7 +72,8 @@ Originals are backed up to `_ru_backup_original` next to the game. Steam's
 
 ### From source
 
-Python 3.9+ required.
+Python 3.9+ required. On Windows the commands are the same, with `python`
+instead of `python3`.
 
 ```bash
 pip install -r requirements.txt
@@ -79,9 +90,10 @@ python3 patch.py --restore       # undo everything
   rebuilding the game. Spanish becomes Russian.
 - **Game updates wipe the patch.** Re-run the patcher after every Steam update — the
   wizard notices and says so on its first screen.
-- **macOS tested.** Released builds are macOS-only (Apple Silicon and Intel). The code
-  detects the platform folder itself and should run on Windows and Linux from source,
-  but it has not been tested there.
+- **macOS and Windows tested.** Released builds cover macOS (Apple Silicon and
+  Intel) and Windows x64; the Windows build is verified by the CI smoke test
+  and community reports. On Linux the code detects the platform folder itself
+  and should run from source, but it has not been tested there.
 - **Asset integrity checks are disabled.** Addressables verifies bundle checksums and
   refuses to load modified files, so the patcher zeroes them in the catalog.
 
@@ -116,6 +128,7 @@ The patcher redraws it.
 - `patch.py` — the same work without prompts, for scripts and for developers.
 - `install.sh` — the one-command installer: picks the build for your CPU, checks the
   release checksum, runs the wizard, removes it.
+- `install.ps1` — the same one-command installer for Windows (PowerShell).
 - `lib/patcher.py` — the patcher: fonts, TMP atlases, strings, catalog. String tables are
   rebuilt as English base + Russian overlay, and the TextMesh Pro atlases are switched
   to readable dynamic multi-atlas mode so new glyphs can be added at runtime.
@@ -187,11 +200,21 @@ curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/ma
 сертификатом Apple, и от обычного двойного щелчка macOS откажется. Команда выше
 эту возню обходит.
 
+**Windows — одна команда.** Вставьте её в PowerShell и нажмите Enter:
+
+```powershell
+irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.ps1 | iex
+```
+
+Команда скачает мастер из последнего релиза, проверит контрольную сумму,
+запустит — и удалит за собой. Сборка не подписана сертификатом, поэтому
+антивирус может ворчать про «неизвестного издателя» — файл поручается именно
+контрольной суммой из релиза.
+
 Дальше просто запустите игру — она стартует на русском. Если нет, выберите
 **Options → Language → Русский язык**.
 
-Windows и Linux: пока только запуском из исходников (см. ниже); сборка под
-Windows в планах.
+Linux: пока только запуском из исходников (см. ниже).
 
 ### Удаление
 
@@ -206,7 +229,8 @@ python3 patch.py --restore
 
 ### Из исходников
 
-Нужен Python 3.9 или новее.
+Нужен Python 3.9 или новее. На Windows команды те же, только `python`
+вместо `python3`.
 
 ```bash
 pip install -r requirements.txt
@@ -223,9 +247,10 @@ python3 patch.py --restore       # откатить
   пересборки игры, поэтому испанский заменяется русским.
 - **Обновление игры затирает перевод.** После каждого обновления в Steam патч надо
   накатывать заново — мастер это замечает и пишет прямо на первом экране.
-- **Проверено на macOS.** Готовые сборки только для macOS (Apple Silicon и Intel).
-  Код сам определяет папку платформы и, скорее всего, запустится из исходников на
-  Windows и Linux, но там это не испытывалось.
+- **Проверено на macOS и Windows.** Готовые сборки — для macOS (Apple Silicon и
+  Intel) и Windows x64; Windows-сборку проверяет смоук-тест в CI и отчёты
+  сообщества. На Linux код сам определяет папку платформы и, скорее всего,
+  запустится из исходников, но там это не испытывалось.
 - **Проверка целостности файлов отключается.** Addressables сверяет контрольные суммы
   бандлов и отказывается грузить изменённые, поэтому патчер обнуляет их в каталоге.
 
@@ -261,6 +286,7 @@ python3 patch.py --restore       # откатить
 - `patch.py` — то же самое без вопросов, для скриптов и разработчиков.
 - `install.sh` — установка одной командой: выбирает сборку под процессор, сверяет
   контрольную сумму релиза, запускает мастер и удаляет его за собой.
+- `install.ps1` — та же установка одной командой для Windows (PowerShell).
 - `lib/patcher.py` — сам патчер: шрифты, атласы TMP, строки, каталог. Таблицы строк
   пересобираются как английская база + русский оверлей, а атласы TextMesh Pro
   переводятся в читаемый динамический multi-atlas режим, чтобы новые глифы

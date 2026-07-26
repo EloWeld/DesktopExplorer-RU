@@ -14,3 +14,4 @@ translation/desktop_explorer_en_ru.csv
 build/build/
 dist/
 .pytest_cache/
+mod/*

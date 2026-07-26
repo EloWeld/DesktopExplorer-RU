@@ -1,8 +1,8 @@
 name: release
 
-# Сборка релиза по тегу вида v1.0.0. Два раннера — две архитектуры: колёса
+# Сборка релиза по тегу вида v1.0.0. Отдельный раннер на архитектуру: колёса
 # Pillow и lz4 под universal2 собираются болезненно, поэтому проще выпустить
-# два файла, а нужный выбирает install.sh по uname -m.
+# по файлу на платформу, а нужный выбирает install.sh / install.ps1.
 on:
   push:
     tags: ["v*"]
@@ -19,8 +19,13 @@ jobs:
         include:
           - runner: macos-14      # Apple Silicon
             arch: arm64
+            asset: deru-macos-arm64
           - runner: macos-13      # Intel
             arch: x86_64
+            asset: deru-macos-x86_64
+          - runner: windows-latest
+            arch: x86_64
+            asset: deru-windows-x86_64.exe
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
@@ -47,17 +52,19 @@ jobs:
 
       - name: Подпись ad-hoc
         # без подписи macOS на Apple Silicon убивает процесс при запуске
+        if: runner.os != 'Windows'
         run: codesign --force --sign - dist/deru
 
       - name: Проверка запуска
         run: ./dist/deru --version
+        # PyInstaller на Windows кладёт рядом deru.exe; bash-обёртка GH его найдёт
 
-      - run: mv dist/deru dist/deru-macos-${{ matrix.arch }}
+      - run: mv dist/deru${{ runner.os == 'Windows' && '.exe' || '' }} dist/${{ matrix.asset }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: deru-macos-${{ matrix.arch }}
-          path: dist/deru-macos-${{ matrix.arch }}
+          name: ${{ matrix.asset }}
+          path: dist/${{ matrix.asset }}
           retention-days: 7
 
   release:
@@ -78,7 +85,7 @@ jobs:
         run: build/make_dmg.sh dist/deru-macos-arm64 dist/deru-macos-x86_64 dist/DesktopExplorerRU.dmg
 
       - name: Контрольные суммы
-        run: cd dist && shasum -a 256 deru-macos-arm64 deru-macos-x86_64 DesktopExplorerRU.dmg > SHA256SUMS
+        run: cd dist && shasum -a 256 deru-macos-arm64 deru-macos-x86_64 deru-windows-x86_64.exe DesktopExplorerRU.dmg > SHA256SUMS
 
       - uses: softprops/action-gh-release@v2
         with:
@@ -86,5 +93,6 @@ jobs:
           files: |
             dist/deru-macos-arm64
             dist/deru-macos-x86_64
+            dist/deru-windows-x86_64.exe
             dist/DesktopExplorerRU.dmg
             dist/SHA256SUMS
