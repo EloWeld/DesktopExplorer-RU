@@ -137,7 +137,7 @@ OS_Alerts,SecurityQuestion_MaxProfile_Hint2,102892066348982276,"САМАЯ КР�
 OS_Alerts,SecurityQuestion_MaxProfile_Hint3,102892066348982277,"да, включая моё второе имя… далеко не так круто, как MAX1MUS!"
 OS_Alerts,SecurityQuestion_MaxProfile_IncorrectAnswer,102892066348982282,Неверный ответ!
 OS_Alerts,SecurityQuestion_MaxProfile_Q1,102892066348982272,Какой мой любимый динозавр?
-OS_Alerts,SecurityQuestion_MaxProfile_Q2,102892066348982273,Что означает ПЕРВАЯ БУКВА названия моей будущей школы? 
+OS_Alerts,SecurityQuestion_MaxProfile_Q2,102892066348982273,Что означает ПОСЛЕДНЯЯ БУКВА названия моей будущей школы? 
 OS_Alerts,SecurityQuestion_MaxProfile_Q3,102892066348982274,Как моё ВТОРОЕ имя?
 OS_Alerts,SecurityQuestion_MaxProfile_SuccessMessage,102892066348982281,Профиль успешно восстановлен. Пароль больше не требуется.
 OS_Alerts,SecurityQuestion_MaxProfile_Title,102892066239930368,Вопросы для восстановления профиля
