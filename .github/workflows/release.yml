@@ -27,6 +27,11 @@ jobs:
             arch: x86_64
             asset: deru-windows-x86_64.exe
     runs-on: ${{ matrix.runner }}
+    # На windows-latest run: по умолчанию уходит в pwsh, где ${VAR#v} и ./dist/deru
+    # не работают. Шаги писались под bash — он есть на всех трёх раннерах.
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
 
