@@ -1,5 +1,6 @@
 """Finding the game — the part that runs before anything can go right."""
 import os
+import sys
 
 import pytest
 
@@ -8,6 +9,8 @@ from errors import GameLayoutError, GameNotFound
 
 
 class TestCleanPath:
+    @pytest.mark.skipif(sys.platform == "win32",
+                        reason="на Windows обратный слеш — разделитель пути, а не экранирование")
     def test_finder_drop_keeps_escaped_spaces_together(self):
         dropped = r"/Users/me/Library/Application\ Support/Steam"
         assert steam.clean_path(dropped) == "/Users/me/Library/Application Support/Steam"

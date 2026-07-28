@@ -96,7 +96,11 @@ def clean_path(raw):
 
     def tidy(value):
         value = os.path.expanduser(value)
-        return value.rstrip(os.sep) or os.sep
+        # Windows принимает и прямой слеш, и обратный, а os.sep знает только
+        # обратный — без altsep путь, вставленный как C:/Games/, остался бы
+        # с хвостом.
+        seps = os.sep + (os.altsep or "")
+        return value.rstrip(seps) or os.sep
 
     for reading in readings:
         if os.path.exists(os.path.expanduser(reading)):
