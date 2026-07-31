@@ -1,6 +1,6 @@
 # Русификатор Desktop Explorer — установка одной командой.
 #
-#   irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.ps1 | iex
 #
 # Скрипт скачивает готовое приложение из последнего релиза, проверяет
 # контрольную сумму и запускает мастер. После выхода из мастера файл
@@ -8,7 +8,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$Repo  = 'EloWeld/DesktopExplorer-RU-MacOS'
+$Repo  = 'EloWeld/DesktopExplorer-RU'
 $Base  = "https://github.com/$Repo/releases/latest/download"
 $Asset = 'deru-windows-x86_64.exe'
 

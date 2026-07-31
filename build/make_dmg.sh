@@ -60,7 +60,7 @@ cat > "$ROOT/ПРОЧТИ МЕНЯ.txt" <<'READ'
 
 Способ без этих плясок — одна команда в Терминале:
 
-  curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.sh | bash
 
 Что делает русификатор
 ----------------------

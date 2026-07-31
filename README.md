@@ -28,7 +28,7 @@ not translated shows its original **English** text, so every puzzle stays solvab
 **macOS — one command.** No Python, no dependencies, nothing left behind:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.sh | bash
 ```
 
 It downloads the wizard from the latest release, verifies its checksum, runs it
@@ -37,7 +37,7 @@ libraries on other drives — shows what it is about to do and asks before
 touching anything.
 
 **Prefer clicking?** Download `DesktopExplorerRU.dmg` from
-[Releases](https://github.com/EloWeld/DesktopExplorer-RU-MacOS/releases/latest),
+[Releases](https://github.com/EloWeld/DesktopExplorer-RU/releases/latest),
 open it, then **right-click** `Русификатор.command` → **Open** → **Open**.
 Right-click is not optional: the app is not signed with a paid Apple
 certificate, and a plain double-click is refused by Gatekeeper. The `curl`
@@ -46,7 +46,7 @@ route above avoids that entirely.
 **Windows — one command.** Paste this into PowerShell and press Enter:
 
 ```powershell
-irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.ps1 | iex
 ```
 
 It downloads the wizard from the latest release, verifies its checksum, runs
@@ -185,7 +185,7 @@ by TakWolf, used under the SIL Open Font License 1.1.
 **macOS — одна команда.** Ни Python, ни зависимостей, ни следов в системе:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.sh | bash
 ```
 
 Скопируйте её в Терминал и нажмите Enter. Команда скачает мастер установки из
@@ -194,7 +194,7 @@ curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/ma
 покажет, что собирается сделать, и спросит подтверждение.
 
 **Не любите терминал?** Скачайте `DesktopExplorerRU.dmg` из
-[релизов](https://github.com/EloWeld/DesktopExplorer-RU-MacOS/releases/latest),
+[релизов](https://github.com/EloWeld/DesktopExplorer-RU/releases/latest),
 откройте образ и нажмите на `Русификатор.command` **правой** кнопкой →
 **Открыть** → **Открыть**. Именно правой: приложение не подписано платным
 сертификатом Apple, и от обычного двойного щелчка macOS откажется. Команда выше
@@ -203,7 +203,7 @@ curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/ma
 **Windows — одна команда.** Вставьте её в PowerShell и нажмите Enter:
 
 ```powershell
-irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.ps1 | iex
 ```
 
 Команда скачает мастер из последнего релиза, проверит контрольную сумму,

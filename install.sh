@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Русификатор Desktop Explorer — установка одной командой.
 #
-#   curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU-MacOS/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/EloWeld/DesktopExplorer-RU/main/install.sh | bash
 #
 # Скрипт скачивает готовое приложение из последнего релиза, проверяет
 # контрольную сумму и запускает мастер. После выхода из мастера файл
 # удаляется — в системе ничего не остаётся (DERU_KEEP=1 оставит его).
 set -euo pipefail
 
-REPO="EloWeld/DesktopExplorer-RU-MacOS"
+REPO="EloWeld/DesktopExplorer-RU"
 BASE="https://github.com/${REPO}/releases/latest/download"
 
 red()  { printf '\033[31m%s\033[0m\n' "$*" >&2; }

@@ -35,7 +35,7 @@ try:
 except ImportError:
     hkmod = None
 
-ISSUES = "https://github.com/EloWeld/DesktopExplorer-RU-MacOS/issues"
+ISSUES = "https://github.com/EloWeld/DesktopExplorer-RU/issues"
 
 WARNINGS = [
     "Русский язык занимает место испанского — пятый слот в игру добавить нельзя.",

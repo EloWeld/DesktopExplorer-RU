@@ -17,16 +17,19 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - runner: macos-14      # Apple Silicon
+          - runner: macos-15          # Apple Silicon
             arch: arm64
             asset: deru-macos-arm64
-          - runner: macos-13      # Intel
+          - runner: macos-15-intel    # Intel
             arch: x86_64
             asset: deru-macos-x86_64
           - runner: windows-latest
             arch: x86_64
             asset: deru-windows-x86_64.exe
     runs-on: ${{ matrix.runner }}
+    # Раннер, которого больше нет (так ушёл macos-13), не падает — он молча
+    # ждёт свободную машину сутки, и release из-за needs не стартует вовсе.
+    timeout-minutes: 30
     # На windows-latest run: по умолчанию уходит в pwsh, где ${VAR#v} и ./dist/deru
     # не работают. Шаги писались под bash — он есть на всех трёх раннерах.
     defaults:
@@ -74,7 +77,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
