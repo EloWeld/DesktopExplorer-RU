@@ -97,7 +97,9 @@ jobs:
 
       - uses: softprops/action-gh-release@v2
         with:
-          draft: true
+          # Не черновик: releases/latest/download черновики не отдаёт, и
+          # установщики получали бы 404 до ручного нажатия Publish.
+          draft: false
           files: |
             dist/deru-macos-arm64
             dist/deru-macos-x86_64
