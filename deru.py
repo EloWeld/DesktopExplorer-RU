@@ -163,11 +163,29 @@ def parse_args(argv):
         prog="deru", description="Русификатор Desktop Explorer")
     ap.add_argument("--game", help="папка с игрой, если она не найдена сама")
     ap.add_argument("--version", action="version", version=VERSION)
+    ap.add_argument("--selftest", action="store_true", help=argparse.SUPPRESS)
     return ap.parse_args(argv)
+
+
+def selftest():
+    """Encode one texture in each format the game uses.
+
+    A packaged build can be missing a native codec or its data files and still
+    start up fine — the failure only surfaces halfway through an install. This
+    exercises that path, so the release workflow catches it instead of a player.
+    """
+    from PIL import Image
+    img = Image.new("RGBA", (8, 8), (255, 0, 0, 255))
+    for fmt in (10, 12, 4):                            # DXT1, DXT5, RGBA32
+        patcher.encode_texture(img, fmt, 8, 8, 2)
+    print("selftest ok")
+    return 0
 
 
 def main(argv=None):
     args = parse_args(sys.argv[1:] if argv is None else argv)
+    if args.selftest:
+        return selftest()
     console = Console()
     log_path = os.path.join(tempfile.gettempdir(), "desktop-explorer-ru.log")
     log = open(log_path, "w", encoding="utf-8")

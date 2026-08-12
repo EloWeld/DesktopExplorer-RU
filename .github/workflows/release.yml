@@ -67,6 +67,11 @@ jobs:
         run: ./dist/deru --version
         # PyInstaller на Windows кладёт рядом deru.exe; bash-обёртка GH его найдёт
 
+      - name: Проверка кодеков
+        # --version не трогает нативные кодеки: их отсутствие в сборке
+        # всплывало только на середине установки, уже у игрока
+        run: ./dist/deru --selftest
+
       - run: mv dist/deru${{ runner.os == 'Windows' && '.exe' || '' }} dist/${{ matrix.asset }}
 
       - uses: actions/upload-artifact@v4

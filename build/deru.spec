@@ -25,7 +25,9 @@ hiddenimports = [
     "unityfs", "writer", "glyphs", "prebake",
 ]
 
-for package in ("UnityPy",):
+# archspec ships its CPU database as JSON data; astc_encoder and etcpak read it
+# on import to pick a SIMD build, so without it the texture encoder never loads.
+for package in ("UnityPy", "archspec"):
     pkg_datas, pkg_binaries, pkg_hidden = collect_all(package)
     datas += pkg_datas
     binaries += pkg_binaries
