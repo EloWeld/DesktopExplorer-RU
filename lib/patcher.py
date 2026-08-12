@@ -12,16 +12,23 @@ import json
 import os
 import shutil
 import struct
+import sys
+import types
 
-import UnityPy
-from PIL import Image
+# UnityPy.export imports its audio converter, which loads FMOD's native library
+# on import. Only the texture half is used here, and the frozen builds ship no
+# fmod.dll — a stub keeps that import from taking the patcher down with it.
+sys.modules.setdefault("fmod_toolkit", types.ModuleType("fmod_toolkit"))
 
-from errors import GameLayoutError, NoBackup, NotWritable
-from glyphs import G
-from resources import res
-from unityfs import Bundle, SerializedFile
-from version import VERSION
-from writer import rebuild_bundle, rebuild_serialized
+import UnityPy                                          # noqa: E402
+from PIL import Image                                   # noqa: E402
+
+from errors import GameLayoutError, NoBackup, NotWritable  # noqa: E402
+from glyphs import G                                    # noqa: E402
+from resources import res                               # noqa: E402
+from unityfs import Bundle, SerializedFile              # noqa: E402
+from version import VERSION                             # noqa: E402
+from writer import rebuild_bundle, rebuild_serialized   # noqa: E402
 
 CELL, XOFF = 80, 40
 

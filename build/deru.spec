@@ -40,6 +40,8 @@ a = Analysis(
     excludes=[
         # the CSVs are for the game's own localisation pipeline, not for runtime
         "tkinter", "unittest", "pydoc_data", "pytest",
+        # UnityPy's audio path only; patcher stubs it out, the DLL never ships
+        "fmod_toolkit", "pyfmodex",
     ],
     noarchive=False,
 )
