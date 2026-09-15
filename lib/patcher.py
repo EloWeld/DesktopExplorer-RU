@@ -8,6 +8,7 @@ Nothing here writes to the screen. Progress goes to a Reporter, so the same
 code drives the plain command line, the wizard, and the tests.
 """
 import copy
+import hashlib
 import json
 import os
 import shutil
@@ -690,18 +691,61 @@ def check_writable(layout):
 
 
 def write_stamp(layout, payload_size):
-    """Record what patched this game, next to the originals it saved."""
-    stamp = {"version": VERSION, "strings": payload_size}
+    """Record what patched this game, next to the originals it saved.
+
+    The hashes are what lets a later run tell our own output from a file Steam
+    replaced in the meantime — see steam_rewrote().
+    """
+    stamp = {"version": VERSION, "strings": payload_size,
+             "patched": {name: sha256(path) for path, name in backup_files(layout)}}
     with open(os.path.join(layout.backup, STAMP), "w", encoding="utf-8") as fh:
         json.dump(stamp, fh, ensure_ascii=False, indent=1)
 
 
 def read_stamp(layout):
+    path = os.path.join(layout.backup, STAMP)
     try:
-        with open(os.path.join(layout.backup, STAMP), encoding="utf-8") as fh:
-            return json.load(fh)
+        with open(path, encoding="utf-8") as fh:
+            stamp = json.load(fh)
     except (OSError, ValueError):
         return None
+    # when the patch finished, for stamps written before hashes were recorded
+    stamp.setdefault("written", os.path.getmtime(path))
+    return stamp
+
+
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def steam_rewrote(path, saved, name, stamp):
+    """True when the game's copy of a file is neither ours nor the saved original.
+
+    A Steam update rewrites the files whose content changed and leaves the rest
+    alone — our patched bundles included, since it has no idea they are ours. So
+    after an update the installation is a mix: fresh originals where Steam wrote,
+    last build's patch where it did not. Backing all of it up again would save
+    patched files as "originals"; trusting the whole old backup would put the
+    previous build's catalog and bundles back into a newer game, and a catalog
+    that disagrees with its bundles is exactly the black screen on launch.
+    Telling those two apart is this function's only job.
+    """
+    if not os.path.exists(path) or not os.path.exists(saved):
+        return False
+    ours = stamp.get("patched") or {}
+    current = sha256(path)
+    if current == ours.get(name) or current == sha256(saved):
+        return False                  # still our patch, or still the original
+    if name in ours:
+        return True
+    # stamp from a version that recorded no hashes: fall back on the clock.
+    # Anything written after the patch finished was not written by the patch.
+    written = stamp.get("written")
+    return written is not None and os.path.getmtime(path) > written
 
 
 # ----------------------------------------------------------------- install
@@ -711,6 +755,7 @@ def install(layout, rep=None):
     check_writable(layout)
 
     rep.step("backup", "резервная копия")
+    stamp = read_stamp(layout) or {}
     os.makedirs(layout.backup, exist_ok=True)
     for path, name in backup_files(layout):
         if not os.path.exists(path):
@@ -720,6 +765,11 @@ def install(layout, rep=None):
         target = os.path.join(layout.backup, name)
         if not os.path.exists(target):
             shutil.copy(path, target)
+        elif steam_rewrote(path, target, name, stamp):
+            # the game updated: what Steam put here is the new original, and the
+            # copy from the previous build must not be patched and written back
+            shutil.copy(path, target)
+            rep.note(f"игра обновилась — оригинал перезаписан: {name}")
     rep.ok(layout.backup)
 
     payload, base, extra, clashes = load_payload()
@@ -793,21 +843,21 @@ def restore(layout, rep=None):
     check_writable(layout)
 
     rep.step("restore", "восстановление файлов")
-    restored = 0
-    catalog_backup = os.path.join(layout.backup, "catalog.json")
-    if os.path.exists(catalog_backup):
-        shutil.copy(catalog_backup, layout.catalog)
-        restored += 1
-    for name in PATCHED_BUNDLES + (layout.images,):
+    stamp = read_stamp(layout) or {}
+    restored = skipped = 0
+    for path, name in backup_files(layout):
         saved = os.path.join(layout.backup, name)
-        if os.path.exists(saved):
-            shutil.copy(saved, layout.bundle(name))
-            restored += 1
-    saved_dll = os.path.join(layout.backup, DLL)
-    if os.path.exists(saved_dll):
-        shutil.copy(saved_dll, os.path.join(layout.managed, DLL))
+        if not os.path.exists(saved):
+            continue
+        if steam_rewrote(path, saved, name, stamp):
+            # a game update already replaced this one with its own original;
+            # putting the previous build's copy back would only break it
+            skipped += 1
+            continue
+        shutil.copy(saved, path)
         restored += 1
-    rep.ok(f"{restored} файлов возвращено")
+    rep.ok(f"{restored} файлов возвращено" +
+           (f", {skipped} уже заменены обновлением игры" if skipped else ""))
 
     rep.step("settings", "сохранённый язык")
     n = fix_saved_language(ES_CODE)
