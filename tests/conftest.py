@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import struct
 import sys
 
 import pytest
@@ -13,11 +14,17 @@ IMAGES = ("localization-assets-english(unitedstates)(en-us)_assets_all_"
 
 
 def write_catalog(path, patched):
-    """A catalog.json shaped like the game's, with or without the ru-RU keys."""
-    keys = b"\x05\x00\x00\x00ru-RU" if patched else b"\x05\x00\x00\x00es-MX"
+    """A catalog.json shaped like the game's, with or without our zeroed CRCs.
+
+    The keys hold ru-RU either way, as every catalog since 1.0.66 does.
+    """
+    keys = b"\x05\x00\x00\x00es-MX\x05\x00\x00\x00ru-RU"
+    crc = '"m_Crc":0         ' if patched else '"m_Crc":3735928559'
+    extra = '{"m_BundleName":"x",%s,"m_Hash":"y"}' % crc
+    blob = struct.pack("<i", 2 * len(extra)) + extra.encode("utf-16-le")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump({"m_KeyDataString": base64.b64encode(keys).decode("ascii"),
-                   "m_ExtraDataString": ""}, fh)
+                   "m_ExtraDataString": base64.b64encode(blob).decode("ascii")}, fh)
 
 
 @pytest.fixture

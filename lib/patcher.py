@@ -7,7 +7,6 @@ modified, and written back. Originals are backed up first.
 Nothing here writes to the screen. Progress goes to a Reporter, so the same
 code drives the plain command line, the wizard, and the tests.
 """
-import copy
 import hashlib
 import json
 import os
@@ -29,16 +28,24 @@ from glyphs import G                                    # noqa: E402
 from resources import res                               # noqa: E402
 from unityfs import Bundle, SerializedFile              # noqa: E402
 from version import VERSION                             # noqa: E402
-from writer import rebuild_bundle, rebuild_serialized   # noqa: E402
+from writer import adopt_types, rebuild_bundle, rebuild_serialized  # noqa: E402
 
 CELL, XOFF = 80, 40
 
-STRINGS = "localization-string-tables-spanish(mexico)(es-mx)_assets_all.bundle"
+STRINGS = "localization-string-tables-russian(russia)(ru-ru)_assets_all.bundle"
 STRINGS_EN = "localization-string-tables-english(unitedstates)(en-us)_assets_all.bundle"
 SHARED = "localization-assets-shared_assets_all.bundle"
-LOCALES = "localization-locales_assets_all.bundle"
-ASSET_TABLES = "localization-asset-tables-spanish(mexico)(es-mx)_assets_all.bundle"
+ASSET_TABLES = "localization-asset-tables-russian(russia)(ru-ru)_assets_all.bundle"
 ASSET_TABLES_EN = "localization-asset-tables-english(unitedstates)(en-us)_assets_all.bundle"
+
+# What 1.0.4 and earlier patched to turn the Spanish locale into a Russian one.
+# Left patched next to the game's own ru-RU they make two ru-RU locales, so an
+# install or restore puts back whichever of them is still ours (revert_legacy).
+LEGACY_BUNDLES = (
+    "localization-string-tables-spanish(mexico)(es-mx)_assets_all.bundle",
+    "localization-locales_assets_all.bundle",
+    "localization-asset-tables-spanish(mexico)(es-mx)_assets_all.bundle",
+)
 ART = os.path.join("art", "reference", "ru")
 DLL = "Assembly-CSharp.dll"
 
@@ -52,10 +59,11 @@ PAYLOAD_EXTRA = os.path.join("data", "payload_additional.json")
 # marker written into the backup folder: what patched this game, and when
 STAMP = ".deru.json"
 
-# The game formats dates with the CultureInfo of the selected locale's code, so
-# a locale that still says es-MX shows Spanish weekday names ("jueves"). The
-# code is renamed to ru-RU everywhere it acts as an identifier. ru-RU and es-MX
-# are the same length, which keeps every offset-indexed structure valid.
+# Since 1.0.66 the game ships its own ru-RU locale, with every table still
+# empty and no entry in the language menu. The translation fills those tables;
+# what still trades es-MX for ru-RU is the menu (patch_dll), so Russian takes
+# the Spanish slot, and the saved choice (fix_saved_language). The two codes
+# are the same length, which is what lets both be patched in place.
 ES_CODE, RU_CODE = b"es-MX", b"ru-RU"
 
 # The terminal renders with bpdots.squares-bold SDF, whose typeface has no
@@ -70,7 +78,7 @@ FSEX_GUID = "57886462b9e08456f9b6f3b12bf04d27"     # FSEX302 SDF
 
 # The files the patch replaces, and therefore the files it must back up. The
 # artwork bundle carries a content hash in its name, so it is added per install.
-PATCHED_BUNDLES = (SHARED, STRINGS, LOCALES, ASSET_TABLES)
+PATCHED_BUNDLES = (SHARED, STRINGS, ASSET_TABLES)
 
 # Steps the install goes through, in order. The wizard renders one line per
 # entry before any work starts, so the player sees the whole road up front.
@@ -78,7 +86,6 @@ STEPS = [
     ("backup", "резервная копия"),
     ("fonts", "шрифты"),
     ("strings", "строки"),
-    ("locales", "коды локали"),
     ("tables", "таблицы ресурсов"),
     ("images", "картинки"),
     ("menu", "меню выбора языка"),
@@ -339,7 +346,7 @@ def patch_images(src, dst, art_dir):
 
 # ----------------------------------------------------------------- strings
 def load_tables(path):
-    """{table name: {int id: text}} from a string-tables bundle."""
+    """{table name: (object, typetree dict)} from a string-tables bundle."""
     env = UnityPy.load(path)
     out = {}
     for obj in env.objects:
@@ -348,102 +355,53 @@ def load_tables(path):
         d = obj.read_typetree()
         if "m_TableData" not in d or not d.get("m_Name"):
             continue
-        out[d["m_Name"].rsplit("_", 1)[0]] = {
-            e["m_Id"]: e["m_Localized"] for e in d["m_TableData"]}
+        out[d["m_Name"].rsplit("_", 1)[0]] = (obj, d)
     return out
 
 
-def patch_strings(src, dst, payload, english):
-    """Rebuild the es-MX tables as English base + Russian overlay.
+def patch_strings(src, english, dst, payload):
+    """Fill the game's own, still empty, ru-RU tables: English base + Russian overlay.
 
     payload:  {table name: {id: text}} — the Russian translation.
-    english:  {table name: {int id: text}} — the player's own en-US tables.
+    english:  the player's own en-US string-tables bundle.
     Everything not translated (file names, passwords, terminal commands) must
-    read exactly as in English, or the puzzles stop matching player input —
-    leaving the original Spanish text there would break them the same way.
+    read exactly as in English, or the puzzles stop matching player input.
+
+    Rows come over with their metadata, and with them the table's metadata and
+    managed-reference registry: that is where SmartFormatTag lives, without
+    which "{0}" and "{incorrect_password}" print as typed. The ru-RU file was
+    built with no such type declared, so it takes the English file's type
+    metadata (adopt_types) and the rows are serialized through the English
+    objects, whose file knows the type.
     """
-    env = UnityPy.load(src)
-    new_objects, changed, rebased, added = {}, 0, 0, 0
-    for obj in env.objects:
-        if obj.type.name != "MonoBehaviour":
+    en_bundle = Bundle(english)
+    b = Bundle(src)
+    sf = adopt_types(SerializedFile(b.node_bytes(0)),
+                     SerializedFile(en_bundle.node_bytes(0)))
+    if sf is None:
+        raise GameLayoutError(
+            "Русские и английские таблицы строк в игре устроены по-разному.",
+            hint="Скорее всего, вышло обновление игры — нужна новая версия русификатора.")
+    en_tables = load_tables(english)
+    new_objects, translated, kept = {}, 0, 0
+    for name, (obj, d) in load_tables(src).items():
+        if name not in en_tables:
             continue
-        d = obj.read_typetree()
-        if "m_TableData" not in d or not d.get("m_Name"):
-            continue
-        name = d["m_Name"].rsplit("_", 1)[0]
+        en_obj, en = en_tables[name]
         table = payload.get(name, {})
-        en = english.get(name, {})
-        if not table and not en:
-            continue
-
-        # the tables become the ru-RU locale's tables (see ES_CODE/RU_CODE note)
-        renamed = False
-        lid = d.get("m_LocaleId")
-        if isinstance(lid, dict) and lid.get("m_Code") == "es-MX":
-            lid["m_Code"] = "ru-RU"
-            d["m_Name"] = d["m_Name"].replace("es-MX", "ru-RU")
-            renamed = True
-
-        rows = d["m_TableData"]
-        template = copy.deepcopy(rows[0]) if rows else None
-        seen, local = set(), 0
-        for e in rows:
-            seen.add(e["m_Id"])
-            new = table.get(str(e["m_Id"]))
-            if new is None:
-                new = en.get(e["m_Id"])  # untranslated -> English, never Spanish
-                if new is not None and new != e.get("m_Localized"):
-                    rebased += 1
-            elif new != e.get("m_Localized"):
-                local += 1
-            if new is not None and new != e.get("m_Localized"):
-                e["m_Localized"] = new
-        # entries the Spanish table lacks: first the translated ones...
-        for sid, text in table.items():
-            if int(sid) not in seen and template is not None:
-                n = copy.deepcopy(template)
-                n["m_Id"], n["m_Localized"] = int(sid), text
-                rows.append(n)
-                seen.add(int(sid))
-                added += 1
-        # ...then everything else the English table has
-        for iid, text in en.items():
-            if iid not in seen and template is not None:
-                n = copy.deepcopy(template)
-                n["m_Id"], n["m_Localized"] = iid, text
-                rows.append(n)
-                added += 1
-        if local or rebased or added or renamed:
-            new_objects[obj.path_id] = obj.save_typetree(d)
-            changed += local
-
-    b = Bundle(src)
-    sf = SerializedFile(b.node_bytes(0))
+        for e in en["m_TableData"]:
+            text = table.get(str(e["m_Id"]))
+            if text is None:
+                kept += 1
+            else:
+                e["m_Localized"] = text
+                translated += 1
+        d["m_TableData"] = en["m_TableData"]
+        d["m_Metadata"] = en["m_Metadata"]
+        d["references"] = en["references"]
+        new_objects[obj.path_id] = en_obj.save_typetree(d)
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
-    return changed, rebased, added
-
-
-# ------------------------------------------------------------- locale codes
-def patch_locale_codes(src, dst):
-    """Rename es-MX -> ru-RU inside Locale/table objects of a bundle.
-
-    Same-length in-place byte patch, so no object relayout is needed. The
-    AssetBundle container object is skipped: its "Assets/..." paths must keep
-    matching the untouched catalog internal ids and on-disk file names.
-    """
-    b = Bundle(src)
-    node = bytearray(b.node_bytes(0))
-    sf = SerializedFile(bytes(node))
-    n = 0
-    for o in sf.objects:
-        start = sf.data_offset + o["byte_start"]
-        chunk = bytes(node[start:start + o["byte_size"]])
-        if ES_CODE not in chunk or b"Assets/" in chunk:
-            continue
-        n += chunk.count(ES_CODE)
-        node[start:start + o["byte_size"]] = chunk.replace(ES_CODE, RU_CODE)
-    rebuild_bundle(b, 0, bytes(node), dst)
-    return n
+    return translated, kept
 
 
 def _table_parts(obj):
@@ -488,64 +446,49 @@ def _build_table(head, entries, tail):
     return bytes(out)
 
 
-def patch_asset_tables(src, english, dst):
-    """Rebuild the localized asset tables for the ru-RU locale.
-
-    ImageFiles entries are re-pointed at the English textures — the Spanish
-    ones have Spanish text baked into the pixels and there is no Russian art.
-    FontAssets entries are kept (they carry the fonts the Cyrillic glyphs are
-    baked into) except the console slot, which moves from bpdots to FSEX302
-    (see BPDOTS_GUID). Table ids are renamed to ru-RU like everywhere else.
-    """
-    ben = Bundle(english)
-    sfe = SerializedFile(ben.node_bytes(0))
-    en_images = {}
-    for o in sfe.objects:
-        chunk = sfe.raw[sfe.data_offset + o["byte_start"]:
-                        sfe.data_offset + o["byte_start"] + o["byte_size"]]
-        if b"Assets/" in chunk:
-            continue
-        try:
-            name, _, entries, _ = _table_parts(chunk)
-        except (struct.error, UnicodeDecodeError, IndexError):
-            continue
-        if name.startswith("ImageFiles"):
-            en_images = {sid: val for sid, val, _ in entries}
-    if not en_images:
-        raise GameLayoutError(
-            "Не найдена английская таблица ImageFiles — файлы игры изменились.",
-            hint="Скорее всего, вышло обновление игры — нужна новая версия русификатора.")
-
-    b = Bundle(src)
-    sf = SerializedFile(b.node_bytes(0))
-    new_objects, renamed, swapped, refonted = {}, 0, 0, 0
+def _tables(sf, code):
+    """{table name without locale: (path id, head, entries, tail)} of one file."""
+    out = {}
     for o in sf.objects:
         chunk = sf.raw[sf.data_offset + o["byte_start"]:
                        sf.data_offset + o["byte_start"] + o["byte_size"]]
-        if ES_CODE not in chunk or b"Assets/" in chunk:
+        if code not in chunk or b"Assets/" in chunk:
             continue
         name, head, entries, tail = _table_parts(chunk)
-        head = head.replace(ES_CODE, RU_CODE)
-        renamed += 1
-        if name.startswith("ImageFiles"):
-            fixed = []
-            for sid, val, meta in entries:
-                tgt = en_images.get(sid, val)
-                if tgt != val:
-                    swapped += 1
-                fixed.append((sid, tgt, meta))
-            entries = fixed
-        elif name.startswith("FontAssets"):
-            fixed = []
-            for sid, val, meta in entries:
-                if val == BPDOTS_GUID:
-                    val = FSEX_GUID
-                    refonted += 1
-                fixed.append((sid, val, meta))
-            entries = fixed
-        new_objects[o["path_id"]] = _build_table(head, entries, tail)
+        out[name.rsplit("_", 1)[0]] = (o["path_id"], head, entries, tail)
+    return out
+
+
+def patch_asset_tables(src, english, dst):
+    """Fill the game's own, still empty, ru-RU asset tables from the English ones.
+
+    Images stay English — the Russian art is painted over the English textures
+    (patch_images). Fonts are the English ones too, they carry the baked-in
+    Cyrillic, except the console slot, which moves from bpdots to FSEX302
+    (see BPDOTS_GUID). Entries carry no metadata, so nothing else comes over.
+    """
+    en = _tables(SerializedFile(Bundle(english).node_bytes(0)), b"en-US")
+    b = Bundle(src)
+    sf = SerializedFile(b.node_bytes(0))
+    ru = _tables(sf, RU_CODE)
+    if not {"ImageFiles", "FontAssets"} <= en.keys() & ru.keys():
+        raise GameLayoutError(
+            "Не найдены таблицы ImageFiles/FontAssets — файлы игры изменились.",
+            hint="Скорее всего, вышло обновление игры — нужна новая версия русификатора.")
+
+    new_objects, refonted = {}, 0
+    for name, (pid, head, _, tail) in ru.items():
+        if name not in en:
+            continue
+        entries = en[name][2]
+        if name == "FontAssets":
+            refonted = sum(val == BPDOTS_GUID for _, val, _ in entries)
+            entries = [(sid, FSEX_GUID if val == BPDOTS_GUID else val, meta)
+                       for sid, val, meta in entries]
+        head = head[:-4] + struct.pack("<I", len(entries))   # the entry count
+        new_objects[pid] = _build_table(head, entries, tail)
     rebuild_bundle(b, 0, rebuild_serialized(sf, new_objects), dst)
-    return renamed, swapped, refonted
+    return len(en["ImageFiles"][2]), refonted
 
 
 # ---------------------------------------------------------- saved settings
@@ -629,14 +572,8 @@ def patch_catalog(src, dst):
         out += blob[i:i + 1]
         i += 1
     cat["m_ExtraDataString"] = base64.b64encode(bytes(out)).decode("ascii")
-    # re-key the es-MX addressables entries to ru-RU; keys are length-prefixed
-    # and offset-indexed, and the codes are the same length. m_InternalIds keep
-    # es-MX on purpose — they must match container paths inside the bundles.
-    kd = base64.b64decode(cat["m_KeyDataString"])
-    rekeyed = kd.count(ES_CODE)
-    cat["m_KeyDataString"] = base64.b64encode(kd.replace(ES_CODE, RU_CODE)).decode("ascii")
     json.dump(cat, open(dst, "w", encoding="utf-8"), separators=(",", ":"), ensure_ascii=False)
-    return n, rekeyed
+    return n
 
 
 # ----------------------------------------------------------------- payload
@@ -672,6 +609,24 @@ def backup_files(layout):
         pairs.append((layout.bundle(name), name))
     pairs.append((os.path.join(layout.managed, DLL), DLL))
     return pairs
+
+
+def revert_legacy(layout, stamp):
+    """Put back the originals of the files only older versions of the patch replaced.
+
+    Only where the game still holds exactly what we wrote: a file Steam has
+    rewritten since is already the right original, and the copy in the backup
+    may be from an older build.
+    """
+    ours = stamp.get("patched") or {}
+    n = 0
+    for name in LEGACY_BUNDLES:
+        path, saved = layout.bundle(name), os.path.join(layout.backup, name)
+        if (name in ours and os.path.exists(path) and os.path.exists(saved)
+                and sha256(path) == ours[name]):
+            shutil.copy(saved, path)
+            n += 1
+    return n
 
 
 def check_writable(layout):
@@ -756,6 +711,8 @@ def install(layout, rep=None):
 
     rep.step("backup", "резервная копия")
     stamp = read_stamp(layout) or {}
+    if revert_legacy(layout, stamp):
+        rep.note("испанская локаль возвращена к оригиналу — перевод теперь в русской")
     os.makedirs(layout.backup, exist_ok=True)
     for path, name in backup_files(layout):
         if not os.path.exists(path):
@@ -784,22 +741,18 @@ def install(layout, rep=None):
     rep.ok(f"{n} объектов перезаписано")
 
     rep.step("strings", "строки")
-    english = load_tables(layout.bundle(STRINGS_EN))  # never modified, read in place
-    changed, rebased, added = patch_strings(
-        os.path.join(layout.backup, STRINGS), layout.bundle(STRINGS), payload, english)
-    rep.ok(f"{changed} переведено, {rebased} возвращено к английскому, {added} добавлено")
-
-    rep.step("locales", "коды локали")
-    n = patch_locale_codes(os.path.join(layout.backup, LOCALES), layout.bundle(LOCALES))
-    rep.ok(f"{n} идентификаторов переименовано")
+    translated, kept = patch_strings(
+        os.path.join(layout.backup, STRINGS),
+        layout.bundle(STRINGS_EN),                     # read in place
+        layout.bundle(STRINGS), payload)
+    rep.ok(f"{translated} переведено, {kept} оставлено английскими")
 
     rep.step("tables", "таблицы ресурсов")
-    renamed, swapped, refonted = patch_asset_tables(
+    images, refonted = patch_asset_tables(
         os.path.join(layout.backup, ASSET_TABLES),
         layout.bundle(ASSET_TABLES_EN),                # read in place
         layout.bundle(ASSET_TABLES))
-    rep.ok(f"{renamed} таблиц, {swapped} картинок с английских, "
-           f"{refonted} шрифт консоли → FSEX302")
+    rep.ok(f"{images} картинок с английских, {refonted} шрифт консоли → FSEX302")
 
     rep.step("images", "картинки")
     art_dir = res(ART)
@@ -819,8 +772,8 @@ def install(layout, rep=None):
     rep.ok(f"{n} строк заменено")
 
     rep.step("catalog", "каталог ресурсов")
-    n, rekeyed = patch_catalog(os.path.join(layout.backup, "catalog.json"), layout.catalog)
-    rep.ok(f"{n} контрольных сумм обнулено, {rekeyed} ключей → ru-RU")
+    n = patch_catalog(os.path.join(layout.backup, "catalog.json"), layout.catalog)
+    rep.ok(f"{n} контрольных сумм обнулено")
 
     rep.step("settings", "сохранённый язык")
     switched = fix_saved_language(RU_CODE)
@@ -844,7 +797,7 @@ def restore(layout, rep=None):
 
     rep.step("restore", "восстановление файлов")
     stamp = read_stamp(layout) or {}
-    restored = skipped = 0
+    restored, skipped = revert_legacy(layout, stamp), 0
     for path, name in backup_files(layout):
         saved = os.path.join(layout.backup, name)
         if not os.path.exists(saved):

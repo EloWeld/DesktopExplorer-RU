@@ -34,6 +34,16 @@ class TestStatus:
         assert st.installed
         assert st.version is None
 
+    def test_catalog_written_by_the_patcher_reads_as_patched(self, fake_game, tmp_path):
+        # the sign is whatever patch_catalog writes, not what the fixture fakes;
+        # the game's own catalog carries ru-RU keys and must still read as clean
+        import patcher
+        layout = steam.locate(str(fake_game()))
+        out = tmp_path / "patched.json"
+        patcher.patch_catalog(layout.catalog, str(out))
+        assert not state.catalog_is_patched(layout.catalog)
+        assert state.catalog_is_patched(str(out))
+
     def test_unreadable_catalog_is_not_a_crash(self, fake_game):
         game = fake_game()
         layout = steam.locate(str(game))

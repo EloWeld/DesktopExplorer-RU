@@ -8,6 +8,7 @@ bundles, and that combination is a black screen on launch.
 import os
 
 import patcher
+import steam
 
 
 def stamp_of(**patched):
@@ -50,3 +51,23 @@ class TestSteamRewrote:
         # and nothing says they are Steam's, so the saved originals stay
         game, saved = files(tmp_path, b"half patched", b"original")
         assert not patcher.steam_rewrote(game, saved, "catalog.json", {})
+
+
+class TestRevertLegacy:
+    def test_only_files_still_ours_go_back(self, fake_game):
+        # 1.0.4 on 1.0.66 left a second ru-RU behind; a file Steam has rewritten
+        # since is the new build's original and must stay
+        layout = steam.locate(str(fake_game(stamp={})))
+        mine, steams = patcher.LEGACY_BUNDLES[:2]
+        for name, now in ((mine, b"ours"), (steams, b"new build")):
+            with open(layout.bundle(name), "wb") as fh:
+                fh.write(now)
+            with open(os.path.join(layout.backup, name), "wb") as fh:
+                fh.write(b"original")
+        stamp = stamp_of(**{mine: patcher.sha256(layout.bundle(mine)), steams: "0" * 64})
+
+        assert patcher.revert_legacy(layout, stamp) == 1
+        with open(layout.bundle(mine), "rb") as fh:
+            assert fh.read() == b"original"
+        with open(layout.bundle(steams), "rb") as fh:
+            assert fh.read() == b"new build"

@@ -8,6 +8,8 @@ fields are rewritten.
 import struct
 import lz4.block
 
+from unityfs import SerializedFile
+
 
 def align8(n):
     return (n + 7) & ~7
@@ -53,6 +55,36 @@ def rebuild_serialized(sf, new_objects):
     else:
         struct.pack_into(">I", out, 4, len(out))
     return bytes(out)
+
+
+def adopt_types(sf, donor):
+    """sf's bytes on donor's metadata: its type trees, managed-reference types
+    and externals, with sf's own object table entries and object data.
+
+    For two files of one build that hold the same kinds of objects, where only
+    the donor declares a managed-reference type the objects are about to use —
+    the game's empty ru-RU string tables lack SmartFormatTag, the English ones
+    have it. byte_start is relative to the data region, so sf's data moves over
+    as is. Returns None when the files differ in anything but that.
+    """
+    def entry(f, o):
+        return f.raw[o["entry_off"]:o["size_off"] + 8]   # ..., byte_size, type_id
+
+    def externals(f):
+        # script types and externals, the stretch between the object table and
+        # the managed-reference types
+        meta_end = (48 if f.version >= 22 else 20) + f.metadata_size
+        return f.raw[f.objtable_end:meta_end]
+
+    mine = externals(sf)
+    if (sf.types != donor.types or sf.object_count != donor.object_count
+            or not mine.endswith(b"\0\0\0\0\0")            # no ref types, no user info
+            or not externals(donor).startswith(mine[:-5])):
+        return None
+    raw = bytearray(donor.raw[:donor.data_offset])
+    for o, slot in zip(sf.objects, donor.objects):
+        raw[slot["entry_off"]:slot["size_off"] + 8] = entry(sf, o)
+    return SerializedFile(bytes(raw) + sf.raw[sf.data_offset:])
 
 
 def rebuild_bundle(bundle, node_index, new_node_data, out_path, compress=True):

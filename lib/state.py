@@ -40,20 +40,25 @@ class Status:
         return "перевод не установлен"
 
 
-def catalog_is_patched(catalog_path):
-    """True when the Addressables catalog carries the ru-RU keys we write.
+# patcher.patch_catalog() zeroes each CRC and pads it with spaces to keep the
+# entry's length; no build of the game writes a CRC that way
+ZEROED_CRC = '"m_Crc":0 '.encode("utf-16-le")
 
-    The keys live base64-encoded inside m_KeyDataString, so the check decodes
-    that blob rather than searching the JSON text, where the code never appears
-    literally.
+
+def catalog_is_patched(catalog_path):
+    """True when the Addressables catalog carries the zeroed CRCs we write.
+
+    They live base64-encoded inside m_ExtraDataString, so the check decodes that
+    blob rather than searching the JSON text. ru-RU keys used to be the sign,
+    until 1.0.66 shipped its own ru-RU locale and every catalog got them.
     """
     try:
         with open(catalog_path, encoding="utf-8") as fh:
             cat = json.load(fh)
-        blob = base64.b64decode(cat["m_KeyDataString"])
+        blob = base64.b64decode(cat["m_ExtraDataString"])
     except (OSError, ValueError, KeyError):
         return False
-    return b"ru-RU" in blob
+    return ZEROED_CRC in blob
 
 
 def status(layout):
